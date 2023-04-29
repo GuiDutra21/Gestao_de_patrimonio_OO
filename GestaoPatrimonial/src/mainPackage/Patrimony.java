@@ -13,7 +13,11 @@ public class Patrimony {
 	}
 
 	public void setValue(double value) {
-		this.value = value;
+		if(value < 0) {
+			this.value = 0;
+		} else {
+			this.value = value;
+		}
 	}
 
 	public double getValue() {

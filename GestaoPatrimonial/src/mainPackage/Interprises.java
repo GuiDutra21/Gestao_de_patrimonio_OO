@@ -23,8 +23,5 @@ public abstract class Interprises {
 		return adress;
 	}
 	
-	public void setHola() {
-		//Hollaaaaaaaaa
-	}
 
 }

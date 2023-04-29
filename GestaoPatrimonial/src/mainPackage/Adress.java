@@ -68,5 +68,10 @@ public class Adress {
 
 		this.setNumber(number);
 	}
+	
+	public String toString() {
+		String adress = String.format("Endereco: %s, %s, rua %d",getCity(), getStreet(), getNumber());
+		return adress;
+	}
 
 }
