@@ -1,6 +1,7 @@
 package mainPackage;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Filial extends Interprises {
 	private List<Patrimony> patrimony;
@@ -14,7 +15,7 @@ public class Filial extends Interprises {
 		return contPat;
 	}
 
-	public void setPatrimony(List<Patrimony> patrimony) {
+	public void setPatrimony(ArrayList<Patrimony> patrimony) {
 		this.patrimony = patrimony;
 	}
 
@@ -25,14 +26,15 @@ public class Filial extends Interprises {
 	public Filial(String name) {
 		this.setName(name);
 		setContPat(0);
+		setPatrimony(new ArrayList<Patrimony>());
 	}
 
-	public void addPatrimony(Patrimony patrimony) {
+	public void add(Patrimony patrimony) {
 		this.patrimony.add(patrimony);
 		setContPat(getContPat() + 1);
 	}
 
-	public void removePatrimony(String name) {
+	public void remove(String name) {
 		for (int i = 0; i < getContPat(); i++) {
 			if (getPatrimony().get(i).getName().equals(name)) {
 				getPatrimony().remove(getPatrimony().get(i));
@@ -52,6 +54,11 @@ public class Filial extends Interprises {
 
 	public void edit(Adress adress) {
 		setAdress(adress);
+	}
+	
+	public String toString() {
+		String filial = String.format("Nome: %s",getName());
+		return filial;
 	}
 
 }

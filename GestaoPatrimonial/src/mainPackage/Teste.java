@@ -12,6 +12,10 @@ public class Teste {
 		
 		System.out.println(c.getFilials().get(1).getName());
 		
+		c.getFilials().get(0).add(new Patrimony("carro",1200));
+		
+		System.out.println(c.getFilials().get(0).getPatrimony().toString());
+		
 		
 		
 		
