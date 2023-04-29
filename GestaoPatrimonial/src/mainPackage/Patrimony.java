@@ -36,4 +36,9 @@ public class Patrimony {
 		this.setName(name);
 		this.setValue(value);
 	}
+	
+	public String toString() {
+		String patrimony = String.format("Name: %s\nValue: %.2f",getName(),getValue());
+		return patrimony;
+	}
 }

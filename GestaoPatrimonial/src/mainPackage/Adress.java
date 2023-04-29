@@ -1,7 +1,6 @@
 package mainPackage;
 
 public class Adress {
-	// Atributes
 	
 	private String country;
 	private String state;

@@ -6,7 +6,14 @@ public class Teste {
 		
 		System.out.println(a.toString());
 		
-		Patrimony p = new Patrimony("carro",1200);
+		Company c = new Company("Nike",a);
+		c.addFilial(new Filial("Nike 0"));
+		c.addFilial(new Filial("Nike Americanas"));
+		
+		System.out.println(c.getFilials().get(1).getName());
+		
+		
+		
 		
 	}
 }

@@ -1,6 +1,7 @@
 package mainPackage;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Company extends Interprises {
 	private List<Filial> filials;
@@ -14,7 +15,7 @@ public class Company extends Interprises {
 		return qtd;
 	}
 
-	public void setFilials(List<Filial> filials) {
+	public void setFilials(ArrayList<Filial> filials) {
 		this.filials = filials;
 	}
 
@@ -25,6 +26,18 @@ public class Company extends Interprises {
 	public void addFilial(Filial filial) {
 		getFilials().add(filial);
 
+	}
+	
+	public Company(String name, Adress adress) {
+		this.setName(name);
+		this.setAdress(adress);
+		setFilials(new ArrayList<Filial>());
+		
+	}
+	
+	public Company(String name) {
+		this.setName(name);
+		setFilials(new ArrayList<Filial>());
 	}
 
 	/*public Filial edit(String name) {
