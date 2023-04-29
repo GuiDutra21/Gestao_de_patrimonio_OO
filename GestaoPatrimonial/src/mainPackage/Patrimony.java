@@ -3,7 +3,9 @@ package mainPackage;
 public class Patrimony {
 	private String name;
 	private double value;
-
+	
+	// GETTERS AND SETTERS
+	
 	public void setName(String name) {
 		this.name = name;
 	}
