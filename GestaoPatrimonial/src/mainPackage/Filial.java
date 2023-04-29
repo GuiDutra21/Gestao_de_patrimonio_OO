@@ -72,7 +72,11 @@ public class Filial extends Interprises {
 	}
 	
 	public String toString() {
-		String filial = String.format("Nome: %s",getName());
+		String filial = String.format("Nome: %s\nPatrimonios registrados:\n",getName());
+		for(int i = 0; i < patrimony.size(); i++) {
+			filial = filial.concat(getPatrimony().get(i).getName());
+			filial = filial.concat("\n");
+		}
 		return filial;
 	}
 

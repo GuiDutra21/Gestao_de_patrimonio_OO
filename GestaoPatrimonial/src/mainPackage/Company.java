@@ -10,7 +10,11 @@ public class Company extends Interprises {
 	// GETTERS AND SETTERS
 	
 	public void setQtd(int qtd) {
-		this.qtd = qtd;
+		if(qtd < 0) {
+			this.qtd = 0;
+		} else {
+			this.qtd = qtd;
+		}
 	}
 	
 	public int getQtd() {
@@ -27,11 +31,14 @@ public class Company extends Interprises {
 
 	public void addFilial(Filial filial) {
 		getFilials().add(filial);
-		qtd += 1;
+		setQtd(getQtd() + 1);
 
 	}
 	
 	//Constructors
+	public Company() {
+		
+	}
 	
 	public Company(String name, Adress adress) {
 		this.setName(name);
@@ -44,18 +51,24 @@ public class Company extends Interprises {
 		this.setName(name);
 		setFilials(new ArrayList<Filial>());
 	}
-
-	/*public Filial edit(String name) {
-		for (int i = 0; i < qtd; i++) {
-			if (this.getFilials().get(i).getName().equals(name)) {
-				return this.getFilials().get(i);
-			}
-			
-		}
-	}*/
 	
-	public void printFillias()
-	{
-		
+	public void editFilial(String oldName, String newName) {
+		for(int i = 0; i < getFilials().size(); i++) {
+			if(getFilials().get(i).getName().equals(oldName)) {
+				getFilials().get(i).setName(newName);
+			}
+		}
 	}
+	
+	public void editFilial(Adress oldAdress, Adress newAdress) {
+		for(int i = 0; i < getFilials().size(); i++) {
+			if(getFilials().get(i).getAdress().equals(oldAdress)) {
+				oldAdress = newAdress;
+			}
+		}
+	}
+	
+	
+	
+	
 }
