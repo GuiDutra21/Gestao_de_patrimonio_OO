@@ -69,7 +69,7 @@ public class Adress {
 	}
 	
 	public String toString() {
-		String adress = String.format("Adress : %s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
+		String adress = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
 		return adress;
 	}
 	
