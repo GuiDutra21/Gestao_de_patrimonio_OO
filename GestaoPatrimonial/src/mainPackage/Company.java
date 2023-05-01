@@ -54,10 +54,20 @@ public class Company extends Interprises {
 		}
 	}
 	
-	public void remove(String name) {
-		name = name.toLowerCase();
+	
+	// adiciona um patrimonio a uma filial
+	public void add(String filialName, Patrimony patrimony) { 
+		for(int i = 0; i < getFilials().size(); i++) {
+			if(getFilials().get(i).getName().equals(filialName)) {
+				getFilials().get(i).add(patrimony);
+			}
+		}
+	}
+	
+	public void remove(String filialName) {
+		filialName = filialName.toLowerCase();
 		for(int i = 0; i < filials.size(); i++) {
-			if(filials.get(i).getName().toLowerCase().equals(name)) {
+			if(filials.get(i).getName().toLowerCase().equals(filialName)) {
 				filials.remove(i);
 			}
 		}
@@ -83,13 +93,7 @@ public class Company extends Interprises {
 		return company;
 	}
 	
-	public void add(String name, Patrimony patrimony) {
-		for(int i = 0; i < getFilials().size(); i++) {
-			if(getFilials().get(i).getName().equals(name)) {
-				getFilials().get(i).add(patrimony);
-			}
-		}
-	}
+
 	
 		
 }
