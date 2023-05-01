@@ -64,6 +64,22 @@ public class Company extends Interprises {
 		}
 	}
 	
+	public void edit(String filialName, String oldPatName, String newPatName) {
+		for(int i = 0; i < getFilials().size(); i++){
+			if(getFilials().get(i).getName().equals(filialName)) {
+				getFilials().get(i).editPatrimony(oldPatName,newPatName);
+			}
+		}
+	}
+	
+	public void edit(String filialName, String patName, double newPatValue) {
+		for(int i = 0; i < getFilials().size(); i++){
+			if(getFilials().get(i).getName().equals(filialName)) {
+				getFilials().get(i).editPatrimony(patName,newPatValue);
+			}
+		}
+	}
+	
 	public void remove(String filialName) {
 		filialName = filialName.toLowerCase();
 		for(int i = 0; i < filials.size(); i++) {
