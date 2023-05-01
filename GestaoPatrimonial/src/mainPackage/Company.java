@@ -62,6 +62,15 @@ public class Company extends Interprises {
 		setName(name);
 	}
 	
+	public void edit(Adress adress) {
+		setAdress(adress);
+	}
+	
+	public void edit(String name, Adress adress) {
+		setName(name);
+		setAdress(adress);
+	}
+	
 	
 	
 	
