@@ -62,6 +62,14 @@ public class Filial extends Interprises {
 		}
 	}
 	
+	public void createPat(String name) {
+		patrimony.add(new Patrimony(name));
+	}
+	
+	public void creatPat(String name, double value) {
+		patrimony.add(new Patrimony(name, value));
+	}
+	
 
 	public void edit(String name) {
 		setName(name);
