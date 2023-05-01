@@ -22,6 +22,19 @@ public abstract class Interprises {
 	public Adress getAdress() {
 		return adress;
 	}
+	public void edit(String name) {
+		setName(name);
+	}
+	
+	public void edit(Adress adress) {
+		setAdress(adress);
+	}
+	
+	public void edit(String name, Adress adress) {
+		setAdress(adress);
+		setName(name);
+	}
+	
 	
 
 }

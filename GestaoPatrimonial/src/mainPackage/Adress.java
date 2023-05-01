@@ -72,5 +72,7 @@ public class Adress {
 		String adress = String.format("Adress : %s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
 		return adress;
 	}
+	
+	
 
 }

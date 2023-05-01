@@ -58,20 +58,5 @@ public class Company extends Interprises {
 		filials.add(new Filial(name));
 	}
 	
-	public void edit(String name) {
-		setName(name);
-	}
-	
-	public void edit(Adress adress) {
-		setAdress(adress);
-	}
-	
-	public void edit(String name, Adress adress) {
-		setName(name);
-		setAdress(adress);
-	}
-	
-	
-	
-	
+		
 }

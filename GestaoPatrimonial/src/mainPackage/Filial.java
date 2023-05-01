@@ -70,15 +70,6 @@ public class Filial extends Interprises {
 		patrimony.add(new Patrimony(name, value));
 	}
 	
-
-	public void edit(String name) {
-		setName(name);
-	}
-
-	public void edit(Adress adress) {
-		setAdress(adress);
-	}
-	
 	public String toString() {
 		String filial = String.format("Nome: %s\nPatrimonios registrados:\n",getName());
 		for(int i = 0; i < patrimony.size(); i++) {
