@@ -45,7 +45,7 @@ public class Teste {
 				}
 				
 				if(option2 == 1){
-					
+					System.out.println("ameba");
 				}
 			}
 		}
