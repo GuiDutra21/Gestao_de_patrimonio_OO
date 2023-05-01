@@ -67,6 +67,10 @@ public class Company extends Interprises {
 		filials.add(new Filial(name));
 	}
 	
+	public void createFilial(String name, Adress adress) {
+		filials.add(new Filial(name, adress));
+	}
+	
 	public String toString() {
 		String company = String.format("Nome da compania: %s\nEndereco da Companhia: %s\nFiliais:\n",this.getName(),getAdress().toString());
 		

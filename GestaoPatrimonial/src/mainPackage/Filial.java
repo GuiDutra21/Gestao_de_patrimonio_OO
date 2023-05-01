@@ -32,6 +32,13 @@ public class Filial extends Interprises {
 		setContPat(0);
 		setPatrimony(new ArrayList<Patrimony>());
 	}
+	
+	public Filial(String name, Adress adress) {
+		setName(name);
+		setContPat(0);
+		setAdress(adress);
+		setPatrimony(new ArrayList<Patrimony>());
+	}
 
 	public void add(Patrimony patrimony) {
 		this.patrimony.add(patrimony);
