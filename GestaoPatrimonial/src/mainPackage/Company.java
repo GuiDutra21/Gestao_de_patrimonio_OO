@@ -58,6 +58,10 @@ public class Company extends Interprises {
 		filials.add(new Filial(name));
 	}
 	
+	public void edit(String name) {
+		setName(name);
+	}
+	
 	
 	
 	
