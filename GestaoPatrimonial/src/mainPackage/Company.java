@@ -83,5 +83,13 @@ public class Company extends Interprises {
 		return company;
 	}
 	
+	public void add(String name, Patrimony patrimony) {
+		for(int i = 0; i < getFilials().size(); i++) {
+			if(getFilials().get(i).getName().equals(name)) {
+				getFilials().get(i).add(patrimony);
+			}
+		}
+	}
+	
 		
 }
