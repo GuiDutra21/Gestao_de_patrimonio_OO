@@ -40,7 +40,7 @@ public class Patrimony {
 	}
 	
 	public String toString() {
-		String patrimony = String.format("Name: %s\nValue: %.2f",getName(),getValue());
+		String patrimony = String.format("Nome: %s Valor: %.2f",getName(),getValue());
 		return patrimony;
 	}
 }
