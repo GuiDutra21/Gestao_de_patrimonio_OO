@@ -22,6 +22,7 @@ public class Teste {
 		
 		Adress a1 = new Adress(interpriseCountry, interpriseState, interpriseCity, interpriseStreet, intepriseNumber );
 		Company company1 = new Company(interpriseName, a1);
+		company1.toString();
 		
 		while(true)
 		{
@@ -47,6 +48,8 @@ public class Teste {
 					
 				}
 			}
-		}		
+		}
+		
+		input.close();
 	}
 }

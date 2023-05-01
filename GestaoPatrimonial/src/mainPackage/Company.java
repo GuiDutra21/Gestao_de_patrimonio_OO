@@ -5,21 +5,8 @@ import java.util.ArrayList;
 
 public class Company extends Interprises {
 	private List<Filial> filials;
-	private int qtd;
 	
 	// GETTERS AND SETTERS
-	
-	public void setQtd(int qtd) {
-		if(qtd < 0) {
-			this.qtd = 0;
-		} else {
-			this.qtd = qtd;
-		}
-	}
-	
-	public int getQtd() {
-		return qtd;
-	}
 	
 	public void setFilials(ArrayList<Filial> filials) {
 		this.filials = filials;
@@ -31,7 +18,6 @@ public class Company extends Interprises {
 
 	public void addFilial(Filial filial) {
 		getFilials().add(filial);
-		setQtd(getQtd() + 1);
 
 	}
 	
