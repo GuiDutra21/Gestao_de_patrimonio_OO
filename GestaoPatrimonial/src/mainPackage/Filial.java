@@ -56,7 +56,7 @@ public class Filial extends Interprises {
 	public void editPatrimony(String oldName, String newName) {
 		for (int i = 0; i < getContPat(); i++) {
 			if(getPatrimony().get(i).getName().equals(oldName)){
-				getPatrimony().get(i).setName(newName);
+				getPatrimony().get(i).edit(newName);
 			}
 		}
 	}
@@ -64,7 +64,7 @@ public class Filial extends Interprises {
 	public void editPatrimony(String oldName, double newValue) {
 		for (int i = 0; i < getContPat(); i++) {
 			if(getPatrimony().get(i).getName().equals(oldName)){
-				getPatrimony().get(i).setValue(newValue);
+				getPatrimony().get(i).edit(newValue);
 			}
 		}
 	}

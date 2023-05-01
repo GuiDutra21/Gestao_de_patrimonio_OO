@@ -43,4 +43,17 @@ public class Patrimony {
 		String patrimony = String.format("Nome: %s Valor: %.2f",getName(),getValue());
 		return patrimony;
 	}
+	
+	public void edit(String name) {
+		setName(name);
+	}
+	
+	public void edit(double value) {
+		setValue(value);
+	}
+	
+	public void edit(String name, double value) {
+		setName(name);
+		setValue(value);
+	}
 }
