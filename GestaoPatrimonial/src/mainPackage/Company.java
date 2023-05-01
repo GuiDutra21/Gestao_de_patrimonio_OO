@@ -54,6 +54,15 @@ public class Company extends Interprises {
 		}
 	}
 	
+	public void remove(String name) {
+		name = name.toLowerCase();
+		for(int i = 0; i < filials.size(); i++) {
+			if(filials.get(i).getName().toLowerCase().equals(name)) {
+				filials.remove(i);
+			}
+		}
+	}
+	
 	public void createFilial(String name) {
 		filials.add(new Filial(name));
 	}
