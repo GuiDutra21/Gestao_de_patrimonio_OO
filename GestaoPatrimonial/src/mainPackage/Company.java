@@ -46,10 +46,10 @@ public class Company extends Interprises {
 		}
 	}
 	
-	public void editFilial(Adress oldAdress, Adress newAdress) {
+	public void editFilial(String name, Adress newAdress) {
 		for(int i = 0; i < getFilials().size(); i++) {
-			if(getFilials().get(i).getAdress().equals(oldAdress)) {
-				oldAdress = newAdress;
+			if(getFilials().get(i).getName().equals(name)) {
+				getFilials().get(i).edit(newAdress);
 			}
 		}
 	}
