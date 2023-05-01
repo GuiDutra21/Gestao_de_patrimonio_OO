@@ -54,6 +54,10 @@ public class Company extends Interprises {
 		}
 	}
 	
+	public void createFilial(String name) {
+		filials.add(new Filial(name));
+	}
+	
 	
 	
 	
