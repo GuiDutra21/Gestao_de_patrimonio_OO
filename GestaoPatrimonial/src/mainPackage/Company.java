@@ -67,5 +67,16 @@ public class Company extends Interprises {
 		filials.add(new Filial(name));
 	}
 	
+	public String toString() {
+		String company = String.format("Nome da compania: %s\nFiliais:\n",this.getName());
+		for(int i = 0; i < filials.size(); i++) {
+			company = company.concat(filials.get(i).getName());
+			company = company.concat("\n");
+			
+		}
+		
+		return company;
+	}
+	
 		
 }
