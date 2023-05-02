@@ -73,6 +73,14 @@ public class Filial extends Interprises {
 		}
 	}
 	
+	public void editPatrimony(String patName, int amount) {
+		for(int i = 0; i < getPatrimony().size();i++) {
+			if(getPatrimony().get(i).getName().equals(patName)) {
+				getPatrimony().get(i).edit(amount);
+			}
+		}
+	}
+	
 	//Into a Filial creates a Patrimony only with name 
 	public void createPat(String name) {
 		patrimony.add(new Patrimony(name));
