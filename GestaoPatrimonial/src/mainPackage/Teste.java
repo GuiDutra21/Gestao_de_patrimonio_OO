@@ -56,10 +56,10 @@ public class Teste {
 		System.out.println(company1.getFilials().get(i).toString());
 		
 		//Criando patrimonios
-		company1.add("Loja 3", new Patrimony("Carro", 100000));
-		company1.add("Loja 3", new Patrimony("Predio", 20000000));
-		company1.add("Loja 1 com nome novo", new Patrimony("aviao", 34567890));
-		company1.add("Loja 1 com nome novo", new Patrimony("casa", 1298980));
+		company1.add("Loja 3", new Patrimony("Carro", 100000.00));
+		company1.add("Loja 3", new Patrimony("Predio", 20000000.00));
+		company1.add("Loja 1 com nome novo", new Patrimony("aviao", 34567890.00));
+		company1.add("Loja 1 com nome novo", new Patrimony("casa", 1298980.00));
 		
 		//Mostrar as alterações
 		System.out.println("Print 6 - Mostrando as alteracoes");
@@ -68,7 +68,7 @@ public class Teste {
 		
 		//Editando patrimonio 
 		company1.edit("Loja 3","Carro","Moto");
-		company1.edit("Loja 3","Moto", 10500);
+		company1.edit("Loja 3","Moto", 10500.00);
 		
 		//Mostrar as alterações
 		System.out.println("Print 7 - Mostrando as alteracoes");
@@ -82,6 +82,16 @@ public class Teste {
 		System.out.println("Print 8 - Mostrando as alteracoes");
 		for(int i = 0; i < company1.getFilials().size(); i++)
 			System.out.println(company1.getFilials().get(i).toString());
+		
+		
+		//Alterando as unidades de Patrimonios
+		company1.edit("Loja 3","Moto",3);
+		
+		//Mostrar as alterações
+		System.out.println("Print 9 - Mostrando as alteracoes");
+		for(int i = 0; i < company1.getFilials().size(); i++)
+			System.out.println(company1.getFilials().get(i).toString());
+		
 		input.close();
 	}
 }
