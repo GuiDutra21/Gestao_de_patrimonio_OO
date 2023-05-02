@@ -90,16 +90,19 @@ public class Patrimony {
 		setValue(value);
 	}
 	
+	//method that edits the name and the amount
 	public void edit(String name, int amount) {
 		setName(name);
 		setAmount(amount);
 	}
 	
+	//method that edits the name and the value
 	public void edit(int amount, double value) {
 		setAmount(amount);
 		setValue(value);
 	}
 	
+	//Method that edits the name, the amount and the value
 	public void edit(String name, int amount, double value) {
 		setName(name);
 		setAmount(amount);
