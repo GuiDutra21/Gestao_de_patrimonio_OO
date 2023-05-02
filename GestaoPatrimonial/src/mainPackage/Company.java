@@ -111,12 +111,12 @@ public class Company extends Interprises {
 		filials.add(new Filial(name));
 	}
 	
-	//Create a Filial name with totaly argumnets
+	//Create a Filial name with all argumnets
 	public void createFilial(String name, Adress adress) {
 		filials.add(new Filial(name, adress));
 	}
 	
-	//method toString that retunrs the parameters formated in a String
+	//method toString that retunrs the name of the Company, the Adress and the Array of Filials into a formated String 
 	public String toString() {
 		String company = String.format("Nome da companhia: %s\nEndereco da Companhia: %s\nFiliais:\n",this.getName(),getAdress().toString());
 		

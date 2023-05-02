@@ -68,7 +68,7 @@ public class Adress {
 		this.setNumber(number);
 	}
 	
-	//method toString that retunrs the parameters formated in a String
+	//method toString that retunrs the elements of an Adress into a formated a String
 	public String toString() {
 		String adress = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
 		return adress;

@@ -22,19 +22,20 @@ public abstract class Interprises {
 	public Adress getAdress() {
 		return adress;
 	}
+	
+	//Method that edits the name
 	public void edit(String name) {
 		setName(name);
 	}
 	
+	//Method that edits the Adress
 	public void edit(Adress adress) {
 		setAdress(adress);
 	}
 	
+	//Method taht edits the name ande the Adress
 	public void edit(String name, Adress adress) {
 		setAdress(adress);
 		setName(name);
 	}
-	
-	
-
 }

@@ -76,7 +76,6 @@ public class Teste {
 		for(int i = 0; i < company1.getFilials().size(); i++)
 			System.out.println(company1.getFilials().get(i).toString());
 		
-		
 		//Removendo Patrimonio
 		company1.remove("Loja 1 com nome novo","casa");
 		
