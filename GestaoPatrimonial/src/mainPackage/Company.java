@@ -83,7 +83,7 @@ public class Company extends Interprises {
 			}
 		}
 	}
-	//Edit the amount of a Patrimony in the Filial
+	
 	public void edit(String filialName, String patName, int newPatAmount) {
 		for(int i = 0; i < getFilials().size();i++) {
 			if(getFilials().get(i).getName().equals(filialName)) {
