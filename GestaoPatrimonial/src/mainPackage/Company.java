@@ -38,6 +38,7 @@ public class Company extends Interprises {
 		setFilials(new ArrayList<Filial>());
 	}
 	
+	//Edit the name of a Filial
 	public void editFilial(String oldName, String newName) {
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().equals(oldName)) {
@@ -46,6 +47,7 @@ public class Company extends Interprises {
 		}
 	}
 	
+	//Edit the Adress of a Filial
 	public void editFilial(String name, Adress newAdress) {
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().equals(name)) {
@@ -55,7 +57,7 @@ public class Company extends Interprises {
 	}
 	
 	
-	// adiciona um patrimonio a uma filial
+	//Adds in a Filial a Patrimony
 	public void add(String filialName, Patrimony patrimony) { 
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().equals(filialName)) {
@@ -64,6 +66,7 @@ public class Company extends Interprises {
 		}
 	}
 	
+	//Edit the name of a Patrimony in the Filial mentioned
 	public void edit(String filialName, String oldPatName, String newPatName) {
 		for(int i = 0; i < getFilials().size(); i++){
 			if(getFilials().get(i).getName().equals(filialName)) {
@@ -72,6 +75,7 @@ public class Company extends Interprises {
 		}
 	}
 	
+	//Edit the value of a Patrimony in the Filial name passed
 	public void edit(String filialName, String patName, double newPatValue) {
 		for(int i = 0; i < getFilials().size(); i++){
 			if(getFilials().get(i).getName().equals(filialName)) {
@@ -80,6 +84,7 @@ public class Company extends Interprises {
 		}
 	}
 	
+	//remove a Filial based in it name
 	public void remove(String filialName) {
 		filialName = filialName.toLowerCase();
 		for(int i = 0; i < filials.size(); i++) {
@@ -89,34 +94,36 @@ public class Company extends Interprises {
 		}
 	}
 	
+	//remove a Patrimony name based in the Filial name passed
 	public void remove(String filialName, String patrimonyName) {
 		filialName = filialName.toLowerCase();
 		for(int i = 0; i < filials.size(); i++) {
-			for(int j = 0; j < filials.get(i).getPatrimony().size(); i++) {
-				if(filials.get(i).getPatrimony().get(i).getName().equals(patrimonyName)) {
-					filials.get(i).getPatrimony().remove(filials.get(i).getPatrimony().get(i));
+			for(int j = 0; j < filials.get(i).getPatrimony().size(); j++) {
+				if(filials.get(i).getPatrimony().get(j).getName().equals(patrimonyName)) {
+					filials.get(i).getPatrimony().remove(filials.get(i).getPatrimony().get(j));
 				}
 			}
 		}
 	}
 	
+	//Create a Filial only with a name
 	public void createFilial(String name) {
 		filials.add(new Filial(name));
 	}
 	
+	//Create a Filial name with totaly argumnets
 	public void createFilial(String name, Adress adress) {
 		filials.add(new Filial(name, adress));
 	}
 	
+	//method toString that retunrs the parameters formated in a String
 	public String toString() {
 		String company = String.format("Nome da companhia: %s\nEndereco da Companhia: %s\nFiliais:\n",this.getName(),getAdress().toString());
 		
 		for(int i = 0; i < filials.size(); i++) {
 			company = company.concat(filials.get(i).getName());
 			company = company.concat("\n");
-			
 		}
-		
 		return company;
 	}
 	
