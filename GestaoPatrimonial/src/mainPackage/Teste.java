@@ -66,7 +66,6 @@ public class Teste {
 		for(int i = 0; i < company1.getFilials().size(); i++)
 			System.out.println(company1.getFilials().get(i).toString());
 		
-		
 		//Editando patrimonio 
 		company1.edit("Loja 3","Carro","Moto");
 		company1.edit("Loja 3","Moto", 10500);
