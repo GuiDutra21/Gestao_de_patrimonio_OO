@@ -47,9 +47,9 @@ public class Filial extends Interprises {
 	}
 	
 	//Into a Filial removes a Patrimony
-	public void remove(String name) {
+	public void remove(String patName) {
 		for (int i = 0; i < getContPat(); i++) {
-			if (getPatrimony().get(i).getName().equals(name)) {
+			if (getPatrimony().get(i).getName().equals(patName)) {
 				getPatrimony().remove(getPatrimony().get(i));
 			}
 		}

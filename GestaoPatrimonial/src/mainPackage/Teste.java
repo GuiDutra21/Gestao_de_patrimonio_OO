@@ -83,6 +83,6 @@ public class Teste {
 		System.out.println("Print 8 - Mostrando as alteracoes");
 		for(int i = 0; i < company1.getFilials().size(); i++)
 			System.out.println(company1.getFilials().get(i).toString());
-		
+		input.close();
 	}
 }
