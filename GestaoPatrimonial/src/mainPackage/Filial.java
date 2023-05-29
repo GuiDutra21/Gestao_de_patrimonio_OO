@@ -33,10 +33,10 @@ public class Filial extends Interprises {
 		setPatrimony(new ArrayList<Patrimony>());
 	}
 	
-	public Filial(String name, Adress adress) {
+	public Filial(String name, Address adress) {
 		setName(name);
 		setContPat(0);
-		setAdress(adress);
+		setAddress(adress);
 		setPatrimony(new ArrayList<Patrimony>());
 	}
 	
@@ -94,7 +94,7 @@ public class Filial extends Interprises {
 	
 	//method toString that returns the Filial name, the Adress and the Array of Patrimony into a formated String  
 	public String toString() {
-		String filial = String.format("Nome: %s\nEndereco: %s\nPatrimonios registrados:\n",getName(),getAdress().toString());
+		String filial = String.format("Nome: %s\nEndereco: %s\nPatrimonios registrados:\n",getName(),getAddress().toString());
 		for(int i = 0; i < patrimony.size(); i++) {
 			filial = filial.concat(getPatrimony().get(i).toString());
 			filial = filial.concat("\n");

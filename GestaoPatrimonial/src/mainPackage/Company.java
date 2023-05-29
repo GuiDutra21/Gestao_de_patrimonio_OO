@@ -22,13 +22,14 @@ public class Company extends Interprises {
 	}
 	
 	//Constructors
+	
 	public Company() {
 		
 	}
 	
-	public Company(String name, Adress adress) {
+	public Company(String name, Address adress) {
 		this.setName(name);
-		this.setAdress(adress);
+		this.setAddress(adress);
 		setFilials(new ArrayList<Filial>());
 		
 	}
@@ -47,8 +48,8 @@ public class Company extends Interprises {
 		}
 	}
 	
-	//Edit the Adress of a Filial
-	public void editFilial(String name, Adress newAdress) {
+	//Edit the Address of a Filial
+	public void editFilial(String name, Address newAdress) {
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().equals(name)) {
 				getFilials().get(i).edit(newAdress);
@@ -121,13 +122,13 @@ public class Company extends Interprises {
 	}
 	
 	//Create a Filial name with all argumnets
-	public void createFilial(String name, Adress adress) {
-		filials.add(new Filial(name, adress));
+	public void createFilial(String name, Address address) {
+		filials.add(new Filial(name, address));
 	}
 	
 	//method toString that retunrs the name of the Company, the Adress and the Array of Filials into a formated String 
 	public String toString() {
-		String company = String.format("Nome da companhia: %s\nEndereco da Companhia: %s\nFiliais:\n",this.getName(),getAdress().toString());
+		String company = String.format("Nome da companhia: %s\nEndereco da Companhia: %s\nFiliais:\n",this.getName(),getAddress().toString());
 		
 		for(int i = 0; i < filials.size(); i++) {
 			company = company.concat(filials.get(i).getName());
