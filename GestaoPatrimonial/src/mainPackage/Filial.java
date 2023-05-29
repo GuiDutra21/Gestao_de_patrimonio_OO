@@ -5,18 +5,7 @@ import java.util.ArrayList;
 
 public class Filial extends Interprises {
 	private List<Patrimony> patrimony;
-	private int contPat;
-	
 	// GETTERS AND SETTERS
-	
-	public void setContPat(int contPat) {
-		this.contPat = contPat;
-	}
-
-	public int getContPat() {
-		return contPat;
-	}
-
 	public void setPatrimony(ArrayList<Patrimony> patrimony) {
 		this.patrimony = patrimony;
 	}
@@ -28,14 +17,11 @@ public class Filial extends Interprises {
 	//Constructor
 	
 	public Filial(String name) {
-		this.setName(name);
-		setContPat(0);
-		setPatrimony(new ArrayList<Patrimony>());
+		this(name,null);
 	}
 	
 	public Filial(String name, Address adress) {
 		setName(name);
-		setContPat(0);
 		setAddress(adress);
 		setPatrimony(new ArrayList<Patrimony>());
 	}
@@ -43,12 +29,12 @@ public class Filial extends Interprises {
 	//Into a Filial adds a Patrimony
 	public void add(Patrimony patrimony) {
 		this.patrimony.add(patrimony);
-		setContPat(getContPat() + 1);
+		
 	}
 	
 	//Into a Filial removes a Patrimony
 	public void remove(String patName) {
-		for (int i = 0; i < getContPat(); i++) {
+		for (int i = 0; i < getPatrimony().size(); i++) {
 			if (getPatrimony().get(i).getName().equals(patName)) {
 				getPatrimony().remove(getPatrimony().get(i));
 			}
@@ -57,7 +43,7 @@ public class Filial extends Interprises {
 	
 	//Into a Filial edit the name of a Patrimony
 	public void editPatrimony(String oldName, String newName) {
-		for (int i = 0; i < getContPat(); i++) {
+		for (int i = 0; i < getPatrimony().size(); i++) {
 			if(getPatrimony().get(i).getName().equals(oldName)){
 				getPatrimony().get(i).edit(newName);
 			}
@@ -66,7 +52,7 @@ public class Filial extends Interprises {
 	
 	//Into a Filial edit the value of a Patrimony
 	public void editPatrimony(String oldName, double newValue) {
-		for (int i = 0; i < getContPat(); i++) {
+		for (int i = 0; i < getPatrimony().size(); i++) {
 			if(getPatrimony().get(i).getName().equals(oldName)){
 				getPatrimony().get(i).edit(newValue);
 			}

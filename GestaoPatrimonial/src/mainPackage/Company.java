@@ -22,11 +22,6 @@ public class Company extends Interprises {
 	}
 	
 	//Constructors
-	
-	public Company() {
-		
-	}
-	
 	public Company(String name, Address adress) {
 		this.setName(name);
 		this.setAddress(adress);
@@ -35,8 +30,7 @@ public class Company extends Interprises {
 	}
 	
 	public Company(String name) {
-		this.setName(name);
-		setFilials(new ArrayList<Filial>());
+		this(name, null);
 	}
 	
 	//Edit the name of a Filial
