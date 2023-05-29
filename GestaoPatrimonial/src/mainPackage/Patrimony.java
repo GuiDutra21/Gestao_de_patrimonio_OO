@@ -41,27 +41,16 @@ public class Patrimony {
 	}
 	
 	//Constructors
-	public Patrimony() {
-		setAmount(1);
-		setValue(0);
-	}
-
 	public Patrimony(String name) {
-		setName(name);
-		setAmount(1);
-		setValue(0);
+		this(name, 1, 0);
 	}
 
 	public Patrimony(String name, double value) {
-		this.setName(name);
-		this.setValue(value);
-		setAmount(1);
+		this(name,1,value);
 	}
 	
 	public Patrimony(String name, int amount) {
-		setName(name);
-		setAmount(amount);
-		setValue(0);
+		this(name,amount,0);
 	}
 	
 	public Patrimony(String name, int amount, double value) {
