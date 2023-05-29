@@ -5,7 +5,7 @@ public class Teste {
 		Scanner input = new Scanner(System.in);
 		
 		//criando uma compania
-		Company company1 = new Company("Ricardo Eletro",new Adress("Brasil",
+		Company company1 = new Company("Ricardo Eletro",new Address("Brasil",
 				"Sao Paulo","Sao Paulo","avenida das palmeiras",15));
 		
 		//mostrando o estado da companhia
@@ -14,18 +14,18 @@ public class Teste {
 		
 		//editando o nome da companhia e o endereço 
 		company1.edit("Apple");
-		company1.edit(new Adress("Estados Unidos","Texas","Dallas","chitaozinho",10));
+		company1.edit(new Address("Estados Unidos","Texas","Dallas","chitaozinho",10));
 		
 		//mostrando a alteração do estado
 		System.out.println("Print 2 - Mostrando a alteracao do estado");
 		System.out.println(company1.toString());
 		
 		//Criando filiais 
-		company1.createFilial("Loja 1",new Adress("Estados Unidos","New York",
+		company1.createFilial("Loja 1",new Address("Estados Unidos","New York",
 				"New York city","Time Square",1));
-		company1.createFilial("Loja 2",new Adress("Estados Unidos","Florida",
+		company1.createFilial("Loja 2",new Address("Estados Unidos","Florida",
 				"Miami","Orla",5));
-		company1.createFilial("Loja 3",new Adress("Estados Unidos","California",
+		company1.createFilial("Loja 3",new Address("Estados Unidos","California",
 				"San Andreas","avenidas das palmeiras",777));
 		
 		
@@ -47,7 +47,7 @@ public class Teste {
 		//editando uma companhia
 		company1.editFilial("Loja 1","Loja 1 com nome novo");
 		company1.editFilial("Loja 1 com nome novo",
-				new Adress("Brasil", "Minas Gerais", "Belo Horizonte", "Rua pao de Queijo", 56789));
+				new Address("Brasil", "Minas Gerais", "Belo Horizonte", "Rua pao de Queijo", 56789));
 		
 		//Mostrar as alterações do estado da Companhia e da Filial
 		System.out.println("Print 5- Mostrar as alteracoes do estado da Companhia e da Filial");

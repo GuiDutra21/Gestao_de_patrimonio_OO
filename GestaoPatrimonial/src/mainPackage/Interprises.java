@@ -3,7 +3,7 @@ package mainPackage;
 public abstract class Interprises {
 	// ATRIBUTES
 	private String name;
-	private Adress adress;
+	private Address address;
 
 	// GETTERS AND SETTERS
 
@@ -15,12 +15,12 @@ public abstract class Interprises {
 		return name;
 	}
 
-	public void setAdress(Adress adress) {
-		this.adress = adress;
+	public void setAddress(Address adress) {
+		this.address = adress;
 	}
 
-	public Adress getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
 	
 	//Method that edits the name
@@ -28,14 +28,14 @@ public abstract class Interprises {
 		setName(name);
 	}
 	
-	//Method that edits the Adress
-	public void edit(Adress adress) {
-		setAdress(adress);
+	//Method that edits the Address
+	public void edit(Address adress) {
+		setAddress(adress);
 	}
 	
-	//Method taht edits the name ande the Adress
-	public void edit(String name, Adress adress) {
-		setAdress(adress);
+	//Method that edits the name ande the Address
+	public void edit(String name, Address address) {
+		setAddress(address);
 		setName(name);
 	}
 }

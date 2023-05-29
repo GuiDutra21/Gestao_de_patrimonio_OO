@@ -1,6 +1,6 @@
 package mainPackage;
 
-public class Adress {
+public class Address {
 	
 	private String country;
 	private String state;
@@ -56,7 +56,7 @@ public class Adress {
 
 	// Construct
 
-	public Adress(String country, String state, String city, String street, int number) {
+	public Address(String country, String state, String city, String street, int number) {
 		this.setCountry(country);
 
 		this.setState(state);
