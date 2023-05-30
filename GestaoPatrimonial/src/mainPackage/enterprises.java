@@ -1,6 +1,7 @@
 package mainPackage;
 
-public abstract class Interprises {
+public abstract class enterprises {
+	
 	// ATRIBUTES
 	private String name;
 	private Address address;
@@ -23,6 +24,8 @@ public abstract class Interprises {
 		return address;
 	}
 	
+	//Methods
+	
 	//Method that edits the name
 	public void edit(String name) {
 		setName(name);
@@ -33,7 +36,7 @@ public abstract class Interprises {
 		setAddress(adress);
 	}
 	
-	//Method that edits the name ande the Address
+	//Method that edits the name and the Address
 	public void edit(String name, Address address) {
 		setAddress(address);
 		setName(name);

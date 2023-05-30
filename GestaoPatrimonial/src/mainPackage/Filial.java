@@ -3,16 +3,11 @@ package mainPackage;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Filial extends Interprises {
+public class Filial extends enterprises {
+	
+	// ATRIBUTES
+	
 	private List<Patrimony> patrimony;
-	// GETTERS AND SETTERS
-	public void setPatrimony(ArrayList<Patrimony> patrimony) {
-		this.patrimony = patrimony;
-	}
-
-	public List<Patrimony> getPatrimony() {
-		return patrimony;
-	}
 	
 	//Constructor
 	
@@ -25,20 +20,32 @@ public class Filial extends Interprises {
 		setAddress(adress);
 		setPatrimony(new ArrayList<Patrimony>());
 	}
+
+	// GETTERS AND SETTERS
 	
-	//Into a Filial adds a Patrimony
-	public void add(Patrimony patrimony) {
-		this.patrimony.add(patrimony);
-		
+	public void setPatrimony(ArrayList<Patrimony> patrimony) {
+		this.patrimony = patrimony;
+	}
+
+	public List<Patrimony> getPatrimony() {
+		return patrimony;
 	}
 	
-	//Into a Filial removes a Patrimony
-	public void remove(String patName) {
-		for (int i = 0; i < getPatrimony().size(); i++) {
-			if (getPatrimony().get(i).getName().equals(patName)) {
-				getPatrimony().remove(getPatrimony().get(i));
-			}
-		}
+	//Methods
+	
+	//Into a Filial create a Patrimony with all arguments
+	public void creatPat(String name, double value) {
+		patrimony.add(new Patrimony(name, value));
+	}
+
+	//Into a Filial add a Patrimony
+	public void add(Patrimony patrimony) {
+		this.patrimony.add(patrimony);
+	}
+	
+	//Into a Filial create a Patrimony only with name 
+	public void createPat(String name) {
+		patrimony.add(new Patrimony(name));
 	}
 	
 	//Into a Filial edit the name of a Patrimony
@@ -67,16 +74,16 @@ public class Filial extends Interprises {
 			}
 		}
 	}
-	
-	//Into a Filial creates a Patrimony only with name 
-	public void createPat(String name) {
-		patrimony.add(new Patrimony(name));
+
+	//Into a Filial remove a Patrimony
+	public void remove(String patName) {
+		for (int i = 0; i < getPatrimony().size(); i++) {
+			if (getPatrimony().get(i).getName().equals(patName)) {
+				getPatrimony().remove(getPatrimony().get(i));
+			}
+		}
 	}
-	
-	//Into a Filial creates a Patrimony with all arguments
-	public void creatPat(String name, double value) {
-		patrimony.add(new Patrimony(name, value));
-	}
+
 	
 	//method toString that returns the Filial name, the Adress and the Array of Patrimony into a formated String  
 	public String toString() {
@@ -87,5 +94,4 @@ public class Filial extends Interprises {
 		}
 		return filial;
 	}
-
 }

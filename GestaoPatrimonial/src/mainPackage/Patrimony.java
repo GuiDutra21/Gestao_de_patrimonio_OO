@@ -1,10 +1,33 @@
 package mainPackage;
 
 public class Patrimony {
+	
+	// ATRIBUTES
+	
 	private String name;
 	private double value;
 	private int amount;
 	
+	//Constructors
+	
+	public Patrimony(String name) {
+		this(name, 1, 0);
+	}
+
+	public Patrimony(String name, double value) {
+		this(name,1,value);
+	}
+	
+	public Patrimony(String name, int amount) {
+		this(name,amount,0);
+	}
+	
+	public Patrimony(String name, int amount, double value) {
+		setName(name);
+		setAmount(amount);
+		setValue(value);
+	}
+
 	// GETTERS AND SETTERS
 	
 	public void setName(String name) {
@@ -37,23 +60,12 @@ public class Patrimony {
 		} else {
 			this.amount = amount;
 		}
-	
 	}
 	
-	//Constructors
-	public Patrimony(String name) {
-		this(name, 1, 0);
-	}
-
-	public Patrimony(String name, double value) {
-		this(name,1,value);
-	}
+	//Methods
 	
-	public Patrimony(String name, int amount) {
-		this(name,amount,0);
-	}
-	
-	public Patrimony(String name, int amount, double value) {
+	//Method that edits the name, the amount and the value
+	public void edit(String name, int amount, double value) {
 		setName(name);
 		setAmount(amount);
 		setValue(value);
@@ -69,6 +81,7 @@ public class Patrimony {
 		setValue(value);
 	}
 	
+	//Method that edits the amount 
 	public void edit(int amount) {
 		setAmount(amount);
 	}
@@ -91,18 +104,10 @@ public class Patrimony {
 		setValue(value);
 	}
 	
-	//Method that edits the name, the amount and the value
-	public void edit(String name, int amount, double value) {
-		setName(name);
-		setAmount(amount);
-		setValue(value);
-	}
 	
 	//Method toString that returns the name and value of a Patrimony into a formated String
 	public String toString() {
 		String patrimony = String.format("Nome: %s, Unidades: %d, Valor unitario: %.2f",getName(),getAmount(),getValue());
 		return patrimony;
 	}
-
-
 }

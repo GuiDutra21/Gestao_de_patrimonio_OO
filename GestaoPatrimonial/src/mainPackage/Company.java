@@ -3,36 +3,59 @@ package mainPackage;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Company extends Interprises {
+public class Company extends enterprises {
+	
+	// ATRIBUTES
+	
 	private List<Filial> filials;
-	
-	// GETTERS AND SETTERS
-	
-	public void setFilials(ArrayList<Filial> filials) {
-		this.filials = filials;
-	}
-
-	public List<Filial> getFilials() {
-		return filials;
-	}
-
-	public void addFilial(Filial filial) {
-		getFilials().add(filial);
-
-	}
 	
 	//Constructors
 	public Company(String name, Address adress) {
 		this.setName(name);
 		this.setAddress(adress);
 		setFilials(new ArrayList<Filial>());
-		
 	}
 	
 	public Company(String name) {
 		this(name, null);
 	}
+
+	// GETTERS AND SETTERS
 	
+	public void setFilials(ArrayList<Filial> filials) {
+		this.filials = filials;
+	}
+	
+	public List<Filial> getFilials() {
+		return filials;
+	}
+
+	public void addFilial(Filial filial) {
+		getFilials().add(filial);
+	}
+	
+	//Methods
+	
+	//Create a Filial name with all arguments
+	public void createFilial(String name, Address address) {
+		filials.add(new Filial(name, address));
+	}
+	
+	//Create a Filial only with a name
+	public void createFilial(String name) {
+		filials.add(new Filial(name));
+	}
+	
+
+	//Add in a Filial a Patrimony
+	public void add(String filialName, Patrimony patrimony) { 
+		for(int i = 0; i < getFilials().size(); i++) {
+			if(getFilials().get(i).getName().equals(filialName)) {
+				getFilials().get(i).add(patrimony);
+			}
+		}
+	}
+
 	//Edit the name of a Filial
 	public void editFilial(String oldName, String newName) {
 		for(int i = 0; i < getFilials().size(); i++) {
@@ -47,16 +70,6 @@ public class Company extends Interprises {
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().equals(name)) {
 				getFilials().get(i).edit(newAdress);
-			}
-		}
-	}
-	
-	
-	//Adds in a Filial a Patrimony
-	public void add(String filialName, Patrimony patrimony) { 
-		for(int i = 0; i < getFilials().size(); i++) {
-			if(getFilials().get(i).getName().equals(filialName)) {
-				getFilials().get(i).add(patrimony);
 			}
 		}
 	}
@@ -108,19 +121,9 @@ public class Company extends Interprises {
 				}
 			}
 		}
-	}
+	}	
 	
-	//Create a Filial only with a name
-	public void createFilial(String name) {
-		filials.add(new Filial(name));
-	}
-	
-	//Create a Filial name with all argumnets
-	public void createFilial(String name, Address address) {
-		filials.add(new Filial(name, address));
-	}
-	
-	//method toString that retunrs the name of the Company, the Adress and the Array of Filials into a formated String 
+	//method toString that returns the name of the Company, the Address and the Array of Filials into a formated String 
 	public String toString() {
 		String company = String.format("Nome da companhia: %s\nEndereco da Companhia: %s\nFiliais:\n",this.getName(),getAddress().toString());
 		
@@ -129,9 +132,5 @@ public class Company extends Interprises {
 			company = company.concat("\n");
 		}
 		return company;
-	}
-	
-
-	
-		
+	}		
 }

@@ -1,6 +1,9 @@
+
 package mainPackage;
 
 public class Address {
+	
+	// ATRIBUTES
 	
 	private String country;
 	private String state;
@@ -8,6 +11,20 @@ public class Address {
 	private String street;
 	private int number;
 
+	// Construct
+
+	public Address(String country, String state, String city, String street, int number) {
+		this.setCountry(country);
+
+		this.setState(state);
+
+		this.setCity(city);
+
+		this.setStreet(street);
+
+		this.setNumber(number);
+	}
+	
 	// GETTERS AND SETTERS
 
 	public void setCountry(String country) {
@@ -54,26 +71,10 @@ public class Address {
 		return number;
 	}
 
-	// Construct
-
-	public Address(String country, String state, String city, String street, int number) {
-		this.setCountry(country);
-
-		this.setState(state);
-
-		this.setCity(city);
-
-		this.setStreet(street);
-
-		this.setNumber(number);
-	}
 	
-	//method toString that retunrs the elements of an Adress into a formated a String
+	//method toString that returns the elements of an Address into a formated a String
 	public String toString() {
 		String adress = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
 		return adress;
-	}
-	
-	
-
+	}	
 }
