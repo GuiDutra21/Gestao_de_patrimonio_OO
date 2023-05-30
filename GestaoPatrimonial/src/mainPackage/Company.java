@@ -3,7 +3,7 @@ package mainPackage;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Company extends enterprises {
+public class Company extends Enterprises {
 	
 	// ATRIBUTES
 	

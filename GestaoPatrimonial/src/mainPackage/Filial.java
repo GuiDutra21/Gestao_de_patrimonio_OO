@@ -3,7 +3,7 @@ package mainPackage;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Filial extends enterprises {
+public class Filial extends Enterprises {
 	
 	// ATRIBUTES
 	

@@ -1,6 +1,6 @@
 package mainPackage;
 
-public abstract class enterprises {
+public abstract class Enterprises {
 	
 	// ATRIBUTES
 	private String name;
