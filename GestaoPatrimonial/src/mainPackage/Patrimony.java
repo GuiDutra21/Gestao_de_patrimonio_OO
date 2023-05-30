@@ -10,6 +10,12 @@ public class Patrimony {
 	
 	//Constructors
 	
+	public Patrimony(String name, int amount, double value) {
+		setName(name);
+		setAmount(amount);
+		setValue(value);
+	}
+	
 	public Patrimony(String name) {
 		this(name, 1, 0);
 	}
@@ -22,12 +28,6 @@ public class Patrimony {
 		this(name,amount,0);
 	}
 	
-	public Patrimony(String name, int amount, double value) {
-		setName(name);
-		setAmount(amount);
-		setValue(value);
-	}
-
 	// GETTERS AND SETTERS
 	
 	public void setName(String name) {
