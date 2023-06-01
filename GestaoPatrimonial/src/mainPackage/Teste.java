@@ -92,6 +92,10 @@ public class Teste {
 		for(int i = 0; i < company1.getFilials().size(); i++)
 			System.out.println(company1.getFilials().get(i).toString());
 		
+		System.out.println(company1.getValue());
+		System.out.println(company1.getFilials().get(1).getValue());
+		
+		
 		input.close();
 	}
 }

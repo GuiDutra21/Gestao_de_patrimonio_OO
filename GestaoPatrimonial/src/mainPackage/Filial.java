@@ -94,4 +94,15 @@ public class Filial extends Enterprises {
 		}
 		return filial;
 	}
+	
+	@Override
+	public double getValue() {
+		double value = 0;
+		
+		for(int i = 0; i < getPatrimony().size(); i++) {
+			value += getPatrimony().get(i).getValue();
+		}
+		
+		return value;
+	}
 }

@@ -133,4 +133,17 @@ public class Company extends Enterprises {
 		}
 		return company;
 	}		
+	
+	@Override
+	public double getValue() {
+		double value = 0.0;
+		
+		for(int i = 0; i < getFilials().size(); i++) {
+			for(int j = 0; j < getFilials().get(i).getPatrimony().size(); j++) {
+				value += getFilials().get(i).getPatrimony().get(j).getValue();
+			}
+		}
+		
+		return value;
+	}
 }

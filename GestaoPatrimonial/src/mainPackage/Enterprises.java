@@ -1,6 +1,6 @@
 package mainPackage;
 
-public abstract class Enterprises {
+public abstract class Enterprises implements definirNome {
 	
 	// ATRIBUTES
 	private String name;
@@ -41,4 +41,5 @@ public abstract class Enterprises {
 		setAddress(address);
 		setName(name);
 	}
+	
 }
