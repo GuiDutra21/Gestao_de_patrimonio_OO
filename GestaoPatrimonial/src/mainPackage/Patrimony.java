@@ -1,6 +1,6 @@
 package mainPackage;
 
-public class Patrimony {
+public class Patrimony implements definirNome {
 	
 	// ATRIBUTES
 	
@@ -47,7 +47,7 @@ public class Patrimony {
 	}
 
 	public double getValue() {
-		return value;
+		return value * getAmount();
 	}
 	
 	public int getAmount() {
@@ -61,7 +61,7 @@ public class Patrimony {
 			this.amount = amount;
 		}
 	}
-	//aaaa
+	
 	//Methods
 	
 	//Method that edits the name, the amount and the value
@@ -102,6 +102,11 @@ public class Patrimony {
 	public void edit(int amount, double value) {
 		setAmount(amount);
 		setValue(value);
+	}
+	
+	@Override
+	public String getType() {
+		return "Patrimony";
 	}
 	
 	

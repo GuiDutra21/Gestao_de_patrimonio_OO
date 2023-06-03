@@ -83,6 +83,11 @@ public class Filial extends Enterprises {
 			}
 		}
 	}
+	
+	@Override
+	public String getType() {
+		return "Filial";
+	}
 
 	
 	//method toString that returns the Filial name, the Adress and the Array of Patrimony into a formated String  
