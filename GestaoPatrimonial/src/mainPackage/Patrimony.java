@@ -2,7 +2,7 @@ package mainPackage;
 
 public class Patrimony implements definirNome {
 	
-	// ATRIBUTESs
+	// ATRIBUTES
 	
 	private String name;
 	private double value;
@@ -116,5 +116,5 @@ public class Patrimony implements definirNome {
 		return patrimony;
 	}
 	
-	// ooiiii
+	
 }
