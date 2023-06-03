@@ -61,7 +61,7 @@ public class Patrimony {
 			this.amount = amount;
 		}
 	}
-	
+	//aaaa
 	//Methods
 	
 	//Method that edits the name, the amount and the value
