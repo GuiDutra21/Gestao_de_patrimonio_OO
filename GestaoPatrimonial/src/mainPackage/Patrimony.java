@@ -115,4 +115,6 @@ public class Patrimony implements definirNome {
 		String patrimony = String.format("Nome: %s, Unidades: %d, Valor unitario: %.2f",getName(),getAmount(),getValue());
 		return patrimony;
 	}
+	
+	//oii
 }
