@@ -71,7 +71,7 @@ public class Address {
 		return number;
 	}
 
-	
+	///
 	//method toString that returns the elements of an Address into a formated a String
 	public String toString() {
 		String adress = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
