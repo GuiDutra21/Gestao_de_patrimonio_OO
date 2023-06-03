@@ -6,7 +6,7 @@ public class Buildings extends Patrimony {
 	private double area;
 	private	Address address;
 	
-	//Constructors em java
+	//Constructors
 	
 	public Buildings(String name, int amount, double value, int floorsQtd, double area, Address address) {
 		super(name,amount,value); 
