@@ -137,7 +137,18 @@ public class Company extends Enterprises {
 			company = company.concat("\n");
 		}
 		return company;
-	}		
+	}	
+	
+	@Override
+	public int getAmount() {
+		int amount = 0;
+		
+		for(int i = 0; i < getFilials().size(); i++) {
+			amount += getFilials().get(i).getAmount();
+		}
+		
+		return amount;
+	}
 	
 	@Override
 	public double getValue() {

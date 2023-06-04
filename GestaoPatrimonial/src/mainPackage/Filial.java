@@ -110,4 +110,15 @@ public class Filial extends Enterprises {
 		
 		return value;
 	}
+	
+	@Override
+	public int getAmount() {
+		int amount = 0;
+		
+		for(int i = 0; i < getPatrimony().size(); i++) {
+			amount  += getPatrimony().get(i).getAmount();
+		}
+		
+		return amount;
+	}
 }
