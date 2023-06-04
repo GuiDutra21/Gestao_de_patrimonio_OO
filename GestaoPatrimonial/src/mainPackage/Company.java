@@ -141,13 +141,7 @@ public class Company extends Enterprises {
 	
 	@Override
 	public int getAmount() {
-		int amount = 0;
-		
-		for(int i = 0; i < getFilials().size(); i++) {
-			amount += getFilials().get(i).getAmount();
-		}
-		
-		return amount;
+		return getFilials().size();
 	}
 	
 	@Override

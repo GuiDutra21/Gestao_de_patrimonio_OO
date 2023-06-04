@@ -66,6 +66,23 @@ public class Filial extends Enterprises {
 		}
 	}
 	
+	/*public void editEspecificPatrimony(Patrimony patrimony ,String name, Address address, int amount,
+			double value, String newModel, String newBrand, int productionYear, int floorsQTD, double area) {
+		if( patrimony instanceof Vehicle) {
+			
+		}else if( patrimony instanceof Buildings) {
+			
+		} else {
+			if(name != null) {
+				patrimony.setName(name);
+			}
+			if(amount != patrimony.getAmount()) {
+				patrimony.setAmount(amount);
+			}
+		}
+		
+	}*/
+	
 	//Into a Filial edit the amount of a Patrimony
 	public void editPatrimony(String patName, int amount) {
 		for(int i = 0; i < getPatrimony().size();i++) {
