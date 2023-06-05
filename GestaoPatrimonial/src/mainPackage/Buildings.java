@@ -27,6 +27,14 @@ public class Buildings extends Patrimony {
 		this(name, amount,0.0, 0, 0.0, null);
 	}
 	
+	public Buildings(String name, double value) {
+		this(name, 1, value, 0, 0.0, null);
+	}
+	
+	public Buildings(String name) {
+		this(name, 1, 0.0, 0, 0.0, null);
+	}
+	
 	//Getters and Setters
 	
 	public int getFloorsQtd() {
@@ -34,12 +42,8 @@ public class Buildings extends Patrimony {
 	}
 
 	public void setFloorsQtd(int floorsQtd) {
-		if(floorsQtd < 0)
-		{
-			this.floorsQtd = 0;
-		}
-		else
-		{
+	
+		if(floorsQtd > 0){
 			this.floorsQtd = floorsQtd;
 		}
 	}
@@ -49,11 +53,7 @@ public class Buildings extends Patrimony {
 	}
 
 	public void setArea(double area) {
-		if(area < 0)
-		{
-			this.area = 0;
-		}
-		else
+		if(area > 0)
 		{
 			this.area = area;
 		}
@@ -64,7 +64,9 @@ public class Buildings extends Patrimony {
 	}
 
 	public void setAddress(Address address) {
-		this.address = address;
+		if(address != null) {
+			this.address = address;
+		}
 	}
 	
 	//Methods

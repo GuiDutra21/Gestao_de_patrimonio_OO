@@ -23,6 +23,10 @@ public class Vehicle extends Patrimony{
 		this(name,0,value,null,null,0);
 	}
 	
+	public Vehicle(String name) {
+		this(name,0,0.0,null,null,0);
+	}
+	
 	public Vehicle(String name, int amount) {
 		this(name, amount,0.0,null,null,0);
 	}
@@ -62,7 +66,9 @@ public class Vehicle extends Patrimony{
 	}
 	
 	public void setProductionYear(int productionYear) {
-		this.productionYear = productionYear;
+		if(productionYear > 0) {
+			this.productionYear = productionYear;
+		}
 	}
 	
 	public int getProductionYear() {

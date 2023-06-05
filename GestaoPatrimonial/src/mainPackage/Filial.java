@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Filial extends Enterprises {
 	
 	// ATRIBUTES
-	
+	private int value;
 	private List<Patrimony> patrimony;
 	
 	//Constructor
@@ -34,8 +34,12 @@ public class Filial extends Enterprises {
 	//Methods
 	
 	//Into a Filial create a Patrimony with all arguments
-	public void creatPat(String name, double value) {
-		patrimony.add(new Patrimony(name, value));
+	public void creatV(String name, double value) {
+		patrimony.add(new Vehicle(name, value));
+	}
+	
+	public void creatB(String name, double value) {
+		patrimony.add(new Buildings(name, value));
 	}
 
 	//Into a Filial add a Patrimony
@@ -44,8 +48,12 @@ public class Filial extends Enterprises {
 	}
 	
 	//Into a Filial create a Patrimony only with name 
-	public void createPat(String name) {
-		patrimony.add(new Patrimony(name));
+	public void createV(String name) {
+		patrimony.add(new Vehicle(name));
+	}
+	
+	public void createB(String name) {
+		patrimony.add(new Buildings(name));
 	}
 	
 	//Into a Filial edit the name of a Patrimony
@@ -66,22 +74,46 @@ public class Filial extends Enterprises {
 		}
 	}
 	
-	/*public void editEspecificPatrimony(Patrimony patrimony ,String name, Address address, int amount,
+	public void editEspecificPatrimony(Patrimony patrimony ,String name, Address address, int amount,
 			double value, String newModel, String newBrand, int productionYear, int floorsQTD, double area) {
-		if( patrimony instanceof Vehicle) {
-			
-		}else if( patrimony instanceof Buildings) {
-			
-		} else {
-			if(name != null) {
-				patrimony.setName(name);
-			}
-			if(amount != patrimony.getAmount()) {
-				patrimony.setAmount(amount);
-			}
+		
+		if(name != null) {
+			patrimony.setName(name);
 		}
 		
-	}*/
+		if(amount != patrimony.getAmount()) {
+			patrimony.setAmount(amount);
+		}
+		
+		if(value != patrimony.getValue()) {
+			patrimony.setValue(value);
+		}
+		
+		if( patrimony instanceof Vehicle) {
+			
+			Vehicle v = (Vehicle) patrimony;
+			
+			if(newModel != null) {
+				v.setModel(newModel);
+			}
+			
+			if(newBrand != null) {
+				v.setBrand(newBrand);
+			}
+			
+			v.setProductionYear(productionYear);
+			
+			
+		}else if( patrimony instanceof Buildings) {
+			Buildings b = (Buildings) patrimony;
+			b.setFloorsQtd(floorsQTD);
+			b.setArea(area);
+			b.setAddress(address);
+		} else {
+		
+		}
+		
+	}
 	
 	//Into a Filial edit the amount of a Patrimony
 	public void editPatrimony(String patName, int amount) {
@@ -115,7 +147,7 @@ public class Filial extends Enterprises {
 		double value = 0;
 		
 		for(int i = 0; i < getPatrimony().size(); i++) {
-			value += getPatrimony().get(i).getValue();
+			value += getPatrimony().get(i).getValue() * getPatrimony().get(i).getAmount() ;
 		}
 		
 		return value;

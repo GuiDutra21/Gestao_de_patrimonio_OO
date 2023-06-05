@@ -6,7 +6,7 @@ public abstract class Patrimony {
 	
 	private String name;
 	private double value;
-	private int amount;
+	private int amount = 1;
 	
 	//Constructors
 	
@@ -39,15 +39,13 @@ public abstract class Patrimony {
 	}
 
 	public void setValue(double value) {
-		if(value < 0) {
-			this.value = 0;
-		} else {
+		if(value > 0){
 			this.value = value;
 		}
 	}
 
 	public double getValue() {
-		return value * getAmount();
+		return value;
 	}
 	
 	public int getAmount() {
@@ -55,9 +53,7 @@ public abstract class Patrimony {
 	}
 
 	public void setAmount(int amount) {
-		if(amount <= 0) {
-			this.amount = 1;	
-		} else {
+		if(amount > 1) {
 			this.amount = amount;
 		}
 	}
