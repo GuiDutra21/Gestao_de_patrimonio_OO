@@ -74,7 +74,7 @@ public class Filial extends Enterprises {
 		}
 	}
 	
-	public void editEspecificPatrimony(Patrimony patrimony ,String name, Address address, int amount,
+	public void edit(Patrimony patrimony ,String name, Address address, int amount,
 			double value, String newModel, String newBrand, int productionYear, int floorsQTD, double area) {
 		
 		if(name != null) {
