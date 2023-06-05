@@ -1,6 +1,6 @@
 package mainPackage;
 
-public abstract class Enterprises implements definirNome {
+public abstract class Enterprises{
 	
 	// ATRIBUTES
 	private String name;

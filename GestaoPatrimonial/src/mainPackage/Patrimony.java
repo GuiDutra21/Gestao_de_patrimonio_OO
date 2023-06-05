@@ -1,6 +1,6 @@
 package mainPackage;
 
-public class Patrimony implements definirNome {
+public abstract class Patrimony {
 	
 	// ATRIBUTES	
 	
@@ -104,7 +104,7 @@ public class Patrimony implements definirNome {
 		setValue(value);
 	}
 	
-	@Override
+	
 	public String getType() {
 		return "Patrimony";
 	}

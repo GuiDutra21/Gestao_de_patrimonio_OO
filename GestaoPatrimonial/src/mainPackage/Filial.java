@@ -100,13 +100,7 @@ public class Filial extends Enterprises {
 			}
 		}
 	}
-	
-	@Override
-	public String getType() {
-		return "Filial";
-	}
 
-	
 	//method toString that returns the Filial name, the Adress and the Array of Patrimony into a formated String  
 	public String toString() {
 		String filial = String.format("Nome: %s\nEndereco: %s\nPatrimonios registrados:\n",getName(),getAddress().toString());
@@ -117,7 +111,6 @@ public class Filial extends Enterprises {
 		return filial;
 	}
 	
-	@Override
 	public double getValue() {
 		double value = 0;
 		
@@ -128,7 +121,7 @@ public class Filial extends Enterprises {
 		return value;
 	}
 	
-	@Override
+
 	public int getAmount() {
 		int amount = 0;
 		

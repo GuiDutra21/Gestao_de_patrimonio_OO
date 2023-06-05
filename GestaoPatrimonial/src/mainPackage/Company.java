@@ -123,11 +123,6 @@ public class Company extends Enterprises {
 		}
 	}	
 	
-	@Override
-	public String getType() {
-		return "Company";
-	}
-	
 	//method toString that returns the name of the Company, the Address and the Array of Filials into a formated String 
 	public String toString() {
 		String company = String.format("Nome da companhia: %s\nEndereco da Companhia: %s\nFiliais:\n",this.getName(),getAddress().toString());
@@ -139,12 +134,11 @@ public class Company extends Enterprises {
 		return company;
 	}	
 	
-	@Override
+
 	public int getAmount() {
 		return getFilials().size();
 	}
 	
-	@Override
 	public double getValue() {
 		double value = 0.0;
 		
