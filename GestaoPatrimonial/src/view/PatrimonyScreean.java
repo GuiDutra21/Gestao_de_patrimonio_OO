@@ -16,7 +16,7 @@ public class PatrimonyScreean implements ActionListener{
 	private JFrame frame;
 	private JButton button1;
 	private JTextField textField1;
-	public static enum Tipo{GENERAl, VEHICLE, BUILDINGS};
+	public static enum Tipo{VEHICLE, BUILDINGS};
 	
 		
 	public PatrimonyScreean(Tipo tipo) {
