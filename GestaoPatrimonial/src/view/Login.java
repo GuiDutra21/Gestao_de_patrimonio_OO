@@ -12,8 +12,6 @@ public class Login implements ActionListener{
 	private JFrame jf;
 	private List<JLabel> labels;
 	private List<JTextField> textFields;
-	private JLabel welcome, message, companyName, companyAddress, country, state, street, city, number;
-	private JTextField companyNameJTF, countryJTF, stateJTF, streetJTF, cityJTF, numberJTF;
 	private JButton ready;
 	
 	public Login()
