@@ -137,7 +137,8 @@ public class Company extends Enterprises {
 	
 	//method toString that returns the name of the Company, the Address and the Array of Filials into a formated String 
 	public String toString() {
-		String company = String.format("Nome da companhia: %s\nEndereco da Companhia: %s\nFiliais:\n",this.getName(),getAddress().toString());
+		String company = String.format("Nome da companhia: %s\nEndereco da Companhia: %s\n"
+				+ "Filiais:\n",this.getName(),getAddress().toString());
 		
 		for(int i = 0; i < filials.size(); i++) {
 			company = company.concat(filials.get(i).getName());

@@ -1,8 +1,14 @@
 package view;
 
+import javax.swing.SwingUtilities;
+
 public class viewTest {
 	public static void main(String[] a)
 	{
-		Login login = new Login();
+		//FilialScreen b = new FilialScreen();
+		//Login c = new Login();
+		SwingUtilities.invokeLater(() -> {
+          FilialMenu d = new FilialMenu(7);
+       });
 	}
 }
