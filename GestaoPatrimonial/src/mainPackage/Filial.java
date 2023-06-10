@@ -34,6 +34,11 @@ public class Filial extends Enterprises {
 	//Methods
 	
 	//Into a Filial create a Patrimony with all arguments
+	
+	public void creatV(String name,int amount, double value, String model, String brand, int productionYear) {
+		patrimony.add(new Vehicle(name, amount,value,  model,brand, productionYear));
+	}
+	
 	public void creatV(String name, double value) {
 		patrimony.add(new Vehicle(name, value));
 	}
@@ -109,8 +114,6 @@ public class Filial extends Enterprises {
 			b.setFloorsQtd(floorsQTD);
 			b.setArea(area);
 			b.setAddress(address);
-		} else {
-		
 		}
 		
 	}
