@@ -10,13 +10,12 @@ import java.util.ArrayList;
 
 public class FilialMenu implements ActionListener {
 	
-	private int filialsQtd ;
+	private int filialsQtd;
 	private double filialValue;
 	private List<JLabel> labels;
 	private List<JButton> buttons;
 	private List<JPanel> panels;
 	private JFrame jf;
-	private JPanel panel;
 
 
 	public FilialMenu(int filialsQtd){
@@ -32,11 +31,43 @@ public class FilialMenu implements ActionListener {
 		panels = new ArrayList<JPanel>();
 		buttons = new ArrayList<JButton>();
 		labels = new ArrayList<JLabel>();
-
 		
-		panels.add( new JPanel());
+		panels.add(new JPanel() {
+			
+			
+//			add(new JPanel());
+//			
+//			panels.get(4).setBounds(325, 330, 875, 400);
+//			panels.get(4).setBackground(new Color(192, 192, 192));
+//			panels.get(0).add(panels.get(4));
+			int lastSquare = 125;
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				if(filialsQtd != 0) {	
+					g.setColor(new  Color(200, 200, 200));
+					g.fillRect(125, 330, 1250, 50 + (filialsQtd * 300));
+					
+				}
+				
+				g.setColor(new Color(0, 180, 0));
+				// Desenha alguns retângulos grandes
+				for (int i = 0; i < filialsQtd; i++) {
+					g.fillRect(200, 400 + (i * 300), 1100, 200);
+				}
+				lastSquare = 500 + filialsQtd * 300;
+			}
+			
+			@Override
+			public Dimension getPreferredSize() {
+				// Define o tamanho preferido do painel
+				return new Dimension(200, lastSquare);
+			}
+		});
+			
+		
 		panels.get(0).setLayout(null);
-		panels.get(0).setBackground(new Color(100, 150, 255));
+		panels.get(0).setBackground(new Color(100, 145, 255));
 		
 		this.filialsQtd = filialsQtd;
 		
@@ -184,37 +215,16 @@ public class FilialMenu implements ActionListener {
 		labels.get(6).setFont(new Font("Times New Roman", Font.BOLD, 22));
 		panels.get(0).add(labels.get(6));
 		
-		int VerticalSize = 500;
+		labels.add( new JLabel("Deus certooooo!!!"));
+		labels.get(7).setBounds(630, 450, 350, 50);
+		labels.get(7).setFont(new Font("Times New Roman", Font.BOLD, 22));
+		panels.get(0).add(labels.get(7));
 		
-		for (int i = 0; i < filialsQtd; i++) {
-			JPanel quadrado = new JPanel();
-			quadrado.setBounds(350 , 300 + (i * 100), 50, 50); // Define a posição e tamanho do quadrado manualmente
-			quadrado.setBackground(new Color(10, 255, 100));
-			panels.get(0).add(quadrado);
-		}
-		
-		panels.add(new JPanel());
-		panels.get(4).setPreferredSize(new Dimension(500, 300));
-		panels.get(4).setBounds(400, 330, 700, 400);
-		panels.get(4).setBackground(new Color(192, 192, 192));
-		panels.get(0).add(panels.get(4));
-		
-		//JPanel p1 = new JPanel();
-		//p1.setLayout(flo);
-	
 		
 		JScrollPane scrollPane = new JScrollPane(panels.get(0));
 		
-		scrollPane.setBounds(500, 500, 5000, 5000);
-		jf.setContentPane(scrollPane);
-		//jf.setPreferredSize(new Dimension(2000, 2000));
-
-		//scrollPane.add(panels.get(0));
-		//scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		//panels.get(0).add(scrollPane);
-		//jf.add(panels.get(0));
-		//scrollPane.setVisible(true);
-		//jf.getContentPane().add(scrollPane);
+		jf.setContentPane(scrollPane);	
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		jf.setVisible(true);
 	}
 

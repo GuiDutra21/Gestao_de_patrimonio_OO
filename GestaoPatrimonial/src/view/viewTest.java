@@ -7,8 +7,10 @@ public class viewTest {
 	{
 		//FilialScreen b = new FilialScreen();
 		//Login c = new Login();
-		SwingUtilities.invokeLater(() -> {
-          FilialMenu d = new FilialMenu(10);
-       });
+//		SwingUtilities.invokeLater(() -> {
+//          FilialMenu d = new FilialMenu(100);
+//     });
+		FilialMenu d = new FilialMenu(50);
+		
 	}
 }
