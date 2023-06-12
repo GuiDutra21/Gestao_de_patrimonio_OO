@@ -201,17 +201,14 @@ public class FilialMenu implements ActionListener {
 		
 		//JPanel p1 = new JPanel();
 		//p1.setLayout(flo);
-		JPanel p1 = new JPanel();
-		p1.setLayout(new GridLayout(5,1));
-		p1.setBounds(500, 500, 5000, 5000);
+	
 		
 		JScrollPane scrollPane = new JScrollPane(panels.get(0));
 		
 		scrollPane.setBounds(500, 500, 5000, 5000);
 		jf.setContentPane(scrollPane);
-		jf.setPreferredSize(new Dimension(2000, 2000));
-		p1.add(scrollPane);
-		jf.add(p1);
+		//jf.setPreferredSize(new Dimension(2000, 2000));
+
 		//scrollPane.add(panels.get(0));
 		//scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		//panels.get(0).add(scrollPane);
