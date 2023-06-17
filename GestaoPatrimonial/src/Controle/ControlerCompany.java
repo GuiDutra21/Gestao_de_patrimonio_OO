@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mainPackage.Company;
+import mainPackage.Filial;
 import mainPackage.Patrimony;
 import mainPackage.Vehicle;
 import mainPackage.Address;
@@ -85,6 +86,23 @@ public class ControlerCompany {
 		getCompany().add(filialName, p);
 		
 		return verifica;
+	}
+	
+	public boolean removePatrimony(Filial f, Patrimony p) {
+		boolean verifica = false;
+		for(int i = 0; i < getCompany().getFilials().size(); i++) {
+			if(getCompany().getFilials().get(i) == f) {
+				verifica = f.remove(p);
+			}
+		}
+		
+		return verifica;
+	}
+	
+	public boolean removeFilial(Filial f) {
+		
+		return getCompany().remove(f);
+		
 	}
 	
 	public boolean cadastrarFilial(String nome, Address address) {

@@ -305,6 +305,18 @@ public class Filial extends Enterprises {
 		
 		return verifica;
 	}
+	
+	public boolean remove(Patrimony p) {
+		boolean verifica = false;
+		for(int i = 0; i < getPatrimony().size(); i++) {
+			if(getPatrimony().get(i) == p) {
+				getPatrimony().remove(p);
+				verifica = true;
+			}
+		}
+		
+		return verifica;
+	}
 
 	//method toString that returns the Filial name, the Adress and the Array of Patrimony into a formated String  
 	public String toString() {
