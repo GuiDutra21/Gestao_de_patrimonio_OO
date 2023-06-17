@@ -168,6 +168,18 @@ public class Company extends Enterprises {
 		return verifica;
 	}
 	
+	public boolean remove( Filial f) {
+		boolean verifica = false;
+		for(int i = 0; i < getFilials().size(); i ++) {
+			if(getFilials().get(i) == f) {
+				getFilials().remove(f);
+				verifica = true;
+			}
+		}
+		
+		return verifica;
+	}
+	
 	//remove a Patrimony name based in the Filial name passed
 	public boolean remove(String filialName, String patrimonyName) {
 		
