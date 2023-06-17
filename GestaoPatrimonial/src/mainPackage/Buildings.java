@@ -107,7 +107,7 @@ public class Buildings extends Patrimony {
 	{
 		String buildings = String.format("Nome: %s,\nUnidades: %d,\nValor unitario: %.2f,\n"
 				+ "Quantidade de Andares : %d,\nMetros Quadrados : %2.f,\n"
-				+ "Endereco : %s",getName(),getAmount(),getValue());
+				+ "Endereco : %s",getName(),getAmount(),getValue(),getFloorsQtd(),getArea(),getAddress());
 		return buildings;
 	}
 	

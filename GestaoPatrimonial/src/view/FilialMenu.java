@@ -1,75 +1,72 @@
-
 package view;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import mainPackage.Patrimony;
+import mainPackage.Vehicle;
+import mainPackage.Buildings;
+
 import java.util.List;
 import java.util.ArrayList;
 
 public class FilialMenu implements ActionListener {
 	
-	private int filialsQtd;
 	private double filialValue;
 	private List<JLabel> labels;
 	private List<JButton> buttons;
 	private List<JPanel> panels;
 	private JFrame jf;
+	
+	
 
-
-	public FilialMenu(int filialsQtd){
+	public FilialMenu(int patrimonyQtd,List<Patrimony> patrimonys){
 		super();
-		JFrame jf = new JFrame();
-		jf.setSize(1500,1500);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//getContentPane().setBackground(new Color(100,150,255));
-		
-		//To put in full Screen when we run the application 
-		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
 		panels = new ArrayList<JPanel>();
 		buttons = new ArrayList<JButton>();
 		labels = new ArrayList<JLabel>();
 		
+		JFrame jf = new JFrame();
+		jf.setSize(1500,1500);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//To put in full Screen when we run the application 
+		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
+		
 		panels.add(new JPanel() {
 			
+			int lastSquare = 12500;
 			
-//			add(new JPanel());
-//			
-//			panels.get(4).setBounds(325, 330, 875, 400);
-//			panels.get(4).setBackground(new Color(192, 192, 192));
-//			panels.get(0).add(panels.get(4));
-			int lastSquare = 125;
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				if(filialsQtd != 0) {	
+				if(patrimonyQtd != 0) {	// Desenha o retângulo cinza
 					g.setColor(new  Color(200, 200, 200));
-					g.fillRect(125, 330, 1250, 50 + (filialsQtd * 300));
-					
+					g.fillRect(125, 330, 1250, 50 + (patrimonyQtd * 300));
 				}
 				
-				g.setColor(new Color(0, 180, 0));
-				// Desenha alguns retângulos grandes
-				for (int i = 0; i < filialsQtd; i++) {
-					g.fillRect(200, 400 + (i * 300), 1100, 200);
-				}
-				lastSquare = 500 + filialsQtd * 300;
+				//g.setColor(new Color(0, 180, 0));
+//				// Desenha alguns retângulos grandes
+//				for (int i = 0; i < patrimonyQtd; i++) {
+//					g.fillRect(200, 440 + (i * 300), 1100, 200);
+//				}
+//				lastSquare = 500 + patrimonyQtd * 300;
 			}
-			
+				
 			@Override
 			public Dimension getPreferredSize() {
 				// Define o tamanho preferido do painel
 				return new Dimension(200, lastSquare);
 			}
-		});
 			
+		});			
 		
 		panels.get(0).setLayout(null);
 		panels.get(0).setBackground(new Color(100, 145, 255));
-		
-		this.filialsQtd = filialsQtd;
 		
 		int x = jf.getWidth()/2;
 		
@@ -215,14 +212,30 @@ public class FilialMenu implements ActionListener {
 		labels.get(6).setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panels.get(0).add(labels.get(6));
 		
-		labels.add( new JLabel("Deus certooooo!!!"));
-		labels.get(7).setBounds(630, 450, 350, 50);
-		labels.get(7).setFont(new Font("Times New Roman", Font.BOLD, 22));
-		panels.get(0).add(labels.get(7));
+		if(patrimonyQtd != 0)
+		{
+			buttons.add(new JButton("Adicionar Veículo"));
+			buttons.get(2).setBounds(450, 375, 200, 30);
+			panels.get(0).add(buttons.get(2));
+			
+			buttons.add(new JButton("Adicionar Patrimônio"));
+			buttons.get(3).setBounds(850, 375, 200, 30);
+			panels.get(0).add(buttons.get(3));
 		
+			
+			for (int i = 0; i < patrimonyQtd; i++) {
+				panels.add(new JPanel());
+				panels.get(4 + i).setBounds(200, 440 + (i * 300), 1100, 200);
+				panels.get(4 + i).setBackground((new  Color(0, 180, 0)));
+				
+				labels.add(new JLabel(patrimonys.get(i).toString()));//to String
+				labels.get(7 + i).setBounds(200, 450 + (i * 300), 1100, 200);
+				panels.get(0).add(labels.get(7 + i));
+				panels.get(0).add(panels.get(4 + i));
+			}
+		}
 		
 		JScrollPane scrollPane = new JScrollPane(panels.get(0));
-		
 		jf.setContentPane(scrollPane);	
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		jf.setVisible(true);
