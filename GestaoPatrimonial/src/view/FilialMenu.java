@@ -212,7 +212,7 @@ public class FilialMenu implements ActionListener {
 				
 		labels.add( new JLabel("<html><u>Patrimôios Cadastrtados :</u></html>"));
 		labels.get(6).setBounds(640, 250, 350, 50);
-		labels.get(6).setFont(new Font("Times New Roman", Font.BOLD, 22));
+		labels.get(6).setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panels.get(0).add(labels.get(6));
 		
 		labels.add( new JLabel("Deus certooooo!!!"));
