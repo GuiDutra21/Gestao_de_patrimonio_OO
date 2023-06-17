@@ -35,36 +35,195 @@ public class Filial extends Enterprises {
 	
 	//Into a Filial create a Patrimony with all arguments
 	
-	public void creatV(String name,int amount, double value, String model, String brand, int productionYear) {
-		patrimony.add(new Vehicle(name, amount,value,  model,brand, productionYear));
+	public boolean creatV(String name,int amount, double value, String model, String brand, int productionYear) {
+		boolean verifica = false;
+		
+		if(name != null) {
+			for(int i = 0; i < getPatrimony().size(); i++) {
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					
+				} else {
+					patrimony.add(new Vehicle(name, amount,value,  model,brand, productionYear));
+					verifica = true;
+				}
+			}
+		} else {
+			verifica = false;
+		}
+		
+		return verifica;
+	
+		
 	}
 	
-	public void creatV(String name, double value) {
-		patrimony.add(new Vehicle(name, value));
+	public boolean creatV(String name, double value) {
+		boolean verifica = false;
+		
+		if(name != null) {
+			for(int i = 0; i < getPatrimony().size(); i++) {
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					
+				} else {
+					patrimony.add(new Vehicle(name, value));
+					verifica = true;
+				}
+			}
+		} else {
+			verifica = false;
+		}
+		
+		return verifica;
+	
+		
+		
+		
 	}
 	
-	public void creatB(String name, double value) {
-		patrimony.add(new Buildings(name, value));
-	}
-
-	//Into a Filial add a Patrimony
-	public void add(Patrimony patrimony) {
-		this.patrimony.add(patrimony);
+	public boolean creatV(String name,int amount, double value) {
+		boolean verifica = false;
+		
+		if(name != null) {
+			for(int i = 0; i < getPatrimony().size(); i++) {
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					
+				} else {
+					patrimony.add(new Vehicle(name, amount, value));
+					verifica = true;
+				}
+			}
+		} else {
+			verifica = false;
+		}
+		
+		return verifica;
+		
 	}
 	
 	//Into a Filial create a Patrimony only with name 
-	public void createV(String name) {
-		patrimony.add(new Vehicle(name));
+	public boolean createV(String name) {
+		boolean verifica = false;
+		
+		if(name != null) {
+			for(int i = 0; i < getPatrimony().size(); i++) {
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					
+				} else {
+					patrimony.add(new Vehicle(name));
+					verifica = true;
+				}
+			}
+		} else {
+			verifica = false;
+		}
+		
+		return verifica;
+	
 	}
 	
-	public void createB(String name) {
-		patrimony.add(new Buildings(name));
+	public boolean creatB(String name, int amount, double value, int floorsQTD, double area) {
+		boolean verifica = false;
+		
+		if(name != null) {
+			for(int i = 0; i < getPatrimony().size(); i++) {
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					
+				} else {
+					getPatrimony().add(new Buildings(name, amount, value, floorsQTD, area));
+					verifica = true;
+				}
+			}
+		} else {
+			verifica = false;
+		}
+		
+		return verifica;
+		
+	}
+	
+	public boolean creatB(String name, int amount ,double value) {
+		boolean verifica = false;
+		
+		if(name != null) {
+			for(int i = 0; i < getPatrimony().size(); i++) {
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					
+				} else {
+					patrimony.add(new Buildings(name, amount, value));
+					verifica = true;
+				}
+			}
+		} else {
+			verifica = false;
+		}
+		
+		return verifica;
+		
+	}
+
+	
+	public boolean creatB(String name, double value) {
+		boolean verifica = false;
+		
+		if(name != null) {
+			for(int i = 0; i < getPatrimony().size(); i++) {
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					
+				} else {
+					patrimony.add(new Buildings(name, value));
+					verifica = true;
+				}
+			}
+		} else {
+			verifica = false;
+		}
+		
+		return verifica;
+		
+		
+	}
+	
+
+	
+	public boolean createB(String name) {
+		boolean verifica = false;
+		
+		if(name != null) {
+			for(int i = 0; i < getPatrimony().size(); i++) {
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					
+				} else {
+					patrimony.add(new Buildings(name));
+					verifica = true;
+				}
+			}
+		} else {
+			verifica = false;
+		}
+		
+		return verifica;
+		
+	}
+	
+	//Into a Filial add a Patrimony
+	public boolean add(Patrimony patrimony) {
+		boolean verifica = false;
+		for(int i = 0; i < getPatrimony().size(); i++) {
+			if(getPatrimony().get(i).getName().toLowerCase().equals(patrimony.getName().toLowerCase())) {
+				
+			} else {
+				verifica = true;
+			}
+		}
+		
+		return verifica;
 	}
 	
 	//Into a Filial edit the name of a Patrimony
 	public void editPatrimony(String oldName, String newName) {
+		oldName = oldName.toLowerCase();
+		
 		for (int i = 0; i < getPatrimony().size(); i++) {
-			if(getPatrimony().get(i).getName().equals(oldName)){
+			if(getPatrimony().get(i).getName().toLowerCase().equals(oldName)){
 				getPatrimony().get(i).edit(newName);
 			}
 		}
@@ -72,8 +231,11 @@ public class Filial extends Enterprises {
 	
 	//Into a Filial edit the value of a Patrimony
 	public void editPatrimony(String oldName, double newValue) {
+		
+		oldName = oldName.toLowerCase();
+		
 		for (int i = 0; i < getPatrimony().size(); i++) {
-			if(getPatrimony().get(i).getName().equals(oldName)){
+			if(getPatrimony().get(i).getName().toLowerCase().equals(oldName)){
 				getPatrimony().get(i).edit(newValue);
 			}
 		}
@@ -120,20 +282,28 @@ public class Filial extends Enterprises {
 	
 	//Into a Filial edit the amount of a Patrimony
 	public void editPatrimony(String patName, int amount) {
+		
+		patName = patName.toLowerCase();
 		for(int i = 0; i < getPatrimony().size();i++) {
-			if(getPatrimony().get(i).getName().equals(patName)) {
+			if(getPatrimony().get(i).getName().toLowerCase().equals(patName)) {
 				getPatrimony().get(i).edit(amount);
 			}
 		}
 	}
 
 	//Into a Filial remove a Patrimony
-	public void remove(String patName) {
+	public boolean remove(String patName) {
+		patName = patName.toLowerCase();
+		boolean verifica = false;
+		
 		for (int i = 0; i < getPatrimony().size(); i++) {
-			if (getPatrimony().get(i).getName().equals(patName)) {
+			if (getPatrimony().get(i).getName().toLowerCase().equals(patName)) {
 				getPatrimony().remove(getPatrimony().get(i));
+				verifica = true;
 			}
 		}
+		
+		return verifica;
 	}
 
 	//method toString that returns the Filial name, the Adress and the Array of Patrimony into a formated String  

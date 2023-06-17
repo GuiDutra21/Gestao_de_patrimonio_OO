@@ -31,7 +31,11 @@ public abstract class Patrimony {
 	// GETTERS AND SETTERS
 	
 	public void setName(String name) {
-		this.name = name;
+		if(name == null) {
+			this.name = "Nao informado";
+		} else {
+			this.name = name;
+		}
 	}
 
 	public String getName() {

@@ -49,8 +49,12 @@ public class Vehicle extends Patrimony{
 	
 	// Setters e getters
 	
-	public void setModel(String type) {
-		this.model = type;
+	public void setModel(String model) {
+		if(model == null) {
+			this.model = "Nao informado";
+		} else {
+			this.model = model;
+		}
 	}
 	
 	public String getModel() {
@@ -58,7 +62,11 @@ public class Vehicle extends Patrimony{
 	}
 	
 	public void setBrand(String brand) {
-		this.brand = brand;
+		if(brand == null) {
+			this.brand = "Nao informado";
+		} else {
+			this.brand = brand;
+		}
 	}
 	
 	public String getBrand() {
@@ -66,7 +74,7 @@ public class Vehicle extends Patrimony{
 	}
 	
 	public void setProductionYear(int productionYear) {
-		if(productionYear > 0) {
+		if(productionYear > 1800 ) {
 			this.productionYear = productionYear;
 		}
 	}

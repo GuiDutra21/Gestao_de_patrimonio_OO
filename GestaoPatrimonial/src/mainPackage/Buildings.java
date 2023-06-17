@@ -23,6 +23,10 @@ public class Buildings extends Patrimony {
 		this(name, amount, value, floorsQtd, 0.0, null);
 	}
 	
+	public Buildings(String name,int amount, double value) {
+		this(name, amount, value, 0, 0.0, null);
+	}
+	
 	public Buildings(String name, int amount) {
 		this(name, amount,0.0, 0, 0.0, null);
 	}

@@ -30,30 +30,69 @@ public class Company extends Enterprises {
 		return filials;
 	}
 
-	public void addFilial(Filial filial) {
-		getFilials().add(filial);
+	public boolean addFilial(Filial filial) {
+		boolean verifica = false;
+		
+		for(int i = 0; i < getFilials().size(); i++) {
+			if(getFilials().get(i).getName().toLowerCase().equals(filial.getName().toLowerCase())) {
+				
+			} else {
+				getFilials().add(filial);
+				verifica  = true;
+			}
+		}
+		
+		return verifica;
+		
 	}
 	
 	//Methods
 	
 	//Create a Filial name with all arguments
-	public void createFilial(String name, Address address) {
-		filials.add(new Filial(name, address));
+	public boolean createFilial(String name, Address address) {
+		boolean verifica = false;
+		
+		for(int i = 0; i < getFilials().size(); i++) {
+			if(getFilials().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+				
+			} else {
+				filials.add(new Filial(name, address));
+				verifica  = true;
+			}
+		}
+		
+		return verifica;
+		
 	}
 	
 	//Create a Filial only with a name
-	public void createFilial(String name) {
-		filials.add(new Filial(name));
+	public boolean createFilial(String name) {
+		boolean verifica = false;
+		
+		for(int i = 0; i < getFilials().size(); i++) {
+			if(getFilials().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+				
+			} else {
+				filials.add(new Filial(name));
+				verifica  = true;
+			}
+		}
+		
+		return verifica;
+		
 	}
 	
 
 	//Add in a Filial a Patrimony
-	public void add(String filialName, Patrimony patrimony) { 
+	public boolean add(String filialName, Patrimony patrimony) { 
+		boolean verifica = false;
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().equals(filialName)) {
-				getFilials().get(i).add(patrimony);
+				verifica = getFilials().get(i).add(patrimony);
 			}
 		}
+		
+		return verifica;
 	}
 
 	//Edit the name of a Filial
@@ -114,25 +153,40 @@ public class Company extends Enterprises {
 	}
 	
 	//remove a Filial based in it name
-	public void remove(String filialName) {
+	public boolean remove(String filialName) {
+		boolean verifica = false;
+		
 		filialName = filialName.toLowerCase();
 		for(int i = 0; i < filials.size(); i++) {
 			if(filials.get(i).getName().toLowerCase().equals(filialName)) {
 				filials.remove(i);
+				verifica = true;
 			}
+			
 		}
+		
+		return verifica;
 	}
 	
 	//remove a Patrimony name based in the Filial name passed
-	public void remove(String filialName, String patrimonyName) {
-		filialName = filialName.toLowerCase();
+	public boolean remove(String filialName, String patrimonyName) {
+		
+		boolean verifica = false;
+		
 		for(int i = 0; i < filials.size(); i++) {
-			for(int j = 0; j < filials.get(i).getPatrimony().size(); j++) {
-				if(filials.get(i).getPatrimony().get(j).getName().equals(patrimonyName)) {
-					filials.get(i).getPatrimony().remove(filials.get(i).getPatrimony().get(j));
+			
+			if(filials.get(i).getName().toLowerCase().equals(filialName.toLowerCase())) {
+				for(int j = 0; j < filials.get(i).getPatrimony().size(); j++) {
+					if(filials.get(i).getPatrimony().get(j).getName().toLowerCase().equals(patrimonyName.toLowerCase())){
+						verifica = filials.get(i).remove(patrimonyName);
+					}
 				}
+				
 			}
+		
 		}
+		
+		return verifica;
 	}	
 	
 	//method toString that returns the name of the Company, the Address and the Array of Filials into a formated String 
