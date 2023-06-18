@@ -1,4 +1,5 @@
 package view;
+import mainPackage.Buildings;
 import mainPackage.Patrimony;
 import mainPackage.Vehicle;
 
@@ -21,7 +22,7 @@ public class viewTest {
 		for(int i = 0; i < 10; i++)
 		{
 			String v = String.format("carro %d",i);
-			lista.add(new Vehicle(v));
+			lista.add(new Buildings(v));
 		}
 		FilialMenu d = new FilialMenu(lista.size(), lista);
 		

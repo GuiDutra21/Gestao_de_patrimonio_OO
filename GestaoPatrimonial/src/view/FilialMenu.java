@@ -28,6 +28,8 @@ public class FilialMenu implements ActionListener {
 		panels = new ArrayList<JPanel>();
 		buttons = new ArrayList<JButton>();
 		labels = new ArrayList<JLabel>();
+		ArrayList<Buildings> buildings = new ArrayList<>();
+		ArrayList<Vehicle> vehicle = new ArrayList<>();
 		
 		JFrame jf = new JFrame();
 		jf.setSize(1500,1500);
@@ -39,30 +41,30 @@ public class FilialMenu implements ActionListener {
 		
 		panels.add(new JPanel() {
 			
-			int lastSquare = 12500;
 			
-			@Override
-			protected void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				if(patrimonyQtd != 0) {	// Desenha o retângulo cinza
-					g.setColor(new  Color(200, 200, 200));
-					g.fillRect(125, 330, 1250, 50 + (patrimonyQtd * 300));
-				}
-				
-				//g.setColor(new Color(0, 180, 0));
-//				// Desenha alguns retângulos grandes
-//				for (int i = 0; i < patrimonyQtd; i++) {
-//					g.fillRect(200, 440 + (i * 300), 1100, 200);
+			
+//			@Override
+//			protected void paintComponent(Graphics g) {
+//				super.paintComponent(g);
+//				if(patrimonyQtd != 0) {	// Desenha o retângulo cinza
+//					g.setColor(new  Color(200, 200, 200));
+//					g.fillRect(125, 330, 1250, 50 + (patrimonyQtd * 300));
 //				}
-//				lastSquare = 500 + patrimonyQtd * 300;
-			}
-				
-			@Override
-			public Dimension getPreferredSize() {
-				// Define o tamanho preferido do painel
-				return new Dimension(200, lastSquare);
-			}
-			
+//				
+//				//g.setColor(new Color(0, 180, 0));
+////				// Desenha alguns retângulos grandes
+////				for (int i = 0; i < patrimonyQtd; i++) {
+////					g.fillRect(200, 440 + (i * 300), 1100, 200);
+////				}
+////				lastSquare = 500 + patrimonyQtd * 300;
+//			}
+//				
+//			@Override
+//			public Dimension getPreferredSize() {
+//			//Define o tamanho preferido do painel
+//				return new Dimension(200, lastSquare);
+//
+//			}
 		});			
 		
 		panels.get(0).setLayout(null);
@@ -207,7 +209,7 @@ public class FilialMenu implements ActionListener {
 		panels.get(3).setBackground(new Color(220, 220, 220));
 		panels.get(0).add(panels.get(3));
 				
-		labels.add( new JLabel("<html><u>Patrimôios Cadastrtados :</u></html>"));
+		labels.add( new JLabel("<html><u>Patrimônios Cadastrtados :</u></html>"));
 		labels.get(6).setBounds(640, 250, 350, 50);
 		labels.get(6).setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panels.get(0).add(labels.get(6));
@@ -221,25 +223,124 @@ public class FilialMenu implements ActionListener {
 			buttons.add(new JButton("Adicionar Patrimônio"));
 			buttons.get(3).setBounds(850, 375, 200, 30);
 			panels.get(0).add(buttons.get(3));
-		
+			
+			int lastSquare = 4000;
+			
+			//create the gray square
+			panels.add(new JPanel());
+			panels.get(4).setBackground(new  Color(200, 200, 200));
+			panels.get(4).setBounds(125, 330, 1250, 50 + (patrimonyQtd * 300));
+			
+			
 			
 			for (int i = 0; i < patrimonyQtd; i++) {
-				panels.add(new JPanel());
-				panels.get(4 + i).setBounds(200, 440 + (i * 300), 1100, 200);
-				panels.get(4 + i).setBackground((new  Color(0, 180, 0)));
 				
-				labels.add(new JLabel(patrimonys.get(i).toString()));//to String
-				labels.get(7 + i).setBounds(200, 450 + (i * 300), 1100, 200);
-				panels.get(0).add(labels.get(7 + i));
-				panels.get(0).add(panels.get(4 + i));
+				int labelsQtd = labels.size();
+				int buildingsQtd = -1;
+				int vehicleQtd = - 1;
+			
+				panels.add(new JPanel());
+				
+				if(patrimonys.get(i) instanceof Buildings)
+				{	
+					buildings.add((Buildings) patrimonys.get(i));
+					buildingsQtd ++;
+					
+					panels.get(5 + i).setBounds(200, 440 + (i * 300), 1100, 1000);
+					panels.get(5 + i).setBackground((new  Color(0, 180, 0)));					
+					
+					
+						labels.add(new JLabel("<html><u>Nome :</u></html>"));
+						labels.get(labelsQtd).setBounds(500, 480 + (i * 300), 200, 30);	
+						labels.get(labelsQtd).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd));
+						
+						labels.add(new JLabel(buildings.get(buildingsQtd).getName()));
+						labels.get(labelsQtd + 1).setBounds(720, 482 + (i * 300), 400, 30);
+						labels.get(labelsQtd + 1).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 1));
+						
+						labels.add(new JLabel("<html><u>Valor :</u></html>"));
+						labels.get(labelsQtd + 2).setBounds(300, 600 + (i * 300), 200, 30);
+						labels.get(labelsQtd + 2).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 2));
+						
+						labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getValue())));
+						labels.get(labelsQtd + 3).setBounds(500, 602 + (i * 300), 400, 30);
+						labels.get(labelsQtd + 3).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 3));
+						
+						labels.add(new JLabel("<html><u>Unidades :</u></html>"));
+						labels.get(labelsQtd + 4).setBounds(850, 600 + (i * 300), 200, 30);	
+						labels.get(labelsQtd + 4).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 4));
+						
+						labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getAmount())));
+						labels.get(labelsQtd + 5).setBounds(1050, 602 + (i * 300), 400, 30);	
+						labels.get(labelsQtd + 5).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 5));
+						
+						labels.add(new JLabel("<html><u>Quantidade de andares :</u></html>"));
+						labels.get(labelsQtd + 6).setBounds(850, 660 + (i * 300), 200, 100);
+						labels.get(labelsQtd + 6).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 6));
+						
+						labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getFloorsQtd())));
+						//labels.add(new JLabel("Nao informado"));
+						labels.get(labelsQtd + 7).setBounds(1050, 695 + (i * 300), 400, 30);	
+						labels.get(labelsQtd + 7).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 7));
+						
+						labels.add(new JLabel("<html><u>Metros Quadrados :</u></html>"));
+						labels.get(labelsQtd + 8).setBounds(300, 660 + (i * 300), 200, 100);
+						labels.get(labelsQtd + 8).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 8));
+						
+						labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getFloorsQtd())));
+						labels.get(labelsQtd + 9).setBounds(500, 695 + (i * 300), 400, 30);	
+						labels.get(labelsQtd + 9).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 9));
+						
+						labels.add(new JLabel("<html><u>Endereço :</u></html>"));
+						labels.get(labelsQtd + 10).setBounds(350, 815 + (i * 300), 400, 30);
+						labels.get(labelsQtd + 10).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 10));
+						
+						labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getAddress())));
+						labels.get(labelsQtd + 11).setBounds(550, 817 + (i * 300), 400, 30);	
+						labels.get(labelsQtd + 11).setFont(new Font("Times New Roman", Font.BOLD, 30));
+						panels.get(0).add(labels.get(labelsQtd + 11));
+						
+					
+						buttons.add(new JButton("Editar"));
+						buttons.get(4 + i).setBounds(450,950,200,30);
+						panels.get(0).add(buttons.get(4 + i));
+						
+						buttons.add(new JButton("Remover"));
+						buttons.get(5 + i).setBounds(850,950,200,30);
+						panels.get(0).add(buttons.get(5 + i));// nao ta aparecendo
+					
+						panels.get(0).add(panels.get(5 + i));
+					
+				}
+				else
+				{
+				
+				}
 			}
+			
+			panels.get(0).add(panels.get(4));
 		}
+		
+		panels.get(0).setPreferredSize(new Dimension(200, 5000));//allow to create the scroll
 		
 		JScrollPane scrollPane = new JScrollPane(panels.get(0));
 		jf.setContentPane(scrollPane);	
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		jf.setVisible(true);
+		
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -247,4 +348,5 @@ public class FilialMenu implements ActionListener {
 		
 	}
 }
+
 
