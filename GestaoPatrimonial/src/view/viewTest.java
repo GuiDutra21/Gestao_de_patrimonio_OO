@@ -20,9 +20,15 @@ public class viewTest {
 		List<Patrimony> lista = new ArrayList<>();
 		
 		for(int i = 0; i < 10; i++)
-		{
-			String v = String.format("carro %d",i);
+		{	
+			if(i%2 == 0)
+			{
+			String v = String.format("casa %d",i);
 			lista.add(new Buildings(v));
+			}else {
+			String s = String.format("Carro %d",i);
+			lista.add(new Vehicle(s));
+			}
 		}
 		FilialMenu d = new FilialMenu(lista.size(), lista);
 		
