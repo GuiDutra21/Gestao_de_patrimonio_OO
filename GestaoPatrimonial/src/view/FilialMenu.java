@@ -246,9 +246,9 @@ public class FilialMenu implements ActionListener {
 					buildings.add((Buildings) patrimonys.get(i));
 					buildingsQtd ++;
 					
-					panels.get(5 + i).setBounds(200, 440 + (i * squareHeight), 1100, 580);
-					panels.get(5 + i).setBackground((new  Color(0, 180, 0)));					
-					
+					panels.get(panels.size() - 1).setBounds(200, 440 + (i * squareHeight), 1100, 580);
+					panels.get(panels.size() - 1).setBackground((new  Color(0, 180, 0)));
+
 					
 					labels.add(new JLabel("<html><u>Nome :</u></html>"));
 					labels.get(labelsQtd).setBounds(500, 480 + (i * squareHeight), 200, 30);	
@@ -338,8 +338,9 @@ public class FilialMenu implements ActionListener {
 					vehicle.add((Vehicle) patrimonys.get(i));
 					vehicleQtd ++;
 					
-					panels.get(5 + i).setBounds(200, 440 + (i * 700), 1100, 580);
-					panels.get(5 + i).setBackground((new  Color(0, 180, 0)));	
+					panels.get(panels.size() - 1).setBounds(200, 440 + (i * squareHeight), 1100, 580);
+					panels.get(panels.size() - 1).setBackground((new  Color(0, 180, 0)));					
+						
 					
 					labels.add(new JLabel("<html><u>Nome :</u></html>"));
 					labels.get(labelsQtd).setBounds(500, 480 + (i * squareHeight), 200, 30);	
@@ -371,11 +372,64 @@ public class FilialMenu implements ActionListener {
 					labels.get(labelsQtd + 5).setFont(new Font("Times New Roman", Font.BOLD, 30));
 					panels.get(0).add(labels.get(labelsQtd + 5));
 					
+					labels.add(new JLabel("<html><u>Modelo :</u></html>"));
+					labels.get(labelsQtd + 6).setBounds(480, 690 + (i * squareHeight), 200, 30);	
+					labels.get(labelsQtd + 6).setFont(new Font("Times New Roman", Font.BOLD, 30));
+					panels.get(0).add(labels.get(labelsQtd + 6));
+					
+					//labels.add(new JLabel(String.valueOf(vehicle.get(vehicleQtd).getBrand())));
+					labels.add(new JLabel("aaaaaaaaaaaaaaaaa"));
+					labels.get(labelsQtd + 7).setBounds(680, 692 + (i * squareHeight), 400, 30);	
+					labels.get(labelsQtd + 7).setFont(new Font("Times New Roman", Font.BOLD, 30));
+					panels.get(0).add(labels.get(labelsQtd + 7));
+					
+					labels.add(new JLabel("<html><u>Marca :</u></html>"));
+					labels.get(labelsQtd + 8).setBounds(300, 780 + (i * squareHeight), 200, 30);	
+					labels.get(labelsQtd + 8).setFont(new Font("Times New Roman", Font.BOLD, 30));
+					panels.get(0).add(labels.get(labelsQtd + 8));
+					
+					labels.add(new JLabel(String.valueOf(vehicle.get(vehicleQtd).getModel())));
+					labels.get(labelsQtd + 9).setBounds(500, 782 + (i * squareHeight), 400, 30);	
+					labels.get(labelsQtd + 9).setFont(new Font("Times New Roman", Font.BOLD, 30));
+					panels.get(0).add(labels.get(labelsQtd + 9));
+					
+					labels.add(new JLabel("<html><u>Ano de Produção :</u></html>"));
+					labels.get(labelsQtd + 10).setBounds(850, 750 + (i * squareHeight), 200, 80);	
+					labels.get(labelsQtd + 10).setFont(new Font("Times New Roman", Font.BOLD, 30));
+					panels.get(0).add(labels.get(labelsQtd + 10));
+					
+					labels.add(new JLabel(String.valueOf(vehicle.get(vehicleQtd).getModel())));
+					labels.get(labelsQtd + 11).setBounds(1050, 765 + (i * squareHeight), 400, 30);	
+					labels.get(labelsQtd + 11).setFont(new Font("Times New Roman", Font.BOLD, 30));
+					panels.get(0).add(labels.get(labelsQtd + 11));
+					
+					if(i == 0)
+					{
+						buttons.add(new JButton("Editar"));
+						buttons.get(4).setBounds(450,930,200,30);
+						panels.get(0).add(buttons.get(4 ));
+						
+						buttons.add(new JButton("Remover"));
+						buttons.get(5).setBounds(850,930 ,200,30);
+						panels.get(0).add(buttons.get(5));// nao ta aparecendo
+					}
+					else
+					{	
+						
+						buttons.add(new JButton("Editar"));
+						buttons.get(buttons.size() - 1).setBounds(450,930 + (i * 700),200,30);
+						panels.get(0).add(buttons.get(buttons.size() - 1));
+						
+						buttons.add(new JButton("Remover"));
+						buttons.get(buttons.size() - 1).setBounds(850,930 + (i * 700),200,30);
+						panels.get(0).add(buttons.get(buttons.size() - 1));
+					}
 				}
-				panels.get(0).add(panels.get(5 + i));
+				
+				panels.get(0).add(panels.get(panels.size() - 1));
 			}
 			
-			panels.get(0).add(panels.get(4));//panel gray
+			panels.get(0).add(panels.get(4));//add the panel gray
 		}
 		
 		panels.get(0).setPreferredSize(new Dimension(200, 450 + (patrimonyQtd * 700)));//allow to create the scroll
