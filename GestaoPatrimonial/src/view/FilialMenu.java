@@ -88,7 +88,7 @@ public class FilialMenu implements ActionListener {
 		
 		if(labels.get(0).getText().length() <= 5)
 		{
-			paneSize = labels.get(0).getText().length()*12 - 3;
+			paneSize = labels.get(0).getText().length()*12 - 2;
 		}
 		else if (labels.get(0).getText().length() <= 10)
 		{
@@ -448,5 +448,3 @@ public class FilialMenu implements ActionListener {
 		
 	}
 }
-
-
