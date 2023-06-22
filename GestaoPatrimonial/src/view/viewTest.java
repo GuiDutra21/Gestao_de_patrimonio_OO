@@ -20,6 +20,8 @@ public class viewTest {
 //          FilialMenu d = new FilialMenu(100);
 //     });
 //		new PatrimonyScreean(PatrimonyScreean.Tipo.BUILDINGS);
+		
+		//CompanyMenu g = new CompanyMenu(5);
 		Company com = new Company("Joao");
 		
 		com.createFilial("NIKE");

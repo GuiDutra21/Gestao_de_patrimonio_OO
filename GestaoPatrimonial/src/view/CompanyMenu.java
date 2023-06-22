@@ -282,8 +282,4 @@ public class CompanyMenu implements ActionListener{
 		// TODO Auto-generated method stub
 		
 	}
-	public static void main(String[] b)
-	{
-		CompanyMenu a = new CompanyMenu(5);
-	}
 }
