@@ -254,7 +254,7 @@ public class Filial extends Enterprises {
 		for(int i = 0; i < getPatrimony().size(); i++) {
 			if(getPatrimony().get(i).getName().toLowerCase().equals(patrimony.getName().toLowerCase())) {
 				return false;
-			} else if(patrimony.getName().isEmpty() == false) {
+			} else if(patrimony.getName().isEmpty() == false && i == getPatrimony().size() - 1) {
 				getPatrimony().add(patrimony);
 				verifica = true;
 			}
@@ -270,10 +270,10 @@ public class Filial extends Enterprises {
 			if(getPatrimony().get(i).getName().toLowerCase().equals(newName.toLowerCase())) {
 				return verifica;
 				
-			} else if(i == getPatrimony().size() - 1 && (newName.isEmpty() == false)) {
+			} else if(i == getPatrimony().size() - 1 && (newName.isEmpty() == false)) { // ter certeza que toda a lista foi verificada
 				
 				for(int j = 0; j < getPatrimony().size(); j ++) {
-					if(getPatrimony().get(j).getName().equals(newName)) {
+					if(getPatrimony().get(j).getName().equals(oldName)) {
 						getPatrimony().get(i).edit(newName);
 						verifica = true;
 					}
