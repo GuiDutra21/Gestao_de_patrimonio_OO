@@ -6,6 +6,7 @@ import mainPackage.Company;
 import mainPackage.Filial;
 import mainPackage.Patrimony;
 import mainPackage.Vehicle;
+import view.CompanyMenu;
 import mainPackage.Address;
 import mainPackage.Buildings;
 
@@ -13,9 +14,11 @@ public class ControlerCompany {
 	private Company company;
 	private List<String> filialsName;
 	private List<String> patrimonyName;
+	private String companyName;
 	
-	public ControlerCompany(Company company) {
-		this.company = company;
+	public ControlerCompany(String name) {
+		this.company = new Company(name);
+		this.companyName = name;
 		this.filialsName = new ArrayList<>();
 		this.patrimonyName = new ArrayList<>();
 	}
@@ -45,15 +48,10 @@ public class ControlerCompany {
 		return patrimonyName;
 	}
 	
-	public boolean login(String name, String pais, String estado, String cidade, String rua, int numero) {
+	public void login(String pais, String estado, String cidade, String rua, int numero) {
 		Address a = new Address(pais,estado,cidade,rua,numero);
 		company.setAddress(a);
-		if(name != null) {
-			company.setName(name);
-			return true;
-		} else {
-			return false;
-		}
+		
 	}
 	
 	public boolean cadastrarPatrimony(String filialName, Patrimony p,String name, Address address, int amount,
@@ -121,6 +119,23 @@ public class ControlerCompany {
 			return false;
 		}
 			
+	}
+	
+	public void companyScreean(int qtdFilials) {
+		new CompanyMenu(qtdFilials,this);
+	}
+	
+	public String getCompanyName() {
+		return companyName;
+	}
+	
+	public void setCompanyName(String name) {
+		company.setName(name);
+		this.companyName = name;
+	}
+	
+	public String getCompanyAddress() {
+		return company.getAddress().toString();
 	}
 	
 	

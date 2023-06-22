@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.awt.*; 
 import java.awt.event.*; 
 import javax.swing.*;
+
+import Controle.ControlerCompany;
+import mainPackage.Address;
+
 import java.awt.Font;
 
 public class Login implements ActionListener{
@@ -13,6 +17,7 @@ public class Login implements ActionListener{
 	private List<JLabel> labels;
 	private List<JTextField> textFields;
 	private JButton ready;
+	private ControlerCompany c;
 	
 	public Login()
 	{
@@ -140,6 +145,8 @@ public class Login implements ActionListener{
 		jf.add(textFields.get(4));
 		jf.add(textFields.get(5));
 		
+		ready.addActionListener(this);
+		
 		//set the Frame visible
 		jf.setVisible(true);
 		
@@ -148,8 +155,53 @@ public class Login implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		Integer number = 0;
+		String v = "";
+		if(e.getSource().equals(ready)) {
+			if(textFields.get(0).getText().isEmpty()) {
+				JOptionPane.showMessageDialog(jf, "O nome dever ser preenchido");
+			}else {
+				c = new ControlerCompany(textFields.get(0).getText());
+				boolean verifica = false;
+				while(verifica == false && textFields.get(5).getText().isEmpty() == false) {
+					try {
+						number = Integer.parseInt(textFields.get(5).getText());
+						verifica = true;
+					}catch (NumberFormatException n){
+						try {
+							
+							while(verifica == false) {
+								v = JOptionPane.showInputDialog(jf, "Insira numeros ou deixe vazio:");
+								number = Integer.parseInt(v);
+								verifica = true;
+							}
+							
+						}catch (NumberFormatException m) {
+							if(v.isEmpty()) {
+								verifica = true;
+							}
+						}
+			
+					}
+				}	
+				
+				c.login(textFields.get(1).getText(), textFields.get(2).getText(), textFields.get(3).getText(),
+						textFields.get(4).getText(), number);
+				
+				c.companyScreean(0);
+				
+				jf.dispose();
+			
+			}
+		}
 	}
+		
+
+			
+	public ControlerCompany getC() {
+		return c;
+	}
+	
+	
 	
 }

@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 
+import Controle.ControlerCompany;
 import mainPackage.*;
 
 import java.awt.*;
@@ -18,7 +19,7 @@ public class CompanyMenu implements ActionListener{
 	private List<JList> lists;
 	private List<JScrollPane> scrolls;
 	private JFrame jf;
-	private String name;
+	private ControlerCompany c;
 	private double companyValue;
 	private Address address;
 	private JTextField search;
@@ -32,8 +33,9 @@ public class CompanyMenu implements ActionListener{
 		return labelWidth;
 	}
 	
-	public CompanyMenu(int filialsQtd)
+	public CompanyMenu(int filialsQtd, ControlerCompany c)
 	{
+		this.c = c;
 		jf = new JFrame();
 		panels = new ArrayList<JPanel>();
 		buttons = new ArrayList<JButton>();
@@ -57,7 +59,7 @@ public class CompanyMenu implements ActionListener{
 		int x = jf.getWidth()/2;
 		
 		//the name of the Company 
-		labels.add(new JLabel("Loja da Samsung"));
+		labels.add(new JLabel(c.getCompanyName()));
 		labels.get(0).setFont(new Font("Times New Roman", Font.BOLD, 25));
 		labels.get(0).setOpaque(true);
 		labels.get(0).setBackground(new Color(220, 220, 220));
@@ -102,7 +104,7 @@ public class CompanyMenu implements ActionListener{
 		panels.get(0).add(buttons.get(0));
 		
 		//the JLabel of 'Endereço'
-		labels.add(new JLabel("Coreia do Sul, estado, cidadde xing ling, ru a amar belo, 55"));
+		labels.add(new JLabel(c.getCompanyAddress()));
 		labels.get(2).setOpaque(true);
 		labels.get(2).setBackground(new Color(220, 220, 220));
 		labels.get(2).setFont(new Font("Times New Roman", Font.BOLD,20));
@@ -275,11 +277,32 @@ public class CompanyMenu implements ActionListener{
 			jf.setContentPane(scrollPane);//add the ScrollPanel into the JFrame
 			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//set the position of the  ScrollPanels
 			jf.setVisible(true);
+			
+			for(int i = 0; i < buttons.size(); i++) {
+				buttons.get(i).addActionListener(this);
+			}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource().equals(buttons.get(0))) {
+			boolean verifica = false;
+			while(verifica == false) {
+				String novoNome = JOptionPane.showInputDialog(jf, "Digite o novo nome:");
+				if(novoNome.isEmpty()) {
+					verifica = true;
+				} else {
+					c.setCompanyName(novoNome);
+					labels.get(0).setText(novoNome);
+					verifica = true;
+				}
+				
+			}
+		}
+		
+		if(e.getSource().equals(buttons.get(1))){
+			
+		}
 		
 	}
 }

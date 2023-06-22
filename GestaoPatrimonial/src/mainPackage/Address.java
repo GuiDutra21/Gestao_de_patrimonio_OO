@@ -74,32 +74,44 @@ public class Address {
 	///
 	//method toString that returns the elements of an Address into a formated a String
 	public String toString() {
-		String address = null;
-		if(getCountry() == null && getState() == null && getCity() == null && getStreet() == null ){
+		String address = "";
+		boolean country_Ok = (getCountry().isEmpty() ? false : true);
+		boolean state_Ok = (getState().isEmpty() ? false : true);
+		boolean city_Ok = (getCity().isEmpty() ? false : true);
+		boolean street_Ok = (getStreet().isEmpty() ? false : true);
+		
+		boolean[] b = {country_Ok,state_Ok,city_Ok,street_Ok};
+		String[] g = {getCountry(), getState() ,getCity(), getStreet()};
+		int contador = 0;
+		int contadorN = 0;
+		
+		for(int i = 0; i < 4; i ++) {
 			
-			address = "Nao informado";
 			
-		} else if(getCountry() != null && getState() == null && getCity() == null && getStreet() == null ){
+			if(b[i]) {
+				contador++;
+				if(contador == 1) {
+					address = address.concat(g[i]);
+				
+				} else if(i < 3 && i >  0){
+					address = address.concat(String.format(", %s",g[i]));
+				} else if(b[3] == true) {
+					address = address.concat(String.format(", %s, %d",g[i], getNumber()));
+				} 
+			}
 			
-			address = String.format("%s",getCountry());
-			
-		} else if(getCountry() != null && getState() != null && getCity() == null && getStreet() == null ){
-			
-			address = String.format("%s, %s",getCountry(), getState());
-			
-		} else if(getCountry() != null && getState() != null && getCity() != null && getStreet() == null ){
-			
-			address = String.format("%s, %s, %s",getCountry(), getState(), getCity());
-			
-		} else if(getCountry() != null && getState() != null && getCity() != null && getStreet() != null ){
-			
-			address = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
-			
-		} else {
-			address = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
+			if(b[i] == false) {
+				contadorN++;
+				if(contadorN == 4) {
+					address = "Nao informado";
+				}
+			}
+		
 		}
 		
 		
 		return address;
 	}	
+	
+	
 }
