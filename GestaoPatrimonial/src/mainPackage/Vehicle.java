@@ -9,8 +9,19 @@ public class Vehicle extends Patrimony{
 	
 	public Vehicle(String name, int amount, double value, String model, String brand, int productionYear) {
 		super(name, amount, value);
-		this.model = model;
-		this.brand = brand;
+		
+		if(model == null || model.equals("")) {
+			this.model = "Nao informado";
+		} else {
+			this.model = model;
+		}
+		
+		if(brand == null || brand.equals("")) {
+			this.brand = "Nao informado";
+		} else {
+			this.brand = model;
+		}
+	
 		if(productionYear >= 0) {
 			this.productionYear = productionYear;
 		} else {
@@ -50,7 +61,7 @@ public class Vehicle extends Patrimony{
 	// Setters e getters
 	
 	public void setModel(String model) {
-		if(model == null) {
+		if(model == null || model.equals("")) {
 			this.model = "Nao informado";
 		} else {
 			this.model = model;
@@ -62,7 +73,7 @@ public class Vehicle extends Patrimony{
 	}
 	
 	public void setBrand(String brand) {
-		if(brand == null) {
+		if(brand == null || brand.equals("")) {
 			this.brand = "Nao informado";
 		} else {
 			this.brand = brand;

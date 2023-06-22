@@ -17,6 +17,8 @@ public class FilialScreen implements ActionListener{
 	private List<JLabel> labels;
 	private List<JTextField> textFields;
 	private JButton button;
+	private List<String> date;
+	
 	
 	
 	public FilialScreen()
@@ -122,61 +124,35 @@ public class FilialScreen implements ActionListener{
 		
 		button.addActionListener(this);
 		
-		
-		
-		
-		
 		jf.setVisible(true);
+		
+		date = new ArrayList<>();
 		
 	}
 	
+	public List<JLabel> getLabels(){
+		return this.labels;
+	}
 	
+	public List<String> getDate(){
+		return date;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public List<JTextField> getTextF(){
+		return textFields;
+	}
 	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource().equals(button)) {
+			for(int i = 0; i < textFields.size(); i++) {
+				date.add(textFields.get(i).getText());
+			}
+			jf.dispose();
+
+		}
+		
 		
 	}
 	

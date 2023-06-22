@@ -2,11 +2,14 @@ package view;
 import mainPackage.Buildings;
 import mainPackage.Patrimony;
 import mainPackage.Vehicle;
+import mainPackage.Company;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.SwingUtilities;
+
+import Controle.ControlerCompany;
 
 public class viewTest {
 	public static void main(String[] a)
@@ -17,7 +20,13 @@ public class viewTest {
 //          FilialMenu d = new FilialMenu(100);
 //     });
 //		new PatrimonyScreean(PatrimonyScreean.Tipo.BUILDINGS);
+		Company com = new Company("Joao");
+		
+		com.createFilial("NIKE");
+		com.createFilial("MM");
+		
 		List<Patrimony> lista = new ArrayList<>();
+		ControlerCompany c = new ControlerCompany(com);
 		
 		for(int i = 0; i < 10; i++)
 		{	
@@ -30,7 +39,7 @@ public class viewTest {
 			lista.add(new Vehicle(s));
 			}
 		}
-		FilialMenu d = new FilialMenu(lista.size(), lista);
+		FilialMenu d = new FilialMenu(c,lista.size(), lista, "Nike");
 		
 	}
 }
