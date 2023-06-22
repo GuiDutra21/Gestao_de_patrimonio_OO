@@ -52,14 +52,22 @@ public class Company extends Enterprises {
 	public boolean createFilial(String name, Address address) {
 		boolean verifica = false;
 		
-		for(int i = 0; i < getFilials().size(); i++) {
-			if(getFilials().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
-				verifica = false;
-				break;
-			} else {
-				filials.add(new Filial(name, address));
-				verifica  = true;
+		if(getFilials().size() == 0 && (name.isEmpty() == false)) {
+			filials.add(new Filial(name, address));
+			verifica = true;
+			
+		} else if(name.isEmpty() == false) {
+			
+			for(int i = 0; i < getFilials().size(); i++) {
+				if(getFilials().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+					verifica = false;
+					break;
+				} else {
+					filials.add(new Filial(name, address));
+					verifica  = true;
+				}
 			}
+			
 		}
 		
 		return verifica;
@@ -69,7 +77,8 @@ public class Company extends Enterprises {
 	//Create a Filial only with a name
 	public boolean createFilial(String name) {
 		boolean verifica = false;
-		if(getFilials().size() != 0) {
+		
+		if(getFilials().size() != 0 && (name.isEmpty() == false)) {
 			for(int i = 0; i < getFilials().size(); i++) {
 				if(getFilials().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
 					verifica = false;
@@ -79,9 +88,11 @@ public class Company extends Enterprises {
 					verifica  = true;
 				}
 			}
-		} else {
+		} else if(name.isEmpty() == false) {
+			
 			filials.add(new Filial(name));
 			verifica = true;
+			
 		}
 		
 		return verifica;
@@ -107,9 +118,9 @@ public class Company extends Enterprises {
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().toLowerCase().equals(newName.toLowerCase())) {
 				
-				break;
+				return false;
 				
-			} else if(i == getFilials().size() - 1) {
+			} else if(i == getFilials().size() - 1 && (newName.isEmpty() == false)) {
 
 				for(int j = 0; j < getFilials().size(); j++) {
 					if(getFilials().get(j).getName().toLowerCase().equals(oldName.toLowerCase())) {

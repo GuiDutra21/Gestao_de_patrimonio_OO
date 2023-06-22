@@ -469,8 +469,12 @@ public class FilialMenu implements ActionListener {
 						atualizarLabel(labels.get(0), panels.get(0));
 						
 					} else {
+						if(novoNome.isEmpty()) {
+							JOptionPane.showMessageDialog(jf, "O nome deve ser preenchido");
+						} else {
+							JOptionPane.showMessageDialog(jf, "Filial ja registrada com esse nome");
+						}
 						
-						JOptionPane.showMessageDialog(jf, "Filial ja registrada com esse nome");
 					}
 					
 				}else if (i == 1){
