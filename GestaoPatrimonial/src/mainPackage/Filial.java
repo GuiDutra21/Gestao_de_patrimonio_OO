@@ -45,7 +45,8 @@ public class Filial extends Enterprises {
 		} else {
 			if(name.isEmpty() == false) {
 				for(int i = 0; i < getPatrimony().size(); i++) {
-					if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
+					if(getPatrimony().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+						return false;
 						
 					} else {
 						patrimony.add(new Vehicle(name, amount,value,  model,brand, productionYear));
@@ -53,7 +54,7 @@ public class Filial extends Enterprises {
 					}
 				}
 			} else {
-				verifica = false;
+				return false;
 			}
 		}
 		
@@ -72,8 +73,8 @@ public class Filial extends Enterprises {
 		} else {
 			if(name.isEmpty() == false) {
 				for(int i = 0; i < getPatrimony().size(); i++) {
-					if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
-						
+					if(getPatrimony().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+						return false;
 					} else {
 						patrimony.add(new Vehicle(name, value));
 						verifica = true;
@@ -98,8 +99,8 @@ public class Filial extends Enterprises {
 		} else {
 			if(name.isEmpty() == false) {
 				for(int i = 0; i < getPatrimony().size(); i++) {
-					if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
-						
+					if(getPatrimony().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+						return false;
 					} else {
 						patrimony.add(new Vehicle(name, amount, value));
 						verifica = true;
@@ -124,8 +125,8 @@ public class Filial extends Enterprises {
 		} else {
 			if(name.isEmpty() == false) {
 				for(int i = 0; i < getPatrimony().size(); i++) {
-					if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
-						
+					if(getPatrimony().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+						return false;
 					} else {
 						patrimony.add(new Vehicle(name));
 						verifica = true;
@@ -152,8 +153,8 @@ public class Filial extends Enterprises {
 		} else {
 			if(name.isEmpty() == false) {
 				for(int i = 0; i < getPatrimony().size(); i++) {
-					if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
-						
+					if(getPatrimony().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+						return false;
 					} else {
 						getPatrimony().add(new Buildings(name, amount, value, floorsQTD, area));
 						verifica = true;
@@ -178,8 +179,8 @@ public class Filial extends Enterprises {
 		
 		if(name.isEmpty() == false) {
 			for(int i = 0; i < getPatrimony().size(); i++) {
-				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
-					
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+					return false;
 				} else {
 					patrimony.add(new Buildings(name, amount, value));
 					verifica = true;
@@ -204,8 +205,8 @@ public class Filial extends Enterprises {
 		
 		if(name.isEmpty() == false) {
 			for(int i = 0; i < getPatrimony().size(); i++) {
-				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
-					
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+					return false;
 				} else {
 					patrimony.add(new Buildings(name, value));
 					verifica = true;
@@ -232,8 +233,8 @@ public class Filial extends Enterprises {
 		
 		if(name.isEmpty() == false) {
 			for(int i = 0; i < getPatrimony().size(); i++) {
-				if(getPatrimony().get(i).getName().toLowerCase().equals(name)) {
-					
+				if(getPatrimony().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+					return false;
 				} else {
 					patrimony.add(new Buildings(name));
 					verifica = true;
@@ -252,8 +253,9 @@ public class Filial extends Enterprises {
 		boolean verifica = false;
 		for(int i = 0; i < getPatrimony().size(); i++) {
 			if(getPatrimony().get(i).getName().toLowerCase().equals(patrimony.getName().toLowerCase())) {
-				
-			} else {
+				return false;
+			} else if(patrimony.getName().isEmpty() == false) {
+				getPatrimony().add(patrimony);
 				verifica = true;
 			}
 		}
