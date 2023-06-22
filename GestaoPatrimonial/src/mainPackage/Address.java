@@ -74,7 +74,32 @@ public class Address {
 	///
 	//method toString that returns the elements of an Address into a formated a String
 	public String toString() {
-		String adress = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
-		return adress;
+		String address = null;
+		if(getCountry() == null && getState() == null && getCity() == null && getStreet() == null ){
+			
+			address = "Nao informado";
+			
+		} else if(getCountry() != null && getState() == null && getCity() == null && getStreet() == null ){
+			
+			address = String.format("%s",getCountry());
+			
+		} else if(getCountry() != null && getState() != null && getCity() == null && getStreet() == null ){
+			
+			address = String.format("%s, %s",getCountry(), getState());
+			
+		} else if(getCountry() != null && getState() != null && getCity() != null && getStreet() == null ){
+			
+			address = String.format("%s, %s, %s",getCountry(), getState(), getCity());
+			
+		} else if(getCountry() != null && getState() != null && getCity() != null && getStreet() != null ){
+			
+			address = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
+			
+		} else {
+			address = String.format("%s, %s, %s, %s, %d",getCountry(), getState(), getCity(), getStreet(), getNumber());
+		}
+		
+		
+		return address;
 	}	
 }

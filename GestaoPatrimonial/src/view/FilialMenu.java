@@ -1,6 +1,9 @@
 package view;
 
 import javax.swing.*;
+
+import Controle.ControlerCompany;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,17 +16,48 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class FilialMenu implements ActionListener {
-	
+	private ControlerCompany controler;
 	private double filialValue;
 	private List<JLabel> labels;
 	private List<JButton> buttons;
 	private List<JPanel> panels;
 	private JFrame jf;
+	private String name;
+	
+	public void atualizarLabel(JLabel l, JPanel p) {
+		
+		int x = jf.getWidth()/2;
+		
+		int paneSize = 0;
+		
+		if(l.getText().length() <= 5)
+		{
+			paneSize = l.getText().length()*12 - 3;
+		}
+		else if (l.getText().length() <= 10)
+		{
+			paneSize = l.getText().length()*11;
+		}
+		else if (l.getText().length() <= 15)
+		{
+			paneSize = l.getText().length()*11 - 5;
+		}
+		else
+		{
+			paneSize = l.getText().length()*11 - 10;
+		}
+
+		p.setBounds(x - (l.getText().length()*4), 23, paneSize, 30);
+							
+	}
 	
 	
 
-	public FilialMenu(int patrimonyQtd,List<Patrimony> patrimonys){
+	public FilialMenu(ControlerCompany controler,int patrimonyQtd,List<Patrimony> patrimonys, String name){
+		
 		super();
+		this.controler = controler;
+		this.name = name;
 		
 		panels = new ArrayList<JPanel>();
 		buttons = new ArrayList<JButton>();
@@ -31,7 +65,7 @@ public class FilialMenu implements ActionListener {
 		ArrayList<Buildings> buildings = new ArrayList<>();
 		ArrayList<Vehicle> vehicle = new ArrayList<>();
 		
-		JFrame jf = new JFrame();
+		jf = new JFrame();
 		jf.setSize(1500,1500);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -39,33 +73,7 @@ public class FilialMenu implements ActionListener {
 		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
 		
-		panels.add(new JPanel() {
-			
-			
-			
-//			@Override
-//			protected void paintComponent(Graphics g) {
-//				super.paintComponent(g);
-//				if(patrimonyQtd != 0) {	// Desenha o retângulo cinza
-//					g.setColor(new  Color(200, 200, 200));
-//					g.fillRect(125, 330, 1250, 50 + (patrimonyQtd * 300));
-//				}
-//				
-//				//g.setColor(new Color(0, 180, 0));
-////				// Desenha alguns retângulos grandes
-////				for (int i = 0; i < patrimonyQtd; i++) {
-////					g.fillRect(200, 440 + (i * 300), 1100, 200);
-////				}
-////				lastSquare = 500 + patrimonyQtd * 300;
-//			}
-//				
-//			@Override
-//			public Dimension getPreferredSize() {
-//			//Define o tamanho preferido do painel
-//				return new Dimension(200, lastSquare);
-//
-//			}
-		});			
+		panels.add(new JPanel());			
 		
 		panels.get(0).setLayout(null);
 		panels.get(0).setBackground(new Color(100, 145, 255));
@@ -73,8 +81,8 @@ public class FilialMenu implements ActionListener {
 		int x = jf.getWidth()/2;
 		
 		//the name of the filial JLabel
-		labels.add(new JLabel("Loja da Havan"));
-		labels.get(0).setBounds(x - (labels.get(0).getText().length()*4), 23,labels.get(0).getText().length()*20,30);
+		labels.add(new JLabel(name));
+		labels.get(0).setBounds(x - (labels.get(0).getText().length()*4), 23,labels.get(0).getText().length()*20*200,30);
 		labels.get(0).setFont(new Font("Times New Roman", Font.BOLD, 20));
 		panels.get(0).add(labels.get(0));
 		
@@ -113,8 +121,6 @@ public class FilialMenu implements ActionListener {
 		buttons.add( new JButton("Editar"));
 		buttons.get(0).setBounds(1200, 23, 150, 30);
 		panels.get(0).add(buttons.get(0));
-		
-		buttons.get(0).addActionListener(this);
 		
 		//the JLabel of 'Endereço'
 		labels.add(new JLabel("Estados Unidos, texas, caipira, rua marinho, 22"));
@@ -162,8 +168,6 @@ public class FilialMenu implements ActionListener {
 		buttons.add( new JButton("Editar"));
 		buttons.get(1).setBounds(1200, 100, 150, 30);
 		panels.get(0).add(buttons.get(1));
-		
-		buttons.get(0).addActionListener(this);
 		
 		filialValue = 15000.500;
 		//the JLabel of 'Patrimônio líquido'
@@ -439,12 +443,49 @@ public class FilialMenu implements ActionListener {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		jf.setVisible(true);
 		
+		for(int i = 0; i < buttons.size(); i++) {
+			buttons.get(i).addActionListener(this);
+		}
+		
 	}
 	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+		for(int i = 0; i < buttons.size(); i++) {
+			
+			if(e.getSource().equals(buttons.get(i))) {
+				
+				if(i == 0) {
+					String novoNome = JOptionPane.showInputDialog(jf, "Digite um novo nome: ", "Editar", JOptionPane.PLAIN_MESSAGE);
+					
+					boolean verifica = controler.getCompany().editFilial(this.name, novoNome);
+					
+					if(verifica) {
+						
+						this.name = novoNome;
+						labels.get(0).setText(novoNome);
+						atualizarLabel(labels.get(0), panels.get(0));
+						
+					} else {
+						
+						JOptionPane.showMessageDialog(jf, "Filial ja registrada com esse nome");
+					}
+					
+				}else if (i == 1){
+					
+						FilialScreen f = new FilialScreen();
+						f.getLabels().get(0).setText("Editar Endereço");
+						f.getTextF().get(0).setText(name);
+						
+						
+				}
+				
+			}
+				
+			
+		}
 		
 	}
 }

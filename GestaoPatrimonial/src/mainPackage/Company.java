@@ -54,7 +54,8 @@ public class Company extends Enterprises {
 		
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
-				
+				verifica = false;
+				break;
 			} else {
 				filials.add(new Filial(name, address));
 				verifica  = true;
@@ -68,14 +69,19 @@ public class Company extends Enterprises {
 	//Create a Filial only with a name
 	public boolean createFilial(String name) {
 		boolean verifica = false;
-		
-		for(int i = 0; i < getFilials().size(); i++) {
-			if(getFilials().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
-				
-			} else {
-				filials.add(new Filial(name));
-				verifica  = true;
+		if(getFilials().size() != 0) {
+			for(int i = 0; i < getFilials().size(); i++) {
+				if(getFilials().get(i).getName().toLowerCase().equals(name.toLowerCase())) {
+					verifica = false;
+					break;
+			}	else {
+					filials.add(new Filial(name));
+					verifica  = true;
+				}
 			}
+		} else {
+			filials.add(new Filial(name));
+			verifica = true;
 		}
 		
 		return verifica;
@@ -96,12 +102,24 @@ public class Company extends Enterprises {
 	}
 
 	//Edit the name of a Filial
-	public void editFilial(String oldName, String newName) {
+	public boolean editFilial(String oldName, String newName) {
+		boolean verifica = false;
 		for(int i = 0; i < getFilials().size(); i++) {
-			if(getFilials().get(i).getName().equals(oldName)) {
-				getFilials().get(i).setName(newName);
+			if(getFilials().get(i).getName().toLowerCase().equals(newName.toLowerCase())) {
+				
+				break;
+				
+			} else if(i == getFilials().size() - 1) {
+
+				for(int j = 0; j < getFilials().size(); j++) {
+					if(getFilials().get(j).getName().toLowerCase().equals(oldName.toLowerCase())) {
+						getFilials().get(j).edit(newName);
+						verifica = true;	
+					}
+				}
 			}
 		}
+		return verifica;
 	}
 	
 	//Edit the Address of a Filial
@@ -126,12 +144,14 @@ public class Company extends Enterprises {
 	}
 	
 	//Edit the name of a Patrimony in the Filial mentioned
-	public void edit(String filialName, String oldPatName, String newPatName) {
+	public boolean edit(String filialName, String oldPatName, String newPatName) {
+		boolean verifica = false;
 		for(int i = 0; i < getFilials().size(); i++){
 			if(getFilials().get(i).getName().equals(filialName)) {
-				getFilials().get(i).editPatrimony(oldPatName,newPatName);
+				verifica = getFilials().get(i).editPatrimony(oldPatName,newPatName);
 			}
 		}
+		return verifica; 
 	}
 	
 	//Edit the value of a Patrimony in the Filial name passed

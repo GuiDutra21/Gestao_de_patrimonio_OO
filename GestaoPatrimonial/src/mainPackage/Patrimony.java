@@ -103,13 +103,7 @@ public abstract class Patrimony {
 		setAmount(amount);
 		setValue(value);
 	}
-	
-	
-	public String getType() {
-		return "Patrimony";
-	}
-	
-	
+		
 	//Method toString that returns the name and value of a Patrimony into a formated String
 	public String toString() {
 		String patrimony = String.format("Nome: %s, Unidades: %d, Valor unitario: %.2f",getName(),getAmount(),getValue());

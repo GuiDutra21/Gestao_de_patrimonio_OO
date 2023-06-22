@@ -219,14 +219,18 @@ public class Filial extends Enterprises {
 	}
 	
 	//Into a Filial edit the name of a Patrimony
-	public void editPatrimony(String oldName, String newName) {
-		oldName = oldName.toLowerCase();
-		
-		for (int i = 0; i < getPatrimony().size(); i++) {
-			if(getPatrimony().get(i).getName().toLowerCase().equals(oldName)){
+	public boolean editPatrimony(String oldName, String newName) {
+		boolean verifica = false;
+		for(int i = 0; i < getPatrimony().size(); i++) {
+			if(getPatrimony().get(i).getName().equals(newName)) {
+				verifica = false;
+			} else if(getPatrimony().get(i).getName().equals(oldName)) {
 				getPatrimony().get(i).edit(newName);
+				verifica = true;
 			}
 		}
+		
+		return verifica;
 	}
 	
 	//Into a Filial edit the value of a Patrimony
@@ -245,7 +249,14 @@ public class Filial extends Enterprises {
 			double value, String newModel, String newBrand, int productionYear, int floorsQTD, double area) {
 		
 		if(name != null) {
-			patrimony.setName(name);
+			for(int i = 0; i < getPatrimony().size(); i++){
+				if(getPatrimony().get(i).getName().equals(name)) {
+					
+				} else {
+					patrimony.setName(name);
+				}
+			}
+			
 		}
 		
 		if(amount != patrimony.getAmount()) {
