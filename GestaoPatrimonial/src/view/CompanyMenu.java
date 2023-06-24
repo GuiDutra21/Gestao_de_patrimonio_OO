@@ -120,7 +120,7 @@ public class CompanyMenu implements ActionListener{
 		
 		//JLabel 'Buscar pelo nome o(s) patrimônio(s) cadastrtado(s) :'
 		labels.add( new JLabel("Buscar pelo nome o(s) patrimônio(s) cadastratado(s) :"));
-		labels.get(6).setBounds(520, 300, 550, 50);
+		labels.get(6).setBounds(520, 300, 580, 50);
 		labels.get(6).setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panels.get(0).add(labels.get(6));
 		
@@ -189,7 +189,7 @@ public class CompanyMenu implements ActionListener{
 				labels.get(labelsSize).setBounds(630, 985 + (j * squareHeight), 300, 40);
 				panels.get(0).add(labels.get(labelsSize));
 				
-				lists.add(new JList());
+				lists.add(new JList<>(c.patrimonyNames(c.getCompany().getFilials().get(j))));
 				listsSize++;
 				lists.get(listsSize).setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				

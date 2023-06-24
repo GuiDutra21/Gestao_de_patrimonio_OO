@@ -140,12 +140,12 @@ public class ControlerCompany {
 		new InsertAddress(c);
 	}
 	
-	public List<String> patrimonyNames(Filial f)
+	public String[] patrimonyNames(Filial f)
 	{
-		List<String> nomes = new ArrayList<>();
+		String[] nomes = new String[f.getPatrimony().size()];
 		for(int i = 0; i < f.getPatrimony().size(); i++)
 		{
-			 nomes.add(f.getPatrimony().get(i).getName());
+			 nomes[i] = f.getPatrimony().get(i).getName();
 		}
 		
 		return nomes;
