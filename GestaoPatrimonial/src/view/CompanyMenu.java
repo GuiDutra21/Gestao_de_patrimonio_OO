@@ -74,31 +74,6 @@ public class CompanyMenu implements ActionListener{
 		labels.get(1).setFont(new Font("Times New Roman", Font.BOLD, 30));
 		panels.get(0).add(labels.get(1));
 		
-//		int paneSize = 0;
-//		
-//		if(labels.get(0).getText().length() <= 5)
-//		{
-//			paneSize = labels.get(0).getText().length()*15 - 3;
-//		}
-//		else if (labels.get(0).getText().length() <= 10)
-//		{
-//			paneSize = labels.get(0).getText().length()*14 - 7;
-//		}
-//		else if (labels.get(0).getText().length() <= 15)
-//		{
-//			paneSize = labels.get(0).getText().length()*13;
-//		}
-//		else
-//		{
-//			paneSize = labels.get(0).getText().length()*13;
-//		}
-//		
-//		//The JPanel that has the name of the Company
-//		panels.add(new JPanel());
-//		panels.get(1).setBounds(x - (labels.get(0).getText().length()*4), 23, paneSize, 30);
-//		panels.get(1).setBackground(new Color(220, 220, 220));
-//		panels.get(0).add(panels.get(1));
-		
 		//Button 'editar' to edit the Company Name
 		buttons.add( new JButton("Editar"));
 		buttons.get(0).setBounds(1200, 23, 150, 30);
@@ -144,7 +119,7 @@ public class CompanyMenu implements ActionListener{
 		
 		
 		//JLabel 'Buscar pelo nome o(s) patrimônio(s) cadastrtado(s) :'
-		labels.add( new JLabel("Buscar pelo nome o(s) patrimônio(s) cadastrtado(s) :"));
+		labels.add( new JLabel("Buscar pelo nome o(s) patrimônio(s) cadastratado(s) :"));
 		labels.get(6).setBounds(520, 300, 550, 50);
 		labels.get(6).setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panels.get(0).add(labels.get(6));
@@ -181,12 +156,7 @@ public class CompanyMenu implements ActionListener{
 			buttons.add(new JButton("Adicionar Filial"));
 			buttons.get(3).setBounds(665,725,200,30);
 			buttons.get(3).setFont(new Font("Times New Roman", Font.BOLD, 17));
-			panels.get(0).add(buttons.get(3));			
-			
-			String nomes[] = { "Casa 1", "Apartamento 5", "Casa 2",  
-					"Carro 1", "Caroo 2",  "Casa 3", 
-					"Caminhao 1", "Onibus 1", "Mansao 1", 
-					"Mansao 2", "Predio 1", "Predio 2", "Casa 4", "Apartamento 6" }; 
+			panels.get(0).add(buttons.get(3));			 
 			
 			int panelsSize = 2;
 			int labelsSize = 7;
@@ -195,6 +165,7 @@ public class CompanyMenu implements ActionListener{
 			int buttonsSize = 3;
 			int squareHeight = 650;
 			int patsQtd = 5;
+			
 			for(int j = 0; j < filialsQtd; j++)
 			{	
 				labels.add(new JLabel(c.getCompany().getFilials().get(j).getName()));
@@ -218,7 +189,7 @@ public class CompanyMenu implements ActionListener{
 				labels.get(labelsSize).setBounds(630, 985 + (j * squareHeight), 300, 40);
 				panels.get(0).add(labels.get(labelsSize));
 				
-				lists.add(new JList(nomes));
+				lists.add(new JList());
 				listsSize++;
 				lists.get(listsSize).setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				
@@ -241,13 +212,6 @@ public class CompanyMenu implements ActionListener{
 				buttonsSize++;
 				buttons.get(buttonsSize).setBounds(790,1280 + (j * squareHeight), 200, 30);
 				panels.get(0).add(buttons.get(buttonsSize));
-				
-				
-				
-//				labels.add(new JLabel("Filial 1"));
-//				labels.get(10 + j).setFont(new Font("Times New Roman", Font.BOLD, 28));
-//				labels.get(10 + j).setBounds(840, 875 + (j * squareHeight), 400, 40);
-//				panels.get(0).add(labels.get(10 + j));
 				
 				//The squares green
 				panels.add(new JPanel());

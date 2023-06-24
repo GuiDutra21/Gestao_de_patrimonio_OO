@@ -50,8 +50,8 @@ public class Login implements ActionListener{
 		
 		//Create the second label
 		labels.add(new JLabel("<html><u>Cadastre a sua compania</u></html>"));//Tag in HTML to put the text in underline 
-		labels.get(1).setBounds(660, 140, 250, 40);//set the position
-		labels.get(1).setFont(new Font("Times New Roman",Font.BOLD,20));//set the Font
+		labels.get(1).setBounds(610, 140, 450, 40);//set the position
+		labels.get(1).setFont(new Font("Times New Roman",Font.BOLD,30));//set the Font
 		
 		//Create the third label
 		labels.add(new JLabel("Insira o nome da sua compania : "));
