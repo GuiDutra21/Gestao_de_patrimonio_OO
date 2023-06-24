@@ -151,4 +151,19 @@ public class ControlerCompany {
 		return nomes;
 	}
 	
+	//para passar no construtor da tela filialMenu
+	public List<Patrimony> getpatrimonys(String filialName)
+	{
+		for(int i = 0; i < company.getFilials().size(); i++)
+		{
+			if(company.getFilials().get(i).getName() == filialName)
+				return company.getFilials().get(i).getPatrimony();
+		}
+		
+		return new ArrayList<Patrimony>(); //return an Array empty in case the 'if' is false for all elements
+	}
+	
+	
+	
+	
 }
