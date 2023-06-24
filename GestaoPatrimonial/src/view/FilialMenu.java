@@ -479,7 +479,7 @@ public class FilialMenu implements ActionListener {
 					
 				}else if (i == 1){
 					
-						FilialScreen f = new FilialScreen();
+						FilialScreen f = new FilialScreen(controler);
 						f.getLabels().get(0).setText("Editar Endereço");
 						f.getTextF().get(0).setText(name);
 						

@@ -1,11 +1,15 @@
 package view;
 
 import javax.swing.*;
+
+import Controle.ControlerCompany;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
+
 
 public class InsertAddress implements ActionListener {
 	
@@ -15,9 +19,11 @@ public class InsertAddress implements ActionListener {
 	private JButton button;
 	private JFrame jf;	
 	private Font font;
+	private ControlerCompany c;
 	
-	public InsertAddress()
+	public InsertAddress(ControlerCompany c)
 	{
+		this.c = c;
 		jf = new JFrame();
 		
 		//Create the Frame
@@ -116,19 +122,76 @@ public class InsertAddress implements ActionListener {
   		button.setFont(new Font("Time News Roman", Font.BOLD,16));
   		button.setBounds(700, 530, 150, 37);//set the position
   		button.setBackground(Color.green);
+  		button.addActionListener(this);
   		jf.add(button);
   		
   		jf.add(panel);
 		jf.setVisible(true);
 	}
 	
-	public static void main(String[] a)
-	{
-		InsertAddress c = new InsertAddress();
-		}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource().equals(button)){
+			
+			if(textFields.get(0).getText().isEmpty()) {
+			
+			} else {
+				c.getCompany().getAddress().setCountry(textFields.get(0).getText());
+			}
+			
+			if(textFields.get(1).getText().isEmpty()) {
+				
+			} else {
+				c.getCompany().getAddress().setState(textFields.get(1).getText());
+			}
+			
+			if(textFields.get(2).getText().isEmpty()) {
+				
+			} else {
+				c.getCompany().getAddress().setCity(textFields.get(2).getText());
+			}
+			
+			if(textFields.get(3).getText().isEmpty()) {
+				
+			} else {
+				c.getCompany().getAddress().setStreet(textFields.get(3).getText());
+			}
+			
+			boolean verifica = false;
+			int number = c.getCompany().getAddress().getNumber();
+			String v = "";
+			while(verifica == false && textFields.get(4).getText().isEmpty() == false) 
+			{
+				  
+				try 
+					{
+						number = Integer.parseInt(textFields.get(4).getText());
+						verifica = true;
+					} catch (NumberFormatException m)
+						{
+							 try
+							 {
+								 v = JOptionPane.showInputDialog(jf, "Insira um numero ou deixe em branco:");
+								 number = Integer.parseInt(v);
+								 verifica = true;
+							 }catch (NumberFormatException m2)
+							 	{
+								 if(v.isEmpty()) {
+									 verifica = true;
+								 }
+							 	}
+						}
+					
+			}
+			c.getCompany().getAddress().setNumber(number);
+			
+			new CompanyMenu(c.getCompany().getFilials().size(),c);
+			
+			jf.dispose();
+			jf = null;
+			
+			
+		}
 		
 	}
 

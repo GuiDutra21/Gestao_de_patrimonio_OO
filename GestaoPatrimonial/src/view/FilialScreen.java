@@ -9,20 +9,26 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import Controle.ControlerCompany;
+import mainPackage.Address;
 
 public class FilialScreen implements ActionListener{
 	
 	private JFrame jf;
+	private ControlerCompany c;
 	private List<JLabel> labels;
 	private List<JTextField> textFields;
 	private JButton button;
-	private List<String> date;
+
 	
 	
 	
-	public FilialScreen()
+	public FilialScreen(ControlerCompany c)
 	{
+		this.c = c;
 		jf = new JFrame();
 		jf.setLayout(null);
 		
@@ -126,17 +132,14 @@ public class FilialScreen implements ActionListener{
 		
 		jf.setVisible(true);
 		
-		date = new ArrayList<>();
+
 		
 	}
 	
 	public List<JLabel> getLabels(){
 		return this.labels;
 	}
-	
-	public List<String> getDate(){
-		return date;
-	}
+
 	
 	public List<JTextField> getTextF(){
 		return textFields;
@@ -145,12 +148,55 @@ public class FilialScreen implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(button)) {
-			for(int i = 0; i < textFields.size(); i++) {
-				date.add(textFields.get(i).getText());
-			}
-			jf.dispose();
-
+		if(e.getSource().equals(button)) 
+		{
+			
+			if(textFields.get(0).getText().isEmpty()) 
+			{
+				JOptionPane.showMessageDialog(jf, "O nome deve ser preenchido:");
+				
+			} else
+				{
+					c.getCompany().getAddress().setCountry(textFields.get(1).getText());
+					c.getCompany().getAddress().setState(textFields.get(2).getText());
+					c.getCompany().getAddress().setCity(textFields.get(3).getText());
+					c.getCompany().getAddress().setStreet(textFields.get(4).getText());
+				
+					boolean verifica = false;
+				
+					int number = 0;
+					String v = "";
+					while(verifica == false && textFields.get(5).getText().isEmpty() == false) 
+					{	
+						try 
+						{
+							number = Integer.parseInt(textFields.get(5).getText());
+							verifica = true;
+						} catch (NumberFormatException m)
+							{
+								 try
+								 {
+									 v = JOptionPane.showInputDialog(jf, "Insira um numero ou deixe em branco:");
+									 number = Integer.parseInt(v);
+									 verifica = true;
+								 }catch (NumberFormatException m2)
+								 	{
+									 	if(v.isEmpty()) 
+									 	{
+									 		verifica = true;
+									 	}
+								 	}
+							}
+					}
+					
+					c.getCompany().createFilial(textFields.get(0).getText(), new Address(textFields.get(1).getText(),
+							textFields.get(2).getText(),textFields.get(3).getText(),textFields.get(4).getText(), number));
+				
+				}
+			
+			new CompanyMenu(c.getCompany().getFilials().size(),c);
+			jf = null;
+			
 		}
 		
 		

@@ -14,6 +14,7 @@ import java.util.List;
 public class CompanyMenu implements ActionListener{
 	
 	private List<JLabel> labels;
+	private JButton button1;
 	private List<JButton> buttons;
 	private List<JPanel> panels;
 	private List<JList> lists;
@@ -196,7 +197,7 @@ public class CompanyMenu implements ActionListener{
 			int patsQtd = 5;
 			for(int j = 0; j < filialsQtd; j++)
 			{	
-				labels.add(new JLabel("Loja de Miami"));
+				labels.add(new JLabel(c.getCompany().getFilials().get(j).getName()));
 				labelsSize++;
 				labels.get(labelsSize).setFont(new Font("Times New Roman", Font.BOLD, 25));
 				labels.get(labelsSize).setOpaque(true);
@@ -271,6 +272,11 @@ public class CompanyMenu implements ActionListener{
 			labels.get(8).setBackground(Color.RED);
 			labels.get(8).setFont(new Font("Times New Roman",Font.BOLD, 25));
 			panels.get(0).add(labels.get(8));
+			button1 = new JButton("Adicionar Filial");
+			button1.setBounds(650, 720, 200, 50);
+			button1.addActionListener(this);
+			panels.get(0).add(button1);
+			
 		}
 			//create the ScrollPanel and pass the Panel 
 			JScrollPane scrollPane = new JScrollPane(panels.get(0));
@@ -289,19 +295,34 @@ public class CompanyMenu implements ActionListener{
 			boolean verifica = false;
 			while(verifica == false) {
 				String novoNome = JOptionPane.showInputDialog(jf, "Digite o novo nome:");
-				if(novoNome.isEmpty()) {
-					verifica = true;
+				if(novoNome != null) {
+					if(novoNome.isEmpty()) {
+						verifica = true;
+					} else {
+						c.setCompanyName(novoNome);
+						labels.get(0).setText(novoNome);
+						verifica = true;
+					}
 				} else {
-					c.setCompanyName(novoNome);
-					labels.get(0).setText(novoNome);
 					verifica = true;
 				}
+			
 				
 			}
 		}
 		
 		if(e.getSource().equals(buttons.get(1))){
 			
+			c.editAddress(c);
+			jf.dispose();
+			
+			
+			
+		}
+		
+		if(e.getSource().equals(button1)) {
+			new FilialScreen(c);
+			jf.dispose();
 		}
 		
 	}

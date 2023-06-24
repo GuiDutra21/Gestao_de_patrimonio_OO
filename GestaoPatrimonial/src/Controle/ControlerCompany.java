@@ -7,6 +7,7 @@ import mainPackage.Filial;
 import mainPackage.Patrimony;
 import mainPackage.Vehicle;
 import view.CompanyMenu;
+import view.InsertAddress;
 import mainPackage.Address;
 import mainPackage.Buildings;
 
@@ -138,6 +139,10 @@ public class ControlerCompany {
 		return company.getAddress().toString();
 	}
 	
+	public void editAddress(ControlerCompany c)
+	{
+		new InsertAddress(c);
+	}
 	
 	
 
