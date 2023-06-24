@@ -14,14 +14,13 @@ import mainPackage.Buildings;
 public class ControlerCompany {
 	private Company company;
 	private List<String> filialsName;
-	private List<String> patrimonyName;
 	private String companyName;
 	
 	public ControlerCompany(String name) {
 		this.company = new Company(name);
 		this.companyName = name;
 		this.filialsName = new ArrayList<>();
-		this.patrimonyName = new ArrayList<>();
+
 	}
 	
 	public void setCompany(Company company) {
@@ -45,10 +44,7 @@ public class ControlerCompany {
 		return nomes;
 	}
 	
-	public List<String> getPatrimonyName() {
-		return patrimonyName;
-	}
-	
+
 	public void login(String pais, String estado, String cidade, String rua, int numero) {
 		Address a = new Address(pais,estado,cidade,rua,numero);
 		company.setAddress(a);
@@ -144,16 +140,15 @@ public class ControlerCompany {
 		new InsertAddress(c);
 	}
 	
-	
-
-	
-	
-
-	
-
-
-	
-	
-	
+	public List<String> patrimonyNames(Filial f)
+	{
+		List<String> nomes = new ArrayList<>();
+		for(int i = 0; i < f.getPatrimony().size(); i++)
+		{
+			 nomes.add(f.getPatrimony().get(i).getName());
+		}
+		
+		return nomes;
+	}
 	
 }
