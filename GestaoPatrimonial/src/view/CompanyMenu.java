@@ -279,14 +279,14 @@ public class CompanyMenu implements ActionListener{
 			
 			c.editAddress(c);
 			jf.dispose();
-			
-			
-			
+			jf = null;
+				
 		}
 		
 		if(e.getSource().equals(button1)) {
 			new FilialScreen(c);
 			jf.dispose();
+			jf = null;
 		}
 		
 	}

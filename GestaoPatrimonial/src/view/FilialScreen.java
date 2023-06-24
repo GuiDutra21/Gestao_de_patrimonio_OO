@@ -187,15 +187,27 @@ public class FilialScreen implements ActionListener{
 									 	}
 								 	}
 							}
+						
+					
+						
 					}
 					
-					c.getCompany().createFilial(textFields.get(0).getText(), new Address(textFields.get(1).getText(),
+				
+					boolean ver = c.getCompany().createFilial(textFields.get(0).getText(), new Address(textFields.get(1).getText(),
 							textFields.get(2).getText(),textFields.get(3).getText(),textFields.get(4).getText(), number));
+						
+					if(ver) {
+						new CompanyMenu(c.getCompany().getFilials().size(),c);
+						jf = null;
+					} else {
+						JOptionPane.showMessageDialog(jf, "Nome ja utilizado");
+			
+					}
+				
 				
 				}
 			
-			new CompanyMenu(c.getCompany().getFilials().size(),c);
-			jf = null;
+			
 			
 		}
 		
