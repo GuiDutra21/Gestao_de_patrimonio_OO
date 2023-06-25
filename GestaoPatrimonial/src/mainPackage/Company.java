@@ -104,7 +104,6 @@ public class Company extends Enterprises {
 		return verifica;
 		
 	}
-	
 
 	//Add in a Filial a Patrimony
 	public boolean add(String filialName, Patrimony patrimony) { 

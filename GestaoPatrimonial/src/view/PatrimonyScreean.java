@@ -10,7 +10,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import Controle.ControlerCompany;
 
 public class PatrimonyScreean implements ActionListener{
 	private JFrame frame;
@@ -18,9 +21,22 @@ public class PatrimonyScreean implements ActionListener{
 	private List<JLabel> labels;
 	private List<JTextField> textFields;
 	public static enum Tipo{VEHICLE, BUILDINGS};
+	private boolean isVehicle;
+	private ControlerCompany c;
+	private String filialName;
 	
 	
-	public PatrimonyScreean(Tipo tipo) {
+	public PatrimonyScreean(Tipo tipo, ControlerCompany c, String filialName) {
+		
+		if(tipo == Tipo.VEHICLE)
+		{
+			isVehicle = true;
+		} else {
+			isVehicle = false;
+		}
+		
+		this.c = c;
+		this.filialName = filialName;
 		/////////////////////////////////////////////////////////
 		
 		textFields = new ArrayList<JTextField>();
@@ -239,8 +255,247 @@ public class PatrimonyScreean implements ActionListener{
 
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) 
+	{
+		
+		if(e.getSource().equals(buttons.get(0)))
+		{
+			boolean[] verVH = new boolean[6];
+			boolean precisaCodar = false;
+			for(int i = 0; i < textFields.size(); i++) {
+				
+				if(textFields.get(i).getText().isEmpty() == false)
+				{
+					precisaCodar = true;
+					break;
+				}
+			}
+			
+			if(precisaCodar == false)
+			{
+				new FilialMenu(c, c.getFilial(filialName).getPatrimony().size(), c.getFilial(filialName).getPatrimony(), filialName);
+				frame.setVisible(false);
+				frame = null;
+			}
+			else
+			{
+				String name = "";
+				double value =0;
+				int qtd = 0;
+				
+				if(textFields.get(0).getText().isEmpty())
+				{
+					verVH[0] = false;
+					JOptionPane.showMessageDialog(frame, "O nome do patrimônio deve ser preenchido");
+				} else {
+					verVH[0] = true;
+					name = textFields.get(0).getText();
+				}
+				
+				if(textFields.get(1).getText().isEmpty()) {
+					verVH[1] = true;
+				} 
+				else 
+				{
+					try
+					{
+						value = Double.parseDouble(textFields.get(1).getText());
+							
+						verVH[1] = true;
+					}
+					catch(NumberFormatException n)
+					{
+						JOptionPane.showMessageDialog(frame, "Valor unitario deve ser inserido como : 1.98, 2.5 ou deixe vazio");
+						verVH[1] = false;
+					}
+						
+				}
+			
+				if(textFields.get(2).getText().isEmpty()) {
+					verVH[2] = true;	
+				} 
+				else 
+				{
+					try
+					{
+						qtd = Integer.parseInt(textFields.get(2).getText());
+						verVH[2] = true;
+						
+					}
+					catch(NumberFormatException n)
+					{
+						JOptionPane.showMessageDialog(frame, "Insira Inteiros validos (1,2,3,...) no campo Quantidade");
+						verVH[2] = false;
+					}
+						
+				}
+				
+				
+				if(isVehicle)
+				{
+					int prodY = 0;
+					
+					if(textFields.get(5).getText().isEmpty())
+					{
+						verVH[3] = true;
+						
+					}
+					else
+					{
+						try
+						{
+							prodY = Integer.parseInt(textFields.get(5).getText());
+							
+							verVH[3] = true;
+							
+						}
+						catch (NumberFormatException p)
+						{
+							verVH[3] = false;
+							JOptionPane.showMessageDialog(frame, "Insira um numero valido no campo Ano de Produção ou deixe em  branco");
+						}
+					}
+					
+					if(verVH[0] == true && verVH[1] == true && verVH[2] == true && verVH[3] == true)
+					{
+						if(c.creatV(filialName, name))
+						{
+							c.getVehicle(filialName, name).setValue(value);
+							c.getVehicle(filialName, name).setAmount(qtd);
+							c.getVehicle(filialName, name).setBrand(textFields.get(3).getText());
+							c.getVehicle(filialName, name).setModel(textFields.get(4).getText());
+							c.getVehicle(filialName, name).setProductionYear(prodY);
+							
+							new FilialMenu(c, c.getFilial(filialName).getPatrimony().size(), c.getFilial(filialName).getPatrimony(), filialName);
+							frame.setVisible(false);
+							frame = null;
+
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(frame, "Patrimonio cadastrado com esse nome na filial");
+						}
+						
+						
+						
+					}
+					
+				}
+				else
+				{
+					
+					int andares = 0;
+					double area = 0;
+					
+					if(textFields.get(3).getText().isEmpty())
+					{
+						verVH[3] = true;
+						
+					}
+					else
+					{
+						try
+						{
+							andares = Integer.parseInt(textFields.get(3).getText());
+							
+							verVH[3] = true;
+							
+						}
+						catch (NumberFormatException p)
+						{
+							verVH[3] = false;
+							JOptionPane.showMessageDialog(frame, "Insira um numero valido no campo Quantidade de Andares ou deixe em  branco");
+						}
+					}
+					
+					if(textFields.get(4).getText().isEmpty())
+					{
+						verVH[4] = true;
+						
+					}
+					else
+					{
+						try
+						{
+							area = Integer.parseInt(textFields.get(4).getText());
+							
+							verVH[4] = true;
+							
+						}
+						catch (NumberFormatException p)
+						{
+							verVH[4] = false;
+							JOptionPane.showMessageDialog(frame, "Insira um numero valido no campo Area (1.8 , 1.7, ...) ou deixe em  branco");
+						}
+					}
+					
+					int number = 0;
+					
+					if(textFields.get(9).getText().isEmpty())
+					{
+						verVH[5] = true;
+						
+					}
+					else
+					{
+						try
+						{
+							number = Integer.parseInt(textFields.get(4).getText());
+							
+							verVH[5] = true;
+							
+						}
+						catch (NumberFormatException p)
+						{
+							verVH[5] = false;
+							JOptionPane.showMessageDialog(frame, "Insira um numero valido no campo Numero ou deixe em  branco");
+						}
+					}
+					
+					if(verVH[0] == true && verVH[1] == true && verVH[2] == true && verVH[3] == true && verVH[4] == true && verVH[5] == true)
+					{
+						if(c.creatB(filialName, name))
+						{
+							c.getBuildings(filialName, name).setValue(value);
+							c.getBuildings(filialName, name).setAmount(qtd);
+							c.getBuildings(filialName, name).setFloorsQtd(andares);
+							c.creatAddresstoBuil(filialName, name);
+							c.getBuildings(filialName, name).getAddress().setCountry(textFields.get(5).getText());
+							c.getBuildings(filialName, name).getAddress().setState(textFields.get(6).getText());
+							c.getBuildings(filialName, name).getAddress().setCity(textFields.get(7).getText());
+							c.getBuildings(filialName, name).getAddress().setStreet(textFields.get(8).getText());
+							c.getBuildings(filialName, name).getAddress().setNumber(number);
+							
+						
+							
+							new FilialMenu(c, c.getFilial(filialName).getPatrimony().size(), c.getFilial(filialName).getPatrimony(), filialName);
+							frame.setVisible(false);
+							frame = null;
+
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(frame, "Patrimonio cadastrado com esse nome na filial");
+						}
+						
+						
+						
+					}
+					
+				}
+				
+				
+				
+				
+				
+				
+			}
+			
+		}
+		
+		
+			
+		
 		
 	}
 	

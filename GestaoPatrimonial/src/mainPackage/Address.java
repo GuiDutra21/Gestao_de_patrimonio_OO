@@ -12,7 +12,11 @@ public class Address {
 	private int number;
 
 	// Construct
-
+	public Address()
+	{
+		
+	}
+	
 	public Address(String country, String state, String city, String street, int number) {
 		this.setCountry(country);
 

@@ -524,17 +524,19 @@ public class FilialMenu implements ActionListener {
 //-----------------------------------Button add ---------------------------------------------------
 		if(e.getSource().equals(add))
 		{
-			new PatrimonyScreean(PatrimonyScreean.Tipo.VEHICLE);
+			new PatrimonyScreean(PatrimonyScreean.Tipo.VEHICLE,c, name);
 			jf = null;
 			
 		}
 		
 		if(e.getSource().equals(add1))
 		{
-			new PatrimonyScreean(PatrimonyScreean.Tipo.BUILDINGS);
+			new PatrimonyScreean(PatrimonyScreean.Tipo.BUILDINGS,c , name);
 			jf = null;
 			
 		}
+//-----------------------------------------------------------------------------------------------------
+		
 		
 	}
 }

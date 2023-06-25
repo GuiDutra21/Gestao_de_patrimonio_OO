@@ -182,6 +182,50 @@ public class ControlerCompany {
 		return f;
 	}
 	
+	public Vehicle getVehicle(String filialName, String patrimonyName) 
+	{
+		Vehicle a = null;
+		for(int i = 0; i < this.getFilial(filialName).getPatrimony().size(); i ++)
+		{
+			if(this.getFilial(filialName).getPatrimony().get(i).getName().equals(patrimonyName)) {
+				a = (Vehicle) this.getFilial(filialName).getPatrimony().get(i);
+			}
+		}
+		
+		return a;
+	}
+	
+	public Buildings getBuildings(String filialName, String patrimonyName) 
+	{
+		Buildings a = null;
+		for(int i = 0; i < this.getFilial(filialName).getPatrimony().size(); i ++)
+		{
+			if(this.getFilial(filialName).getPatrimony().get(i).getName().equals(patrimonyName)) {
+				a = (Buildings) this.getFilial(filialName).getPatrimony().get(i);
+			}
+		}
+		
+		return a;
+	}
+	
+	public boolean creatV(String filialName,String name)
+	{
+		boolean verifica = company.add(filialName, new Vehicle(name));
+		return verifica;
+	}
+	
+	public boolean creatB(String filialName,String name)
+	{
+		boolean verifica = company.add(filialName, new Buildings(name));
+		return verifica;
+	}
+	
+	public void creatAddresstoBuil(String filialName, String name) {
+		this.getBuildings(filialName, name).setAddress(new Address());
+	}
+	
+	
+	
 	
 	
 	
