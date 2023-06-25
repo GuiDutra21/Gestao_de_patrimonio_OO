@@ -15,6 +15,7 @@ public class ControlerCompany {
 	private Company company;
 	private List<String> filialsName;
 	private String companyName;
+	public static int IS_COMPANY = 0, IS_FILIAL = 1;
 	
 	public ControlerCompany(String name) {
 		this.company = new Company(name);
@@ -135,9 +136,14 @@ public class ControlerCompany {
 		return company.getAddress().toString();
 	}
 	
-	public void editAddress(ControlerCompany c)
+	public void editAddress(ControlerCompany c, int t)
 	{
-		new InsertAddress(c);
+		new InsertAddress(c,t);
+	}
+	
+	public void editAddress(ControlerCompany c, int t, String filialName)
+	{
+		new InsertAddress(c,t,filialName);
 	}
 	
 	public String[] patrimonyNames(Filial f)
@@ -161,6 +167,19 @@ public class ControlerCompany {
 		}
 		
 		return new ArrayList<Patrimony>(); //return an Array empty in case the 'if' is false for all elements
+	}
+	
+	public Filial getFilial(String name)
+	{
+		Filial f = null;
+		for(int i = 0; i < company.getFilials().size(); i++)
+		{
+			if(company.getFilials().get(i).getName().equals(name)) {
+				f = company.getFilials().get(i);
+			}
+		}
+		
+		return f;
 	}
 	
 	

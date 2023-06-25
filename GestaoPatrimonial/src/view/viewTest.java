@@ -15,9 +15,9 @@ public class viewTest {
 	public static void main(String[] args)
 	{
 		
-		//Login l = new Login();
+		Login l = new Login();
 		
-		ArrayList<Patrimony> pats = new ArrayList<>();
+		/*ArrayList<Patrimony> pats = new ArrayList<>();
 		ArrayList<String> nomes = new ArrayList<>();
 		for(int i = 0; i < 6; i++)
 		{
@@ -28,6 +28,6 @@ public class viewTest {
 		
 		
 		SearchedPatrimonys k = new SearchedPatrimonys(pats,nomes,"ameba", 6);
-		
+		*/
 	}
 }

@@ -150,66 +150,76 @@ public class FilialScreen implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(button)) 
 		{
-			
-			if(textFields.get(0).getText().isEmpty()) 
+			if(textFields.get(0).getText().isEmpty() && textFields.get(0).getText().isEmpty() && textFields.get(0).getText().isEmpty() &&
+					textFields.get(0).getText().isEmpty() && textFields.get(0).getText().isEmpty() && textFields.get(0).getText().isEmpty() )
 			{
-				JOptionPane.showMessageDialog(jf, "O nome deve ser preenchido:");
+				new CompanyMenu(c.getCompany().getFilials().size(),c);
+				jf.dispose();
+				jf = null;
 				
-			} else
+			} else  {
+				if(textFields.get(0).getText().isEmpty()) 
 				{
-					c.getCompany().getAddress().setCountry(textFields.get(1).getText());
-					c.getCompany().getAddress().setState(textFields.get(2).getText());
-					c.getCompany().getAddress().setCity(textFields.get(3).getText());
-					c.getCompany().getAddress().setStreet(textFields.get(4).getText());
-				
-					boolean verifica = false;
-				
-					int number = 0;
-					String v = "";
-					while(verifica == false && textFields.get(5).getText().isEmpty() == false) 
-					{	
-						try 
-						{
-							number = Integer.parseInt(textFields.get(5).getText());
-							verifica = true;
-						} catch (NumberFormatException m)
+					JOptionPane.showMessageDialog(jf, "O nome deve ser preenchido:");
+					
+				} else
+					{
+						c.getCompany().getAddress().setCountry(textFields.get(1).getText());
+						c.getCompany().getAddress().setState(textFields.get(2).getText());
+						c.getCompany().getAddress().setCity(textFields.get(3).getText());
+						c.getCompany().getAddress().setStreet(textFields.get(4).getText());
+					
+						boolean verifica = false;
+					
+						int number = 0;
+						String v = "";
+						while(verifica == false && textFields.get(5).getText().isEmpty() == false) 
+						{	
+							try 
 							{
-								 try
-								 {
-									 v = JOptionPane.showInputDialog(jf, "Insira um numero ou deixe em branco:");
-									 number = Integer.parseInt(v);
-									 verifica = true;
-								 }catch (NumberFormatException m2)
-								 	{
-									 	if(v.isEmpty()) 
+								number = Integer.parseInt(textFields.get(5).getText());
+								verifica = true;
+							} catch (NumberFormatException m)
+								{
+									 try
+									 {
+										 v = JOptionPane.showInputDialog(jf, "Insira um numero ou deixe em branco:");
+										 number = Integer.parseInt(v);
+										 verifica = true;
+									 }catch (NumberFormatException m2)
 									 	{
-									 		verifica = true;
+										 	if(v.isEmpty()) 
+										 	{
+										 		verifica = true;
+										 	}
 									 	}
-								 	}
-							}
+								}
+							
+						
+							
+						}
 						
 					
-						
-					}
+						boolean ver = c.getCompany().createFilial(textFields.get(0).getText(), new Address(textFields.get(1).getText(),
+								textFields.get(2).getText(),textFields.get(3).getText(),textFields.get(4).getText(), number));
+							
+						if(ver) {
+							new CompanyMenu(c.getCompany().getFilials().size(),c);
+							jf.dispose();
+							jf = null;
+						} else {
+							JOptionPane.showMessageDialog(jf, "Nome ja utilizado");
+				
+						}
 					
-				
-					boolean ver = c.getCompany().createFilial(textFields.get(0).getText(), new Address(textFields.get(1).getText(),
-							textFields.get(2).getText(),textFields.get(3).getText(),textFields.get(4).getText(), number));
-						
-					if(ver) {
-						new CompanyMenu(c.getCompany().getFilials().size(),c);
-						jf = null;
-					} else {
-						JOptionPane.showMessageDialog(jf, "Nome ja utilizado");
-			
+					
 					}
 				
 				
-				}
+				
+			}
+			}
 			
-			
-			
-		}
 		
 		
 	}

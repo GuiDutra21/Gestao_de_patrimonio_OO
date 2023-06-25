@@ -16,13 +16,16 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class FilialMenu implements ActionListener {
-	private ControlerCompany controler;
+	private ControlerCompany c;
 	private double filialValue;
 	private List<JLabel> labels;
 	private List<JButton> buttons;
 	private List<JPanel> panels;
 	private JFrame jf;
 	private String name;
+	private JButton voltar;
+	private JButton add;
+	private JButton add1;
 	
 	public void atualizarLabel(JLabel l, JPanel p) {
 		
@@ -53,11 +56,14 @@ public class FilialMenu implements ActionListener {
 	
 	
 
-	public FilialMenu(ControlerCompany controler,int patrimonyQtd,List<Patrimony> patrimonys, String name){
+	public FilialMenu(ControlerCompany c,int patrimonyQtd,List<Patrimony> patrimonys, String name){
 		
 		super();
-		this.controler = controler;
+		this.c = c;
 		this.name = name;
+		voltar = new JButton("Voltar");
+		voltar.setBounds(30,30 , 200, 30);
+		voltar.addActionListener(this);
 		
 		panels = new ArrayList<JPanel>();
 		buttons = new ArrayList<JButton>();
@@ -77,6 +83,7 @@ public class FilialMenu implements ActionListener {
 		
 		panels.get(0).setLayout(null);
 		panels.get(0).setBackground(new Color(100, 145, 255));
+		panels.get(0).add(voltar);
 		
 		int x = jf.getWidth()/2;
 		
@@ -123,7 +130,7 @@ public class FilialMenu implements ActionListener {
 		panels.get(0).add(buttons.get(0));
 		
 		//the JLabel of 'Endereço'
-		labels.add(new JLabel("Estados Unidos, texas, caipira, rua marinho, 22"));
+		labels.add(new JLabel(c.getFilial(name).getAddress().toString()));
 		labels.get(2).setBounds(x - (labels.get(2).getText().length()*4), 100,labels.get(2).getText().length() * 20,30);
 		labels.get(2).setFont(new Font("Times New Roman", Font.BOLD, 20));
 		
@@ -213,7 +220,7 @@ public class FilialMenu implements ActionListener {
 		panels.get(3).setBackground(new Color(220, 220, 220));
 		panels.get(0).add(panels.get(3));
 				
-		labels.add( new JLabel("<html><u>Patrimônios Cadastrtados :</u></html>"));
+		labels.add( new JLabel("<html><u>Patrimônios Cadastrados :</u></html>"));
 		labels.get(6).setBounds(640, 250, 350, 50);
 		labels.get(6).setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panels.get(0).add(labels.get(6));
@@ -434,6 +441,19 @@ public class FilialMenu implements ActionListener {
 			}
 			
 			panels.get(0).add(panels.get(4));//add the panel gray
+		} 
+		else 
+		{
+			
+			add = new JButton("Adicionar Veículo");
+			add.setBounds(660, 320 , 200, 30);
+			add.addActionListener(this);
+			panels.get(0).add(add);
+			
+			add1 = new JButton("Adicionar Propriedade");
+			add1.setBounds(660, 350 , 200, 30);
+			add1.addActionListener(this);
+			panels.get(0).add(add1);
 		}
 		
 		panels.get(0).setPreferredSize(new Dimension(200, 450 + (patrimonyQtd * 700)));//allow to create the scroll
@@ -451,43 +471,68 @@ public class FilialMenu implements ActionListener {
 	
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		for(int i = 0; i < buttons.size(); i++) {
-			
-			if(e.getSource().equals(buttons.get(i))) {
-				
-				if(i == 0) {
-					String novoNome = JOptionPane.showInputDialog(jf, "Digite um novo nome: ", "Editar", JOptionPane.PLAIN_MESSAGE);
-					
-					boolean verifica = controler.getCompany().editFilial(this.name, novoNome);
-					
-					if(verifica) {
-						
-						this.name = novoNome;
-						labels.get(0).setText(novoNome);
-						atualizarLabel(labels.get(0), panels.get(0));
-						
+	public void actionPerformed(ActionEvent e) 
+	{
+		if(e.getSource().equals(voltar)) 
+		{
+			new CompanyMenu(c.getCompany().getFilials().size(),c);
+		}
+//-------------------------------Button 0 --------------------------------------------------------------		
+		if(e.getSource().equals(buttons.get(0))) 
+		{
+			boolean verifica = false;
+			while(verifica == false) 
+			{
+				String novoNome = JOptionPane.showInputDialog(jf, "Digite o novo nome:");
+				if(novoNome != null) 
+				{
+					if(novoNome.isEmpty()) 
+					{
+						verifica = true;
 					} else {
-						if(novoNome.isEmpty()) {
-							JOptionPane.showMessageDialog(jf, "O nome deve ser preenchido");
-						} else {
-							JOptionPane.showMessageDialog(jf, "Filial ja registrada com esse nome");
+						if(c.getCompany().editFilial(this.name, novoNome))
+						{
+							labels.get(0).setText(novoNome);
+							verifica = true;
+							
+						} 
+						else 
+						{
+							JOptionPane.showMessageDialog(jf, "Nome utilizado");
 						}
 						
 					}
-					
-				}else if (i == 1){
-					
-						FilialScreen f = new FilialScreen(controler);
-						f.getLabels().get(0).setText("Editar Endereço");
-						f.getTextF().get(0).setText(name);
-						
-						
 				}
 				
-			}
+				else 
+				{
+					verifica = true;
+				}
+			
 				
+			}
+		}
+//------------------------------------Button(1)--------------------------------------------------
+		if(e.getSource().equals(buttons.get(1)))
+		{
+			
+			c.editAddress(c,ControlerCompany.IS_FILIAL, name);
+			jf.dispose();
+			jf = null;
+				
+		}
+//-----------------------------------Button add ---------------------------------------------------
+		if(e.getSource().equals(add))
+		{
+			new PatrimonyScreean(PatrimonyScreean.Tipo.VEHICLE);
+			jf = null;
+			
+		}
+		
+		if(e.getSource().equals(add1))
+		{
+			new PatrimonyScreean(PatrimonyScreean.Tipo.BUILDINGS);
+			jf = null;
 			
 		}
 		
