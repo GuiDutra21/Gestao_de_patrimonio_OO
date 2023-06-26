@@ -44,6 +44,7 @@ public class Company extends Enterprises {
 				} else if (i == getFilials().size() - 1 && filial.getName().isEmpty() == false) {
 					getFilials().add(filial);
 					verifica  = true;
+					return true;
 				}
 			}
 		}
@@ -72,6 +73,7 @@ public class Company extends Enterprises {
 				} else if(i == getFilials().size() - 1){
 					filials.add(new Filial(name, address));
 					verifica  = true;
+					return true;
 				}
 			}
 			
@@ -92,12 +94,14 @@ public class Company extends Enterprises {
 			}	else if(i == getFilials().size() - 1){
 					filials.add(new Filial(name));
 					verifica  = true;
+					return true;
 				}
 			}
 		} else if(name.isEmpty() == false) {
 			
 			filials.add(new Filial(name));
 			verifica = true;
+			return true;
 			
 		}
 		
@@ -111,6 +115,7 @@ public class Company extends Enterprises {
 		for(int i = 0; i < getFilials().size(); i++) {
 			if(getFilials().get(i).getName().equals(filialName)) {
 				verifica = getFilials().get(i).add(patrimony);
+				return verifica;
 			}
 		}
 		
@@ -126,11 +131,12 @@ public class Company extends Enterprises {
 				return false;
 				
 			} else if(i == getFilials().size() - 1 && (newName.isEmpty() == false)) {
-
+				
 				for(int j = 0; j < getFilials().size(); j++) {
 					if(getFilials().get(j).getName().toLowerCase().equals(oldName.toLowerCase())) {
 						getFilials().get(j).edit(newName);
 						verifica = true;	
+						return true;
 					}
 				}
 			}

@@ -52,6 +52,7 @@ public class Filial extends Enterprises {
 					} else if(i == getPatrimony().size() - 1) {
 						patrimony.add(new Vehicle(name, amount,value,  model,brand, productionYear));
 						verifica = true;
+						return true;
 					}
 				}
 			} else {
@@ -79,6 +80,7 @@ public class Filial extends Enterprises {
 					} else if(i == getPatrimony().size() - 1) {
 						patrimony.add(new Vehicle(name, value));
 						verifica = true;
+						return true;
 					}
 				}
 			} else {
@@ -105,6 +107,7 @@ public class Filial extends Enterprises {
 					} else if(i == getPatrimony().size() - 1) {
 						patrimony.add(new Vehicle(name, amount, value));
 						verifica = true;
+						return true;
 					}
 				}
 			} else {
@@ -131,6 +134,7 @@ public class Filial extends Enterprises {
 					} else if(i == getPatrimony().size() - 1){
 						patrimony.add(new Vehicle(name));
 						verifica = true;
+						return true;
 					}
 				}
 			} else {
@@ -159,6 +163,7 @@ public class Filial extends Enterprises {
 					} else if(i == getPatrimony().size() - 1){
 						getPatrimony().add(new Buildings(name, amount, value, floorsQTD, area));
 						verifica = true;
+						return true;
 					}
 				}
 			} else {
@@ -185,6 +190,7 @@ public class Filial extends Enterprises {
 				} else if(i == getPatrimony().size() - 1) {
 					patrimony.add(new Buildings(name, amount, value));
 					verifica = true;
+					return true;
 				}
 			}
 		} else {
@@ -211,6 +217,7 @@ public class Filial extends Enterprises {
 				} else if(i == getPatrimony().size() - 1) {
 					patrimony.add(new Buildings(name, value));
 					verifica = true;
+					return true;
 				}
 			}
 		} else {
@@ -239,6 +246,7 @@ public class Filial extends Enterprises {
 				} else if(i == getPatrimony().size() - 1){
 					patrimony.add(new Buildings(name));
 					verifica = true;
+					return true;
 				}
 			}
 		} else {
@@ -260,6 +268,8 @@ public class Filial extends Enterprises {
 				} else if(patrimony.getName().isEmpty() == false && i == getPatrimony().size() - 1) {
 					getPatrimony().add(patrimony);
 					verifica = true;
+					return verifica;
+					
 				}
 			}
 		}
@@ -287,6 +297,7 @@ public class Filial extends Enterprises {
 					if(getPatrimony().get(j).getName().equals(oldName)) {
 						getPatrimony().get(i).edit(newName);
 						verifica = true;
+						return true;
 					}
 				}
 				

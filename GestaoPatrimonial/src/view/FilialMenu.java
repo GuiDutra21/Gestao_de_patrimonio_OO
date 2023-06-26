@@ -426,6 +426,11 @@ public class FilialMenu implements ActionListener {
 				panels.get(0).add(panels.get(panels.size() - 1));
 			}
 			
+			for(int i = 0; i < buttons.size(); i++)
+			{
+				buttons.get(i).addActionListener(this);
+			}
+			
 			panels.get(0).add(panels.get(4));//add the panel gray
 		} 
 		else 
@@ -510,19 +515,58 @@ public class FilialMenu implements ActionListener {
 //-----------------------------------Button add ---------------------------------------------------
 		if(e.getSource().equals(add))
 		{
+			jf.dispose();;
 			new PatrimonyScreean(PatrimonyScreean.Tipo.VEHICLE,c, name);
-			jf = null;
 			
 		}
 		
 		if(e.getSource().equals(add1))
 		{
+			jf.dispose();
 			new PatrimonyScreean(PatrimonyScreean.Tipo.BUILDINGS,c , name);
-			jf = null;
 			
 		}
 //-----------------------------------------------------------------------------------------------------
+		if(buttons.size() >2 )
+		{
+			if(e.getSource().equals(buttons.get(2)))
+			{
+				jf.dispose();
+				new PatrimonyScreean(PatrimonyScreean.Tipo.VEHICLE,c, name);
+			}
+			else if(e.getSource().equals(buttons.get(3)))
+			{
+				jf.dispose();
+				new PatrimonyScreean(PatrimonyScreean.Tipo.BUILDINGS,c , name);
+			}
+		}
 		
+		if(buttons.size() > 4) {
+			int labelsindice = 8;
+			for(int i = 4; i < buttons.size(); i++) {
+				if(i % 2 == 0) 
+				{
+					if(e.getSource().equals(buttons.get(i)))
+					{
+						
+					}
+				}
+				else 
+				{
+					if(e.getSource().equals(buttons.get(i)))
+					{
+						c.getCompany().remove(name,labels.get(labelsindice).getText());
+						jf.dispose();
+						new FilialMenu(c,name);
+						labelsindice+= 12;
+					}
+					
+				}
+				
+				
+			}
+		}
+	
 		
 	}
 }
