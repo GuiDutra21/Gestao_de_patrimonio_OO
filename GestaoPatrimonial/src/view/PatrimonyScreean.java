@@ -273,7 +273,7 @@ public class PatrimonyScreean implements ActionListener{
 			
 			if(precisaCodar == false)
 			{
-				new FilialMenu(c, c.getFilial(filialName).getPatrimony().size(), c.getFilial(filialName).getPatrimony(), filialName);
+				new FilialMenu(c,filialName);
 				frame.setVisible(false);
 				frame = null;
 			}
@@ -366,7 +366,7 @@ public class PatrimonyScreean implements ActionListener{
 							c.getVehicle(filialName, name).setModel(textFields.get(4).getText());
 							c.getVehicle(filialName, name).setProductionYear(prodY);
 							
-							new FilialMenu(c, c.getFilial(filialName).getPatrimony().size(), c.getFilial(filialName).getPatrimony(), filialName);
+							new FilialMenu(c,filialName);
 							frame.setVisible(false);
 							frame = null;
 
@@ -464,11 +464,9 @@ public class PatrimonyScreean implements ActionListener{
 							c.getBuildings(filialName, name).getAddress().setState(textFields.get(6).getText());
 							c.getBuildings(filialName, name).getAddress().setCity(textFields.get(7).getText());
 							c.getBuildings(filialName, name).getAddress().setStreet(textFields.get(8).getText());
-							c.getBuildings(filialName, name).getAddress().setNumber(number);
+							c.getBuildings(filialName, name).getAddress().setNumber(number);							
 							
-						
-							
-							new FilialMenu(c, c.getFilial(filialName).getPatrimony().size(), c.getFilial(filialName).getPatrimony(), filialName);
+							new FilialMenu(c, filialName);
 							frame.setVisible(false);
 							frame = null;
 

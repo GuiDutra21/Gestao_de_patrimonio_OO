@@ -17,6 +17,7 @@ public class ControlerCompany {
 	private String companyName;
 	public static int IS_COMPANY = 0, IS_FILIAL = 1;
 	
+	
 	public ControlerCompany(String name) {
 		this.company = new Company(name);
 		this.companyName = name;
@@ -119,8 +120,8 @@ public class ControlerCompany {
 			
 	}
 	
-	public void companyScreean(int qtdFilials) {
-		new CompanyMenu(qtdFilials,this);
+	public void companyScreean() {
+		new CompanyMenu(this);
 	}
 	
 	public String getCompanyName() {
@@ -158,15 +159,15 @@ public class ControlerCompany {
 	}
 	
 	//para passar no construtor da tela filialMenu
-	public List<Patrimony> getpatrimonys(String filialName)
+	public List<Patrimony> getPatrimonys(String filialName)
 	{
+		List<Patrimony> t = null;
 		for(int i = 0; i < company.getFilials().size(); i++)
 		{
 			if(company.getFilials().get(i).getName() == filialName)
-				return company.getFilials().get(i).getPatrimony();
+				t = company.getFilials().get(i).getPatrimony();
 		}
-		
-		return new ArrayList<Patrimony>(); //return an Array empty in case the 'if' is false for all elements
+		return t; //return an Array empty in case the 'if' is false for all elements
 	}
 	
 	public Filial getFilial(String name)

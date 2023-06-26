@@ -21,8 +21,6 @@ public class CompanyMenu implements ActionListener{
 	private List<JScrollPane> scrolls;
 	private JFrame jf;
 	private ControlerCompany c;
-	private double companyValue;
-	private Address address;
 	private JTextField search;
 	
 	public int textWidth(JLabel label)
@@ -34,7 +32,7 @@ public class CompanyMenu implements ActionListener{
 		return labelWidth;
 	}
 	
-	public CompanyMenu(int filialsQtd, ControlerCompany c)
+	public CompanyMenu(ControlerCompany c)
 	{
 		this.c = c;
 		jf = new JFrame();
@@ -85,7 +83,6 @@ public class CompanyMenu implements ActionListener{
 		labels.get(2).setBackground(new Color(220, 220, 220));
 		labels.get(2).setFont(new Font("Times New Roman", Font.BOLD,20));
 		labels.get(2).setBounds(x - (labels.get(2).getText().length()*4), 100,textWidth(labels.get(2)) + 10,30);
-//		System.out.println(labels.get(2).getText().length());
 		
 		//the JLabel 'Endereço'
 		labels.add(new JLabel("Endereço :"));
@@ -101,10 +98,8 @@ public class CompanyMenu implements ActionListener{
 		buttons.get(1).setBounds(1200, 100, 150, 30);
 		panels.get(0).add(buttons.get(1));
 		
-		companyValue = 15000.500;
-		
 		//the JLabel of 'Patrimônio líquido'
-		labels.add(new JLabel("R$ " + Double.toString(companyValue)));
+		labels.add(new JLabel("R$ " + Double.toString(c.getCompany().getValue())));
 		labels.get(4).setFont(new Font("Times New Roman", Font.BOLD, 22));
 		labels.get(4).setOpaque(true);
 		labels.get(4).setBackground(new Color(220, 220, 220));
@@ -145,12 +140,12 @@ public class CompanyMenu implements ActionListener{
 		labels.get(7).setBounds(635, 600, 550, 50);
 		labels.get(7).setFont(new Font("Times New Roman", Font.BOLD, 30));
 		panels.get(0).add(labels.get(7));
-		if(filialsQtd != 0)
+		if(c.getCompany().getFilials().size() != 0)
 		{
 			//Create the big square gray 
 			panels.add(new JPanel());
 			panels.get(2).setBackground(new Color(200, 200, 200));
-			panels.get(2).setBounds(200, 675, 1100, 575 + (filialsQtd * 560));
+			panels.get(2).setBounds(200, 675, 1100, 575 + (c.getCompany().getFilials().size() * 560));
 			
 			//Create the Button to add a Filial
 			buttons.add(new JButton("Adicionar Filial"));
@@ -164,9 +159,8 @@ public class CompanyMenu implements ActionListener{
 			int scrollsSize = -1;
 			int buttonsSize = 3;
 			int squareHeight = 650;
-			int patsQtd = 5;
 			
-			for(int j = 0; j < filialsQtd; j++)
+			for(int j = 0; j < c.getCompany().getFilials().size(); j++)
 			{	
 				labels.add(new JLabel(c.getCompany().getFilials().get(j).getName()));
 				labelsSize++;
@@ -226,7 +220,7 @@ public class CompanyMenu implements ActionListener{
 			panels.get(0).add(panels.get(2));
 			
 			//method that allow to extend the screen with the ScrollPanel
-			panels.get(0).setPreferredSize(new Dimension(200, 1650 + (filialsQtd * 510)));
+			panels.get(0).setPreferredSize(new Dimension(200, 1650 + (c.getCompany().getFilials().size() * 510)));
 		}
 		else
 		{
@@ -237,7 +231,7 @@ public class CompanyMenu implements ActionListener{
 			labels.get(8).setFont(new Font("Times New Roman",Font.BOLD, 25));
 			panels.get(0).add(labels.get(8));
 			button1 = new JButton("Adicionar Filial");
-			button1.setBounds(650, 720, 200, 50);
+			button1.setBounds(1200, 660, 150, 40);
 			button1.addActionListener(this);
 			panels.get(0).add(button1);
 			
@@ -300,8 +294,7 @@ public class CompanyMenu implements ActionListener{
 			indiceFiliais ++;
 			if(e.getSource().equals(buttons.get(4 + i))) 
 			{
-				new FilialMenu(c, c.getCompany().getFilials().get(indiceFiliais).getPatrimony().size(), 
-						c.getCompany().getFilials().get(indiceFiliais).getPatrimony(),c.getCompany().getFilials().get(indiceFiliais).getName());
+				new FilialMenu(c,c.getCompany().getFilials().get(indiceFiliais).getName());
 				//JOptionPane.showMessageDialog(jf, "achou1");
 			} 
 			else if(e.getSource().equals(buttons.get(5 + i))) 

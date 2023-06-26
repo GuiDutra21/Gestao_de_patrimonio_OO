@@ -23,8 +23,9 @@ public class SearchedPatrimonys implements ActionListener {
 
 	
 	//constructor 
-	SearchedPatrimonys(List<Patrimony> patrimonys, List<String> filialsName, String searchedName, int patrimonysQtd){
+	SearchedPatrimonys(ControlerCompany c, List<Patrimony> patrimonys, List<String> filialsName, String searchedName, int patrimonysQtd){
 		
+		this.c = c;
 		//Create the Frame
 		jf = new JFrame();
 		

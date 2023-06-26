@@ -153,7 +153,7 @@ public class FilialScreen implements ActionListener{
 			if(textFields.get(0).getText().isEmpty() && textFields.get(0).getText().isEmpty() && textFields.get(0).getText().isEmpty() &&
 					textFields.get(0).getText().isEmpty() && textFields.get(0).getText().isEmpty() && textFields.get(0).getText().isEmpty() )
 			{
-				new CompanyMenu(c.getCompany().getFilials().size(),c);
+				new CompanyMenu(c);
 				jf.dispose();
 				jf = null;
 				
@@ -204,7 +204,7 @@ public class FilialScreen implements ActionListener{
 								textFields.get(2).getText(),textFields.get(3).getText(),textFields.get(4).getText(), number));
 							
 						if(ver) {
-							new CompanyMenu(c.getCompany().getFilials().size(),c);
+							new CompanyMenu(c);
 							jf.dispose();
 							jf = null;
 						} else {

@@ -305,7 +305,7 @@ public class InsertAddress implements ActionListener {
 				}
 				c.getCompany().getAddress().setNumber(number);
 				
-				new CompanyMenu(c.getCompany().getFilials().size(),c);
+				new CompanyMenu(c);
 				
 				jf.dispose();
 				jf = null;
@@ -363,7 +363,7 @@ public class InsertAddress implements ActionListener {
 				
 				c.getFilial(filialName).getAddress().setNumber(number);
 				
-				new FilialMenu(c, c.getFilial(filialName).getPatrimony().size(),c.getFilial(filialName).getPatrimony(), filialName);
+				new FilialMenu(c, filialName);
 				
 				jf.dispose();
 				jf = null;

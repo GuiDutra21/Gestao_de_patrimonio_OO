@@ -188,7 +188,7 @@ public class Login implements ActionListener{
 				c.login(textFields.get(1).getText(), textFields.get(2).getText(), textFields.get(3).getText(),
 						textFields.get(4).getText(), number);
 				
-				c.companyScreean(0);
+				c.companyScreean();
 				jf.dispose();
 				jf = null;
 				
