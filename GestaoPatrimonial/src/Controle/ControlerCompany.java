@@ -225,9 +225,77 @@ public class ControlerCompany {
 		this.getBuildings(filialName, name).setAddress(new Address());
 	}
 	
+	public List<Patrimony> searchPatrimony(String searchedName)
+	{	
+		List<Patrimony> namesList = new ArrayList<>();
+		String[] namesArray;
 	
+		for(int i = 0; i < company.getFilials().size(); i++)
+		{
+			for(int j = 0; j < company.getFilials().get(i).getPatrimony().size(); j++)
+			{	
+				namesArray = new String[company.getFilials().get(i).getPatrimony().get(j).getName().length()];
+				namesArray = company.getFilials().get(i).getPatrimony().get(j).getName().split(searchedName);
+				if(namesArray.length != 1 && 
+						namesArray.length != company.getFilials().get(i).getPatrimony().get(j).getName().length())
+				{	
+					//add the name of the patrimony
+					if(company.getFilials().get(i).getPatrimony().get(j) instanceof Buildings)
+					namesList.add(getBuildings(company.getFilials().get(i).getName(),company.getFilials().get(i).getPatrimony().get(j).getName()));
+				}
+				else
+				{
+					namesList.add(getVehicle(company.getFilials().get(i).getName(),company.getFilials().get(i).getPatrimony().get(j).getName()));
+				}
+			}
+		}
+		return namesList;
+	}
 	
+	public List<String> getFilialsName(String searchedName)
+	{	
+		List<String> namesList = new ArrayList<>();
+		String[] namesArray;
 	
+		for(int i = 0; i < company.getFilials().size(); i++)
+		{
+			for(int j = 0; j < company.getFilials().get(i).getPatrimony().size(); j++)
+			{	
+				namesArray = new String[company.getFilials().get(i).getPatrimony().get(j).getName().length()];
+				namesArray = company.getFilials().get(i).getPatrimony().get(j).getName().split(searchedName);
+				if(namesArray.length != 1 && 
+						namesArray.length != company.getFilials().get(i).getPatrimony().get(j).getName().length())
+				{	
+					//add the name of the patrimony
+					if(company.getFilials().get(i).getPatrimony().get(j) instanceof Vehicle)
+					namesList.add(company.getFilials().get(i).getName());
+				}
+			}
+		}
+		return namesList;
+	}
+	
+	public boolean isVehicle(String filialName,String patrimonyName)
+    
+    {
+         boolean verifica = false;
+         for(int i = 0; i < getFilial(filialName).getPatrimony().size(); i++)
+         {
+             if(getFilial(filialName).getPatrimony().get(i).getName().equals(patrimonyName))
+             {
+                 if(getFilial(filialName).getPatrimony().get(i) instanceof Vehicle)
+                 {
+                     return true;
+                 }
+                 else 
+                 {
+                     return false;
+                 }
+             }
+         }
+
+         return verifica;
+    }
 	
 	
 }

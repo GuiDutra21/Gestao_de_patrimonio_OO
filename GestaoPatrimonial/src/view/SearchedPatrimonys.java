@@ -24,7 +24,7 @@ public class SearchedPatrimonys implements ActionListener {
 
 	
 	//constructor 
-	SearchedPatrimonys(ControlerCompany c, List<Patrimony> patrimonys, List<String> filialsName, String searchedName, int patrimonysQtd){
+	SearchedPatrimonys(ControlerCompany c, String searchedName){
 		
 		this.c = c;
 		//Create the Frame
@@ -53,41 +53,49 @@ public class SearchedPatrimonys implements ActionListener {
 		
 		labels = new ArrayList<>();
 		
+		//to catch the screenSize
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
 		
         //String h = String.format("%d",screenWidth);=>1536
+        
+        //The font
         Font font = new Font("Time News Roman",Font.BOLD, 30);
+        
+        //The variables to catch the JLabels size
+        FontMetrics fontMetrics;
+        int labelWidth;
+        
         
 		labels.add(new JLabel("Patrimônio(s) encontrado(s) dado o seguinte nome :"));
 		labels.get(0).setBounds(screenWidth/2 - labels.get(0).getText().length()*7,20,1200, 50);
 		labels.get(0).setFont(new Font("Time News Roman",Font.BOLD, 30));
 		panels.get(0).add(labels.get(0));
 		
-	
+		//The JLabel representing the Name that was looked up
 		labels.add(new JLabel(searchedName));
-		labels.get(1).setFont(new Font("Time News Roman",Font.BOLD, 30));
-		FontMetrics font1 = labels.get(1).getFontMetrics(font);
-		int labelWidth = font1.stringWidth(searchedName);
+		labels.get(1).setFont(font);
+		fontMetrics = labels.get(1).getFontMetrics(font);//to catch the Dimensions occupied by the JLabel
+		labelWidth = fontMetrics.stringWidth(searchedName);//to catch the width occupied by the JLabel
 		labels.get(1).setBounds(screenWidth/2 - labelWidth/2,90, labelWidth + 5, 50);
 		labels.get(1).setOpaque(true);
 		labels.get(1).setBackground(new Color(220, 220, 220));
 		panels.get(0).add(labels.get(1));
 		
+		//the height of the greens Squares
 		int squareHeight = 900;
 		
+		//The gray JPanel behind
 		panels.add(new JPanel());
-		panels.get(1).setBounds(125, 230, 1250, patrimonysQtd * squareHeight);
+		panels.get(1).setBounds(125, 230, 1250, c.searchPatrimony(searchedName).size()/2 * squareHeight);
 		panels.get(1).setBackground(new Color(220, 220, 220));
+		
 		
 		int buildingsQtd = -1;
 		int vehicleQtd = - 1;
-		ArrayList<Buildings> buildings = new ArrayList<>();
-		ArrayList<Vehicle> vehicle = new ArrayList<>();
-		buttons = new ArrayList<>();
 		
-		for (int i = 0; i < patrimonysQtd; i++) {
+		for (int i = 0; i < c.searchPatrimony(searchedName).size()/2; i++) {
 			
 			int labelsQtd = labels.size();
 		
