@@ -9,6 +9,7 @@ import java.util.List;
 import mainPackage.Patrimony;
 import mainPackage.Buildings;
 import mainPackage.Vehicle;
+import mainPackage.Company;
 import Controle.ControlerCompany;
 
 
@@ -105,7 +106,7 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd));
 				
-				labels.add(new JLabel(buildings.get(buildingsQtd).getName()));
+				labels.add(new JLabel((c.getBuildings(searchedName,c.getPatrimonys(searchedName).get(i).getName())).getName()));
 				labels.get(labelsQtd + 1).setBounds(720, 352 + (i * squareHeight), 400, 30);
 				labels.get(labelsQtd + 1).setOpaque(true);
 				labels.get(labelsQtd + 1).setBackground(new Color(210,180,140));
@@ -290,28 +291,36 @@ public class SearchedPatrimonys implements ActionListener {
 	}
 	
 	
-//	public static void main(String[] a ) {
-//		List<Patrimony> b = new ArrayList<>();
-//		for(int i = 0; i < 10; i++)
-//		{	
-//			if(i%2 == 0)
-//			{
-//			String v = String.format("casa %d",i);
-//			b.add(new Buildings(v,15,4000.5,3, 1500.00));
-//			}else {
-//			String s = String.format("Carro %d",i);
-//			b.add(new Vehicle(s,15, 20000,"Ferrari 480 Pista","Ferrari",2022));
-//			}
-//		}
-//		List<String> filialsName = new ArrayList<>();
-//		for(int i = 0; i < 10; i++)
-//		{	
-//			String v = String.format("patrimonio: %d",i);
-//			filialsName.add(v);
-//		}
-//		
-//		SearchedPatrimonys g = new SearchedPatrimonys(b,filialsName,"ameba", 3);
-//	}
+	public static void main(String[] a ) {
+		
+		
+		
+		ControlerCompany ca = new ControlerCompany("ololol");
+		ca.getCompany().createFilial("otso");
+		
+		List<Patrimony> b = new ArrayList<>();
+		for(int i = 0; i < 10; i++)
+		{	
+			if(i%2 == 0)
+			{
+				String v = String.format("casa %d",i);
+					b.add(new Buildings(v,15,4000.5,3, 1500.00));
+					ca.getCompany().getFilials().get(0).creatB(v,15,4000.5,3, 1500.00);
+				
+			}else {
+				String s = String.format("Carro %d",i);
+				b.add(new Vehicle(s,15, 20000,"Ferrari 480 Pista","Ferrari",2022));
+				ca.getCompany().getFilials().get(0).creatV(s,15, 20000,"Ferrari 480 Pista","Ferrari",2022);
+			}
+		}
+		List<String> filialsName = new ArrayList<>();
+		for(int i = 0; i < 10; i++)
+		{	
+			String v = String.format("patrimonio: %d",i);
+			filialsName.add(v);
+		}
+		SearchedPatrimonys g = new SearchedPatrimonys(ca,b,filialsName,"ameba", 3);
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
