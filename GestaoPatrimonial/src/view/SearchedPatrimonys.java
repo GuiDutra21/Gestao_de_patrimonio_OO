@@ -52,6 +52,7 @@ public class SearchedPatrimonys implements ActionListener {
 		
 		
 		labels = new ArrayList<>();
+		buttons = new ArrayList<>();
 		
 		//to catch the screenSize
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -78,7 +79,7 @@ public class SearchedPatrimonys implements ActionListener {
 		labels.get(1).setFont(font);
 		fontMetrics = labels.get(1).getFontMetrics(font);//to catch the Dimensions occupied by the JLabel
 		labelWidth = fontMetrics.stringWidth(searchedName);//to catch the width occupied by the JLabel
-		labels.get(1).setBounds(screenWidth/2 - labelWidth/2,90, labelWidth + 5, 50);
+		labels.get(1).setBounds(screenWidth/2 - labelWidth/2,90, labelWidth + 10, 50);
 		labels.get(1).setOpaque(true);
 		labels.get(1).setBackground(new Color(220, 220, 220));
 		panels.get(0).add(labels.get(1));
@@ -88,24 +89,17 @@ public class SearchedPatrimonys implements ActionListener {
 		
 		//The gray JPanel behind
 		panels.add(new JPanel());
-		panels.get(1).setBounds(125, 230, 1250, c.searchPatrimony(searchedName).size()/2 * squareHeight);
+		panels.get(1).setBounds(125, 230, 1250, c.searchPatrimony(searchedName).size() * squareHeight);
 		panels.get(1).setBackground(new Color(220, 220, 220));
 		
-		
-		int buildingsQtd = -1;
-		int vehicleQtd = - 1;
-		
-		for (int i = 0; i < c.searchPatrimony(searchedName).size()/2; i++) {
+		for (int i = 0; i < c.searchPatrimony(searchedName).size(); i++) {
 			
 			int labelsQtd = labels.size();
 		
 			panels.add(new JPanel());
 			
-			if(patrimonys.get(i) instanceof Buildings)
+			if(c.searchPatrimony(searchedName).get(i) instanceof Buildings)
 			{	
-				buildings.add((Buildings) patrimonys.get(i));
-				buildingsQtd ++;
-				
 				panels.get(panels.size() - 1).setBounds(200, 300 + (i * squareHeight), 1100, 700);
 				panels.get(panels.size() - 1).setBackground((new  Color(0, 180, 0)));
 				
@@ -114,7 +108,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd));
 				
-				labels.add(new JLabel((c.getBuildings(searchedName,c.getPatrimonys(searchedName).get(i).getName())).getName()));
+				labels.add(new JLabel((c.getBuildings(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getName())));
 				labels.get(labelsQtd + 1).setBounds(720, 352 + (i * squareHeight), 400, 30);
 				labels.get(labelsQtd + 1).setOpaque(true);
 				labels.get(labelsQtd + 1).setBackground(new Color(210,180,140));
@@ -126,7 +121,7 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 2).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 2));
 				
-				labels.add(new JLabel(filialsName.get(i)));
+				labels.add(new JLabel(c.getFilialsName(searchedName).get(i)));
 				labels.get(labelsQtd + 3).setBounds(720, 452 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 3).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 3));
@@ -136,7 +131,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 4).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 4));
 				
-				labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getValue())));
+				labels.add(new JLabel(String.valueOf((c.getBuildings(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getValue()))));
 				labels.get(labelsQtd + 5).setBounds(500, 552 + (i * squareHeight), 400, 30);
 				labels.get(labelsQtd + 5).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 5));
@@ -146,7 +142,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 6).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 6));
 				
-				labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getAmount())));
+				labels.add(new JLabel(String.valueOf((c.getBuildings(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getAmount()))));
 				labels.get(labelsQtd + 7).setBounds(1050, 552 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 7).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 7));
@@ -156,7 +153,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 8).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 8));
 				
-				labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getFloorsQtd())));
+				labels.add(new JLabel(String.valueOf((c.getBuildings(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getFloorsQtd()))));
 				labels.get(labelsQtd + 9).setBounds(1050, 675 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 9).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 9));
@@ -166,7 +164,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 10).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 10));
 				
-				labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getFloorsQtd())));
+				labels.add(new JLabel(String.valueOf((c.getBuildings(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getArea()))));
 				labels.get(labelsQtd + 11).setBounds(500, 675 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 11).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 11));
@@ -176,7 +175,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 12).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 12));
 				
-				labels.add(new JLabel(String.valueOf(buildings.get(buildingsQtd).getAddress())));
+				labels.add(new JLabel(String.valueOf((c.getBuildings(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getAddress()))));
 				labels.get(labelsQtd + 13).setBounds(600, 802 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 13).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 13));				
@@ -192,9 +192,6 @@ public class SearchedPatrimonys implements ActionListener {
 			}			
 			else
 			{	
-				vehicle.add((Vehicle) patrimonys.get(i));
-				vehicleQtd ++;
-				
 				panels.get(panels.size() - 1).setBounds(200, 300 + (i * squareHeight), 1100, 700);
 				panels.get(panels.size() - 1).setBackground((new  Color(0, 180, 0)));					
 					
@@ -204,7 +201,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd));
 				
-				labels.add(new JLabel(vehicle.get(vehicleQtd).getName()));
+				labels.add(new JLabel(c.getVehicle(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getName()));
 				labels.get(labelsQtd + 1).setBounds(720, 352 + (i * squareHeight), 400, 30);
 				labels.get(labelsQtd + 1).setOpaque(true);
 				labels.get(labelsQtd + 1).setBackground(new Color(210,180,140));
@@ -216,7 +214,7 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 2).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 2));
 				
-				labels.add(new JLabel(filialsName.get(i)));
+				labels.add(new JLabel(c.getFilialsName(searchedName).get(i)));
 				labels.get(labelsQtd + 3).setBounds(720, 452 + (i * squareHeight), 500, 30);	
 				labels.get(labelsQtd + 3).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 3));
@@ -226,7 +224,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 4).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 4));
 				
-				labels.add(new JLabel(String.valueOf(vehicle.get(vehicleQtd).getValue())));
+				labels.add(new JLabel(String.valueOf(c.getVehicle(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getValue())));
 				labels.get(labelsQtd + 5).setBounds(500, 552 + (i * squareHeight), 400, 30);
 				labels.get(labelsQtd + 5).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 5));
@@ -236,7 +235,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 6).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 6));
 				
-				labels.add(new JLabel(String.valueOf(vehicle.get(vehicleQtd).getAmount())));
+				labels.add(new JLabel(String.valueOf(c.getVehicle(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getAmount())));
 				labels.get(labelsQtd + 7).setBounds(1050, 552 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 7).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 7));
@@ -247,7 +247,8 @@ public class SearchedPatrimonys implements ActionListener {
 				panels.get(0).add(labels.get(labelsQtd + 8));
 				
 				//labels.add(new JLabel(String.valueOf(vehicle.get(vehicleQtd).getBrand())));
-				labels.add(new JLabel("aaaaaaaaaaaaaaaaa"));
+				labels.add(new JLabel(c.getVehicle(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getModel()));
 				labels.get(labelsQtd + 9).setBounds(680, 652 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 9).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 9));
@@ -258,7 +259,8 @@ public class SearchedPatrimonys implements ActionListener {
 						("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 10));
 				
-				labels.add(new JLabel(String.valueOf(vehicle.get(vehicleQtd).getBrand())));
+				labels.add(new JLabel(String.valueOf(c.getVehicle(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getModel())));
 				labels.get(labelsQtd + 11).setBounds(500, 777 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 11).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 11));
@@ -268,7 +270,8 @@ public class SearchedPatrimonys implements ActionListener {
 				labels.get(labelsQtd + 12).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 12));
 				
-				labels.add(new JLabel(String.valueOf(vehicle.get(vehicleQtd).getProductionYear())));
+				labels.add(new JLabel(String.valueOf(c.getVehicle(c.getFilialsName(searchedName).get(i),
+						c.searchPatrimony(searchedName).get(i).getName()).getProductionYear())));
 				labels.get(labelsQtd + 13).setBounds(1050, 752 + (i * squareHeight), 400, 30);	
 				labels.get(labelsQtd + 13).setFont(new Font("Times New Roman", Font.BOLD, 30));
 				panels.get(0).add(labels.get(labelsQtd + 13));
@@ -287,7 +290,7 @@ public class SearchedPatrimonys implements ActionListener {
 		
 		panels.get(0).add(panels.get(1));//add the panel gray
 		
-		panels.get(0).setPreferredSize(new Dimension (1500, patrimonysQtd * squareHeight + 200));
+		panels.get(0).setPreferredSize(new Dimension (1500, c.searchPatrimony(searchedName).size() * squareHeight + 200));
 		
 		//Create the Scroll
 		scroll = new JScrollPane(panels.get(0));
@@ -301,10 +304,8 @@ public class SearchedPatrimonys implements ActionListener {
 	
 	public static void main(String[] a ) {
 		
-		
-		
 		ControlerCompany ca = new ControlerCompany("ololol");
-		ca.getCompany().createFilial("otso");
+		ca.getCompany().createFilial("minha filial");
 		
 		List<Patrimony> b = new ArrayList<>();
 		for(int i = 0; i < 10; i++)
@@ -321,13 +322,8 @@ public class SearchedPatrimonys implements ActionListener {
 				ca.getCompany().getFilials().get(0).creatV(s,15, 20000,"Ferrari 480 Pista","Ferrari",2022);
 			}
 		}
-		List<String> filialsName = new ArrayList<>();
-		for(int i = 0; i < 10; i++)
-		{	
-			String v = String.format("patrimonio: %d",i);
-			filialsName.add(v);
-		}
-		SearchedPatrimonys g = new SearchedPatrimonys(ca,b,filialsName,"ameba", 3);
+		
+		SearchedPatrimonys g = new SearchedPatrimonys(ca,"ca");
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
