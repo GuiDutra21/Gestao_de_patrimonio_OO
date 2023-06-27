@@ -183,19 +183,6 @@ public class ControlerCompany {
 		return f;
 	}
 	
-	public Vehicle getVehicle(String filialName, String patrimonyName) 
-	{
-		Vehicle a = null;
-		for(int i = 0; i < this.getFilial(filialName).getPatrimony().size(); i ++)
-		{
-			if(this.getFilial(filialName).getPatrimony().get(i).getName().equals(patrimonyName)) {
-				a = (Vehicle) this.getFilial(filialName).getPatrimony().get(i);
-			}
-		}
-		
-		return a;
-	}
-	
 	public Patrimony getPatrimony(String filialName, String patrimonyName) 
 	{
 		Patrimony a = null;
@@ -203,6 +190,19 @@ public class ControlerCompany {
 		{
 			if(this.getFilial(filialName).getPatrimony().get(i).getName().equals(patrimonyName)) {
 				a =  this.getFilial(filialName).getPatrimony().get(i);
+			}
+		}
+		
+		return a;
+	}
+	
+	public Vehicle getVehicle(String filialName, String patrimonyName) 
+	{
+		Vehicle a = null;
+		for(int i = 0; i < this.getFilial(filialName).getPatrimony().size(); i ++)
+		{
+			if(this.getFilial(filialName).getPatrimony().get(i).getName().equals(patrimonyName)) {
+				a = (Vehicle) this.getFilial(filialName).getPatrimony().get(i);
 			}
 		}
 		
@@ -238,9 +238,10 @@ public class ControlerCompany {
 		this.getBuildings(filialName, name).setAddress(new Address());
 	}
 	
+	//return a list of patrimonys based in a name
 	public List<Patrimony> searchPatrimony(String searchedName)
-	{	
-		List<Patrimony> namesList = new ArrayList<>();
+	{	 searchedName = searchedName.toLowerCase();
+		List<Patrimony> list = new ArrayList<>();
 		String[] namesArray;
 	
 		for(int i = 0; i < company.getFilials().size(); i++)
@@ -248,39 +249,33 @@ public class ControlerCompany {
 			for(int j = 0; j < company.getFilials().get(i).getPatrimony().size(); j++)
 			{	
 				namesArray = new String[company.getFilials().get(i).getPatrimony().get(j).getName().length()];
-				namesArray = company.getFilials().get(i).getPatrimony().get(j).getName().split(searchedName);
+				namesArray = company.getFilials().get(i).getPatrimony().get(j).getName().toLowerCase().split(searchedName);
 				if(namesArray.length != 1 && 
 						namesArray.length != company.getFilials().get(i).getPatrimony().get(j).getName().length())
 				{	
-					//add the name of the patrimony
-					if(company.getFilials().get(i).getPatrimony().get(j) instanceof Buildings)
-					namesList.add(getBuildings(company.getFilials().get(i).getName(),company.getFilials().get(i).getPatrimony().get(j).getName()));
-				}
-				else
-				{
-					namesList.add(getVehicle(company.getFilials().get(i).getName(),company.getFilials().get(i).getPatrimony().get(j).getName()));
+					list.add(company.getFilials().get(i).getPatrimony().get(j));
 				}
 			}
 		}
-		return namesList;
+		return list;
 	}
 	
+	//return a list of filials name
 	public List<String> getFilialsName(String searchedName)
 	{	
 		List<String> namesList = new ArrayList<>();
 		String[] namesArray;
-	
+		searchedName = searchedName.toLowerCase();
 		for(int i = 0; i < company.getFilials().size(); i++)
 		{
 			for(int j = 0; j < company.getFilials().get(i).getPatrimony().size(); j++)
 			{	
 				namesArray = new String[company.getFilials().get(i).getPatrimony().get(j).getName().length()];
-				namesArray = company.getFilials().get(i).getPatrimony().get(j).getName().split(searchedName);
+				namesArray = company.getFilials().get(i).getPatrimony().get(j).getName().toLowerCase().split(searchedName);
 				if(namesArray.length != 1 && 
 						namesArray.length != company.getFilials().get(i).getPatrimony().get(j).getName().length())
 				{	
 					//add the name of the patrimony
-					if(company.getFilials().get(i).getPatrimony().get(j) instanceof Vehicle)
 					namesList.add(company.getFilials().get(i).getName());
 				}
 			}
