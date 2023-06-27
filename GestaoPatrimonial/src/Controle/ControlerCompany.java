@@ -196,6 +196,19 @@ public class ControlerCompany {
 		return a;
 	}
 	
+	public Patrimony getPatrimony(String filialName, String patrimonyName) 
+	{
+		Patrimony a = null;
+		for(int i = 0; i < this.getFilial(filialName).getPatrimony().size(); i ++)
+		{
+			if(this.getFilial(filialName).getPatrimony().get(i).getName().equals(patrimonyName)) {
+				a =  this.getFilial(filialName).getPatrimony().get(i);
+			}
+		}
+		
+		return a;
+	}
+	
 	public Buildings getBuildings(String filialName, String patrimonyName) 
 	{
 		Buildings a = null;

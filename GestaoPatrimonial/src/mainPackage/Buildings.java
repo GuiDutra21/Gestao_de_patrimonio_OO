@@ -47,7 +47,7 @@ public class Buildings extends Patrimony {
 
 	public void setFloorsQtd(int floorsQtd) {
 	
-		if(floorsQtd > 0){
+		if(floorsQtd >= 0){
 			this.floorsQtd = floorsQtd;
 		}
 	}
@@ -57,7 +57,7 @@ public class Buildings extends Patrimony {
 	}
 
 	public void setArea(double area) {
-		if(area > 0)
+		if(area >= 0)
 		{
 			this.area = area;
 		}

@@ -549,6 +549,19 @@ public class FilialMenu implements ActionListener {
 					if(e.getSource().equals(buttons.get(i)))
 					{
 						
+						if(c.isVehicle(name, labels.get(labelsindice).getText()))
+						{
+							jf.dispose();
+							new EditPatrimony(labels.get(labelsindice).getText(),PatrimonyScreean.Tipo.VEHICLE,c,name);
+						}
+						else
+						{
+							jf.dispose();
+							new EditPatrimony(labels.get(labelsindice).getText(),PatrimonyScreean.Tipo.BUILDINGS,c, name);
+						}
+						
+						labelsindice+= 12;
+						
 					}
 				}
 				else 
